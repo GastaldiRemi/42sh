@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 11:41:10 2016 Antoine Roig
-** Last update Tue Apr 26 15:52:36 2016 Antoine Roig
+** Last update Tue May  3 15:04:30 2016 prost
 */
 
 #include "minishell2.h"
@@ -67,7 +67,8 @@ int	main(int ac, char **av, char **env)
   while (1)
     {
       path = search_path(list_env); /* on stock la varaible d'env PATH */
-      instruct = get_instruct(0); /* on récupère l'entrée standad dans une instruction */
+      if ((instruct = get_instruct(0)) == -1)  /* on récupère l'entrée standad dans une instruction */
+	  return (-1);
       if (instruct[0] != '\0')
 	{
 	  prepare_list_instruct(list_instruct, instruct, -1); /* on met les instructions contenues dans instruct dns une liste */
