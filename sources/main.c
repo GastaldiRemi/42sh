@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 11:41:10 2016 Antoine Roig
-** Last update Tue May  3 15:45:30 2016 Jabbari Yassir
+** Last update Tue May  3 15:56:03 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"
@@ -25,9 +25,9 @@ void	clear_list_inst(t_dinstructions *list)
   free(tmp);
 }
 
-char   **list_to_env(t_dlist *list)
+char		**list_to_env(t_dlist *list)
 {
-  int   i;
+  int		i;
   t_list        *tmp;
   char          **my_env;
 
@@ -43,6 +43,7 @@ char   **list_to_env(t_dlist *list)
       tmp = tmp->next;
     }
   my_env[i] = NULL;
+  free(tmp);
   return (my_env);
 }
 
