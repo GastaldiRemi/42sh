@@ -5,5 +5,4 @@ Valgrind
 gérer la segfault quand on lance sans pwd et home
 ordre de recherche des fct (sys/perso/builtin)
 multi pipe et redir dans une instruction
-
-to complete ...
+remplacer les exit par des returns jusqu'au main

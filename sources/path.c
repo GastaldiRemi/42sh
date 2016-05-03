@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 13:12:33 2016 Antoine Roig
-** Last update Tue Apr 26 15:57:41 2016 Antoine Roig
+** Last update Tue May  3 15:16:09 2016 prost
 */
 
 #include "minishell2.h"
@@ -29,7 +29,7 @@ char    **search_path(t_dlist *list)
   char          *line_path;
   t_list        *tmp;
 
-  my_putstr("MINISHELL2 > ");
+  my_putstr("42sh > ");
   if (list->begin == NULL)
     return (NULL);
   tmp = list->begin;

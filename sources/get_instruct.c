@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 13:21:33 2016 Antoine Roig
-** Last update Tue Apr 26 15:55:42 2016 Antoine Roig
+** Last update Tue May  3 15:03:33 2016 prost
 */
 
 #include "minishell2.h"
@@ -90,7 +90,10 @@ char 	*get_instruct(int fd) /* on va prendre le parsing de rémi pour les redir 
 
   instruct = get_next_line(fd);
   if (instruct == NULL)
-    exit(0);
+    {
+      my_putstr("exit\n");
+      return (-1);
+    }
   instruct = my_epurstr(instruct);
   instruct = without_space_pipe(instruct, 0, 0);
   instruct = without_space_redg(instruct, 0, 0);

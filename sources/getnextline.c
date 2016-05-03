@@ -1,105 +1,68 @@
 /*
-** getnextline.c for get_next_line.c in /home/roig_a/rendu/PSU_2015_minishell2
-**
-** Made by Antoine Roig
-** Login   <roig_a@epitech.net>
-**
-** Started on  Sat Apr  2 16:41:53 2016 Antoine Roig
-** Last update Mon Apr  4 09:55:01 2016 Antoine Roig
+** get_next_line.c for get_next_line in /home/gastal_r/rendu/CPE_2015/CPE_2015_getnextline
+** 
+** Made by remi gastaldi
+** Login   <gastal_r@epitech.net>
+** 
+** Started on  Fri Mar  4 16:40:22 2016 remi gastaldi
+** Last update Wed Apr 27 12:09:32 2016 remi gastal_r
 */
 
 #include "minishell2.h"
 
-char    *my_strncat(char *dest, char *src, int nb)
+char    *my_realloc(char *str, int size)
 {
+  char  *new_str;
   int   i;
-  int   j;
 
-  j = 0;
-  i = my_strlen(dest);
-  while (src[j] && j < nb)
+  i = 0;
+  if (size == 0)
+    return (str);
+
+  if ((new_str = malloc(sizeof(char) * (size + 1))) == NULL)
+    return (NULL);
+  while (str[i])
     {
-      dest[i] = src[j];
-      i += 1;
-      j += 1;
+      new_str[i] = str[i];
+      i++;
     }
-  dest[i] = '\0';
-  return (dest);
+  new_str[i]= '\0';
+  free(str);
+  return (new_str);
 }
 
-char    *my_strdup(char *src, char **save)
+char	*return_end(char *final, int i)
 {
-  int   i;
-  char *new;
-
-  if (save)
-    {
-      new = my_strdup(*save, NULL);
-      *save = NULL;
-      return (new);
-    }
-  else
-    {
-      i = 0;
-      new = xmalloc(sizeof(char) * my_strlen(src) + 1);
-      if (new == NULL)
-        return (new);
-      while (src[i])
-        {
-          new[i] = src[i];
-          i++;
-        }
-      new[i] = '\0';
-      return (new);
-    }
+  final[i] = '\0';
+  if (my_strlen(final) == 0)
+    return (NULL);
+  return (final);
 }
 
-t_var   *get_next_second_part(t_var *var)
+char	*get_next_line(const int fd)
 {
-  var->keep = NULL;
-  var->keep = my_strdup(var->s_tmp, NULL);
-  var->keep[my_strlen(var->keep)] = '\0';
-  if (var->save_stat)
-    {
-      var->s_tmp = xmalloc(sizeof(char) * (my_strlen(var->buff)
-					   + var->i + my_strlen(var->save_stat) + 1));
-      my_strncat(var->s_tmp, my_strdup(var->save_stat, NULL),
-                 my_strlen(my_strdup(var->save_stat, NULL)));
-      var->save_stat = NULL;
-    }
-  else
-    var->s_tmp = xmalloc(sizeof(char) * (my_strlen(var->buff)
-					 + var->i + 2 + my_strlen(var->keep)));
-  my_strncat(var->s_tmp, var->keep, my_strlen(var->keep));
-  my_strncat(var->s_tmp, var->buff, my_strlen(var->buff));
-  return (var);
-}
+  static int	nread;
+  int	i;
+  char	buff[2];
+  char	*final;
 
-char    *get_next_line(const int fd)
-{
-  static        char    *s;
-  t_var                 *var;
-
-  s = NULL;
-  var = xmalloc(sizeof(*var));
-  var->s_tmp = my_strdup("", NULL);
+  i = 0;
+  if ((final = malloc(sizeof(char) * 2)) == NULL)
+    return (NULL);
   while (1)
     {
-      var->buff = xmalloc(sizeof(char) * (READ_SIZE + 1));
-      if (read(fd, var->buff, READ_SIZE) == 0)
-        return (s ? my_strdup(s, &s) : var->s_tmp[0] != 0 ? var->s_tmp : NULL);
-      var->i = -1;
-      var->buff[READ_SIZE] = '\0';
-      while (var->buff[++var->i])
-        if (var->buff[var->i] == '\n')
-          {
-            s ? my_strncat(var->s_tmp, s, my_strlen(s)) : "";
-            my_strncat(var->s_tmp, var->buff, var->i);
-            s = (char*)(var->buff + var->i + 1);
-            return (var->s_tmp);
-          }
-      var->save_stat = s;
-      get_next_second_part(var);
-      s = var->save_stat;
+      nread = read(fd, buff, 1);
+      buff[1] = '\0';
+      if (nread <= 0)
+      	return (return_end(final, i));
+      final[i] = buff[0];
+      if (final[i] == '\n')
+	{
+	  final[i] = '\0';
+	  return (final);
+	}
+      i++;
+      final[i] = '\0';
+      final = my_realloc(final, i + 1);
     }
 }
