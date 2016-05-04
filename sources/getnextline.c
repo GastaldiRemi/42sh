@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri Mar  4 16:40:22 2016 remi gastaldi
-** Last update Wed Apr 27 12:09:32 2016 remi gastal_r
+** Last update Wed May  4 13:52:48 2016 
 */
 
 #include "minishell2.h"
@@ -49,9 +49,8 @@ char	*get_next_line(const int fd)
   i = 0;
   if ((final = malloc(sizeof(char) * 2)) == NULL)
     return (NULL);
-  while (1)
+  while ((nread = read(fd, buff, 1)) > 0)
     {
-      nread = read(fd, buff, 1);
       buff[1] = '\0';
       if (nread <= 0)
       	return (return_end(final, i));
@@ -65,4 +64,5 @@ char	*get_next_line(const int fd)
       final[i] = '\0';
       final = my_realloc(final, i + 1);
     }
+  return (return_end(final, i));
 }
