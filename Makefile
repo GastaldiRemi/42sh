@@ -5,8 +5,15 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Thu May  5 14:42:33 2016 Jabbari Yassir
+## Last update Thu May  5 19:32:21 2016 
 ##
+
+
+ECHO            =       /bin/echo -e
+DEFAULT         =       "\033[00m"
+GREEN           =       "\033[0;32m"
+TEAL            =       "\033[1;36m"
+RED             =       "\033[0;31m"
 
 CC              =       gcc
 
@@ -44,18 +51,27 @@ SRC             =       sources/main.c		\
 
 OBJ             =       $(SRC:.c=.o)
 
-all             :       $(NAME)
+all             :       title $(NAME)
+
+title		:
+			@$(ECHO) $(GREEN)42$(TEAL)sh$(DEFAULT)
 
 $(NAME)         :       $(OBJ)
-			$(CC) -o $(NAME) $(OBJ)
+			@$(CC) -o $(NAME) $(OBJ) && \
+			 $(ECHO) $(GREEN) "[OK]" $(TEAL) $(NAME) $(DEFAULT)  || \
+			 $(ECHO) $(RED) "[XX]" $(TEAL) $(NAME)
 
 clean           :
-			rm -f $(OBJ)
+			@rm -f $(OBJ)
 
 fclean          :       clean
-			$(RM) $(NAME)
+			@$(RM) $(NAME)
 
 re              :        fclean all
 
 .PHONY          :       all clean fclean re
 
+.c.o		:
+			@$(CC) $(CFLAGS) -c $< -o $@  && \
+			$(ECHO) $(GREEN) "[OK]" $(TEAL) $< $(DEFAULT) || \
+			$(ECHO) $(RED) "[XX]" $(TEAL) $< $(DEFAULT)
