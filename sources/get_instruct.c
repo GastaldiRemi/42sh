@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 13:21:33 2016 Antoine Roig
-** Last update Thu May  5 10:37:34 2016 Jabbari Yassir
+** Last update Thu May  5 11:28:53 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"
@@ -82,6 +82,7 @@ void	prepare_list_instruct(t_dinstructions *list_instruct, /* on va donc prépae
 	}
       k++;
     }
+  free(instruct);
 }
 
 char 	*get_instruct(int fd) /* on va prendre le parsing de rémi pour les redir et pipes */

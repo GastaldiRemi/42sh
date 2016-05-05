@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Fri Jan  8 00:20:39 2016 Antoine Roig
-** Last update Thu May  5 10:16:53 2016 Jabbari Yassir
+** Last update Thu May  5 11:25:26 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"
@@ -16,7 +16,10 @@ void	*xmalloc(int size)
 
   element = malloc(size);
   if (!element)
-    exit(EXIT_FAILURE);
+    {
+      free(element);
+      exit(-1);
+    }
   return (element);
 }
 
