@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 11:41:10 2016 Antoine Roig
-** Last update Thu May  5 11:29:31 2016 Jabbari Yassir
+** Last update Thu May  5 14:40:23 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"
@@ -79,9 +79,13 @@ int	main(int ac, char **av, char **env)
 	  prepare_list_instruct(list_instruct, instruct, -1); /* on met les instructions contenues dans instruct dns une liste */
 	  ret = ride(list_instruct, my_env, list_env, path); /* c'est parti on va executer des trucs ! */
 	  if (ret->ex == 1)
-	    return (ret->ret);
+	    {
+	      free(instruct);
+	      return (ret->ret);
+	    }
 	  my_env = list_to_env(list_env); /* on met à jour notre env */
 	}
+      free(instruct);
       clear_list_inst(list_instruct); /* on clean la liste d'instruction */
     }
   return (0);
