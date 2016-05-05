@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Jan 23 23:42:55 2016 Antoine Roig
-** Last update Thu May  5 10:16:26 2016 Jabbari Yassir
+** Last update Thu May  5 11:15:46 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"
@@ -30,6 +30,7 @@ char	*epur_first_part(char *string)
     }
   if (str[i - 1] == ' ' || str[i - 1] == '\t' || str[i - 1] == ';')
     str[i - 1] = '\0';
+  free(string);
   return (str);
 }
 
@@ -57,5 +58,6 @@ char	*my_epurstr(char *str)
   ret[j] = '\0';
   if (ret[my_strlen(ret) - 1] == ' ' || ret[my_strlen(ret) - 1] == '\t')
     ret[my_strlen(ret) - 1] = '\0';
+  free(str);
   return (ret);
 }
