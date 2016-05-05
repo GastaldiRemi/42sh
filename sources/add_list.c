@@ -1,11 +1,11 @@
 /*
 ** add_list.c for add_list.c in /home/roig_a/rendu/getnextline/PSU_2015_minishell1
-** 
+**
 ** Made by Antoine Roig
 ** Login   <roig_a@epitech.net>
-** 
+**
 ** Started on  Fri Jan  8 00:20:12 2016 Antoine Roig
-** Last update Sat Apr  2 17:44:46 2016 Antoine Roig
+** Last update Thu May  5 10:12:44 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"

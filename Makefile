@@ -5,7 +5,7 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Tue May  3 15:49:22 2016 Jabbari Yassir
+## Last update Thu May  5 10:49:28 2016 Jabbari Yassir
 ##
 
 CC              =       gcc
@@ -22,6 +22,7 @@ SRC             =       sources/main.c		\
 			sources/pop_list.c	\
 			sources/utils_list.c	\
 			sources/utils2.c	\
+			sources/free_memorie.c	\
 			sources/utils.c		\
 			sources/my_strlen.c	\
 			sources/path.c		\

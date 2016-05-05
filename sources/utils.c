@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Mon Jan  4 15:41:33 2016 Antoine Roig
-** Last update Wed Apr  6 21:03:41 2016 Antoine Roig
+** Last update Thu May  5 10:16:07 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"
@@ -62,7 +62,6 @@ char    **my_str_to_wordtab_path(char *str)
   j = 0;
   wnb = count_word(str);
   tab = xmalloc(sizeof(char *) * wnb + sizeof(char *));
-
   while (str[i])
     {
       tab[j] = xmalloc(sizeof(char) * my_strlen(str) + 1);

@@ -1,11 +1,11 @@
 /*
 ** epur.c for epur.c in /home/roig_a/rendu/getnextline/PSU_2015_minishell1
-** 
+**
 ** Made by Antoine Roig
 ** Login   <roig_a@epitech.net>
-** 
+**
 ** Started on  Sat Jan 23 23:42:55 2016 Antoine Roig
-** Last update Sat Apr  2 17:34:23 2016 Antoine Roig
+** Last update Thu May  5 10:16:26 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"

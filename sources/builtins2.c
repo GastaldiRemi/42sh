@@ -5,12 +5,12 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sun Apr  3 16:28:15 2016 Antoine Roig
-** Last update Thu Apr  7 14:57:27 2016 Antoine Roig
+** Last update Thu May  5 10:18:22 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"
 
-int     change_pwd2(char *buff, t_dlist *list)
+int		change_pwd2(char *buff, t_dlist *list)
 {
   t_list        *tmp;
   char          *pwd;
@@ -30,7 +30,7 @@ int     change_pwd2(char *buff, t_dlist *list)
   return (1);
 }
 
-int     change_pwd(t_dlist *list)
+int		change_pwd(t_dlist *list)
 {
   char          *buff;
   int           i;
@@ -50,7 +50,7 @@ int     change_pwd(t_dlist *list)
   return (change_pwd2(buff, list));
 }
 
-char    *get_user(t_dlist *list)
+char		*get_user(t_dlist *list)
 {
   t_list        *tmp;
   char          *user;

@@ -1,24 +1,23 @@
 /*
 ** get_next_line.c for get_next_line in /home/gastal_r/rendu/CPE_2015/CPE_2015_getnextline
-** 
+**
 ** Made by remi gastaldi
 ** Login   <gastal_r@epitech.net>
-** 
+**
 ** Started on  Fri Mar  4 16:40:22 2016 remi gastaldi
-** Last update Wed May  4 13:52:48 2016 
+** Last update Thu May  5 10:14:11 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"
 
-char    *my_realloc(char *str, int size)
+char		*my_realloc(char *str, int size)
 {
-  char  *new_str;
-  int   i;
+  char		*new_str;
+  int		i;
 
   i = 0;
   if (size == 0)
     return (str);
-
   if ((new_str = malloc(sizeof(char) * (size + 1))) == NULL)
     return (NULL);
   while (str[i])
@@ -31,7 +30,7 @@ char    *my_realloc(char *str, int size)
   return (new_str);
 }
 
-char	*return_end(char *final, int i)
+char		*return_end(char *final, int i)
 {
   final[i] = '\0';
   if (my_strlen(final) == 0)
@@ -39,12 +38,12 @@ char	*return_end(char *final, int i)
   return (final);
 }
 
-char	*get_next_line(const int fd)
+char		*get_next_line(const int fd)
 {
   static int	nread;
-  int	i;
-  char	buff[2];
-  char	*final;
+  int		i;
+  char		buff[2];
+  char		*final;
 
   i = 0;
   if ((final = malloc(sizeof(char) * 2)) == NULL)

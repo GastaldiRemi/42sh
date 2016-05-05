@@ -1,11 +1,11 @@
 /*
 ** utils2.c for utils2.C in /home/roig_a/rendu/getnextline/PSU_2015_minishell1
-** 
+**
 ** Made by Antoine Roig
 ** Login   <roig_a@epitech.net>
-** 
+**
 ** Started on  Tue Jan  5 20:19:25 2016 Antoine Roig
-** Last update Sat Apr  2 12:38:04 2016 Antoine Roig
+** Last update Thu May  5 10:17:56 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"
