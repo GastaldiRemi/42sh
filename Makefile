@@ -5,7 +5,7 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Thu May  5 10:49:28 2016 Jabbari Yassir
+## Last update Thu May  5 14:42:33 2016 Jabbari Yassir
 ##
 
 CC              =       gcc
@@ -14,7 +14,7 @@ NAME            =       mysh
 
 CFLAGS		+=	-D_POSIX_C_SOURCE -D_XOPEN_SOURCE -D_POSIX_SOURCE
 
-CFLAGS          +=       -Wextra -Wall -W -pedantic -ansi -Iinclude
+CFLAGS          +=       -Wextra -Wall -W -pedantic -ansi -g -Iinclude
 
 SRC             =       sources/main.c		\
 			sources/env.c		\

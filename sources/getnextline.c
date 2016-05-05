@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Fri Mar  4 16:40:22 2016 remi gastaldi
-** Last update Thu May  5 10:14:11 2016 Jabbari Yassir
+** Last update Thu May  5 14:44:18 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"
@@ -34,7 +34,10 @@ char		*return_end(char *final, int i)
 {
   final[i] = '\0';
   if (my_strlen(final) == 0)
-    return (NULL);
+    {
+      free(final);
+      return (NULL);
+    }
   return (final);
 }
 
@@ -47,7 +50,10 @@ char		*get_next_line(const int fd)
 
   i = 0;
   if ((final = malloc(sizeof(char) * 2)) == NULL)
-    return (NULL);
+    {
+      free(final);
+      return (NULL);
+    }
   while ((nread = read(fd, buff, 1)) > 0)
     {
       buff[1] = '\0';
