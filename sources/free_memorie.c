@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Thu May  5 10:26:34 2016 Jabbari Yassir
-** Last update Thu May  5 11:06:23 2016 Jabbari Yassir
+** Last update Thu May  5 14:50:53 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"
@@ -17,6 +17,11 @@ void		my_free_tab(char **tab)
   i = -1;
   while (tab[++i])
     free(tab[i]);
+}
+
+void		my_control_c()
+{
+  my_putstr("\n42sh > ");
 }
 
 void		free_memorie(t_dlist *list_env, char **my_env,

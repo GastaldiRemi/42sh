@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sun Apr  3 16:04:34 2016 Antoine Roig
-** Last update Tue Apr 26 16:04:29 2016 Antoine Roig
+** Last update Thu May  5 14:56:12 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"
@@ -29,8 +29,9 @@ void    exec_cmd_2(t_instruct *line, int pid, char **env, char **path)
     exec_cmd_2_unknown(line->cmd); /* message d'erreur */
   if (pathname)
     free(pathname);
-  signal(SIGINT, SIG_DFL);
-  kill(pid, SIGINT);
+  if (line->cmd == NULL)
+    return;
+  signal(SIGINT, my_control_c);
 }
 
 int     exec_cmd(t_instruct *line, char **path, char **env)

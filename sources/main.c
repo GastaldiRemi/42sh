@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 11:41:10 2016 Antoine Roig
-** Last update Thu May  5 14:40:23 2016 Jabbari Yassir
+** Last update Thu May  5 15:03:56 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"
@@ -81,11 +81,13 @@ int	main(int ac, char **av, char **env)
 	  if (ret->ex == 1)
 	    {
 	      free(instruct);
+	      free_memorie(list_env, my_env, list_instruct, path);
 	      return (ret->ret);
 	    }
+	  free(instruct);
 	  my_env = list_to_env(list_env); /* on met à jour notre env */
 	}
-      free(instruct);
+      free_memorie(list_env, my_env, list_instruct, path);
       clear_list_inst(list_instruct); /* on clean la liste d'instruction */
     }
   return (0);
