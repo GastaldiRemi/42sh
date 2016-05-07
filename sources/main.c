@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 11:41:10 2016 Antoine Roig
-** Last update Thu May  5 15:03:56 2016 Jabbari Yassir
+** Last update Sat May  7 13:10:03 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"
@@ -71,7 +71,7 @@ int	main(int ac, char **av, char **env)
       if ((instruct = get_instruct(0)) == NULL)  /* on récupère l'entrée standad dans une instruction */
 	{
 	  free(instruct);
-	  free_memorie(list_env, my_env, list_instruct, path);
+	  free_memorie(list_env, my_env, list_instruct);
 	  return (-1);
 	}
       if (instruct[0] != '\0')
@@ -81,13 +81,11 @@ int	main(int ac, char **av, char **env)
 	  if (ret->ex == 1)
 	    {
 	      free(instruct);
-	      free_memorie(list_env, my_env, list_instruct, path);
+	      free_memorie(list_env, my_env, list_instruct);
 	      return (ret->ret);
 	    }
-	  free(instruct);
 	  my_env = list_to_env(list_env); /* on met à jour notre env */
 	}
-      free_memorie(list_env, my_env, list_instruct, path);
       clear_list_inst(list_instruct); /* on clean la liste d'instruction */
     }
   return (0);

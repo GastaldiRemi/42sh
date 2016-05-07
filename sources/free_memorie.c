@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Thu May  5 10:26:34 2016 Jabbari Yassir
-** Last update Thu May  5 14:50:53 2016 Jabbari Yassir
+** Last update Sat May  7 13:08:57 2016 Jabbari Yassir
 */
 
 #include "minishell2.h"
@@ -25,7 +25,7 @@ void		my_control_c()
 }
 
 void		free_memorie(t_dlist *list_env, char **my_env,
-			     t_dinstructions *list_instruct, char **path)
+			     t_dinstructions *list_instruct)
 {
   while (list_env->begin != list_env->end)
     {
@@ -42,5 +42,4 @@ void		free_memorie(t_dlist *list_env, char **my_env,
       free(list_instruct->begin->prev);
     }
   my_free_tab(my_env);
-  my_free_tab(path);
 }

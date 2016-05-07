@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Mon Jan  4 15:35:12 2016 Antoine Roig
-** Last update Thu May  5 14:51:13 2016 Jabbari Yassir
+** Last update Sat May  7 13:09:17 2016 Jabbari Yassir
 */
 
 #ifndef MINISHELL1_H_
@@ -165,7 +165,7 @@ t_ret			*ride(t_dinstructions *list_instruct, char **my_env,
 			      t_dlist *list_env, char**path);
 void			my_free_tab(char **tab);
 void			free_memorie(t_dlist *list_env, char **my_env,
-				     t_dinstructions *list_instruct, char **path);
+				     t_dinstructions *list_instruct);
 void			my_control_c();
 
 #endif

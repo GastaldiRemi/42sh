@@ -5,9 +5,8 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Thu May  5 19:32:21 2016 
+## Last update Sat May  7 13:04:46 2016 Jabbari Yassir
 ##
-
 
 ECHO            =       /bin/echo -e
 DEFAULT         =       "\033[00m"
@@ -21,7 +20,7 @@ NAME            =       mysh
 
 CFLAGS		+=	-D_POSIX_C_SOURCE -D_XOPEN_SOURCE -D_POSIX_SOURCE
 
-CFLAGS          +=       -Wextra -Wall -W -pedantic -ansi -g -Iinclude
+CFLAGS          +=       -Wextra -Wall -W -pedantic -ansi -g -Iinclude -g
 
 SRC             =       sources/main.c		\
 			sources/env.c		\
