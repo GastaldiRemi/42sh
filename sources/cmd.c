@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sun Apr  3 16:04:34 2016 Antoine Roig
-** Last update Thu May  5 14:56:12 2016 Jabbari Yassir
+** Last update	Mon May 09 11:35:19 2016 Full Name
 */
 
 #include "minishell2.h"
@@ -29,9 +29,8 @@ void    exec_cmd_2(t_instruct *line, int pid, char **env, char **path)
     exec_cmd_2_unknown(line->cmd); /* message d'erreur */
   if (pathname)
     free(pathname);
-  if (line->cmd == NULL)
-    return;
-  signal(SIGINT, my_control_c);
+  signal(SIGINT, SIG_DFL);
+  kill(pid, SIGINT);
 }
 
 int     exec_cmd(t_instruct *line, char **path, char **env)
@@ -100,15 +99,12 @@ int     exec_func(t_instruct *line, char **env)
 
 int     search_cmd(t_instruct *line, char **path, char **env, t_dlist *list) /* ordre de recherche des fonctions à revoir */
 {
-  int           built;
-  int		built2;
+int           built;
 
-  if (exec_func(line, env) == 0) /* recherche d'une fonction perso , genre "./mysh" */
-    built2 = 1;
-  else
-    built2 = 0;
-  built = exec_builtins(line, list, env); /* recherche des builtins */
-  if (built2 == 0 && built == 0)
-    exec_cmd(line, path, env); /* recherche de fonction système */
-  return (0);
+built = exec_builtins(line, list,env);
+if (built == 0 && line->cmd[0] != '/')
+  exec_cmd(line, path, env);
+else if (built == 0)
+  exec_func(line, env);
+return (0);
 }
