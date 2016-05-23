@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sun Apr  3 16:37:49 2016 Antoine Roig
-** Last update Sun Apr  3 16:38:04 2016 Antoine Roig
+** Last update Mon May 23 13:42:50 2016 gastal_r
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 int     is_num(char c)
 {

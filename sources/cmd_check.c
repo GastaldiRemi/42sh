@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  9 15:59:06 2016 Antoine Roig
-** Last update Sun Apr 10 05:04:04 2016 Antoine Roig
+** Last update Mon May 23 13:41:10 2016 gastal_r
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 int	cmd_check(t_instruct *line, pid_t pid, char **env, char **path)
 {

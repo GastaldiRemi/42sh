@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Jan 23 23:42:55 2016 Antoine Roig
-** Last update Thu May  5 11:15:46 2016 Jabbari Yassir
+** Last update Mon May 23 13:41:55 2016 gastal_r
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 char	*epur_first_part(char *string)
 {

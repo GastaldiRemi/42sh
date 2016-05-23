@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Fri Jan  8 00:20:39 2016 Antoine Roig
-** Last update Thu May  5 11:25:26 2016 Jabbari Yassir
+** Last update Mon May 23 13:44:02 2016 gastal_r
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 void	*xmalloc(int size)
 {

@@ -5,11 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 11:41:10 2016 Antoine Roig
-<<<<<<< HEAD
-** Last update	Mon May 09 10:04:51 2016 Full Name
+** Last update Mon May 23 13:42:38 2016 gastal_r
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 void	clear_list_inst(t_dinstructions *list)
 {

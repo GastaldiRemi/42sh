@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 13:12:33 2016 Antoine Roig
-** Last update Tue May  3 15:16:09 2016 prost
+** Last update Mon May 23 13:43:05 2016 gastal_r
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 void    free_path(char **path)
 {

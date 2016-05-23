@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Mon Jan  4 15:41:33 2016 Antoine Roig
-** Last update Thu May  5 10:16:07 2016 Jabbari Yassir
+** Last update Mon May 23 13:44:09 2016 gastal_r
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 int	my_putstr(char *str)
 {

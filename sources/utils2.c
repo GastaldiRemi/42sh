@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Tue Jan  5 20:19:25 2016 Antoine Roig
-** Last update Thu May  5 10:17:56 2016 Jabbari Yassir
+** Last update Mon May 23 13:44:15 2016 gastal_r
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 char    *my_strdup_o(char *src)
 {

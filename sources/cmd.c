@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sun Apr  3 16:04:34 2016 Antoine Roig
-** Last update	Mon May 09 11:35:19 2016 Full Name
+** Last update Mon May 23 13:41:27 2016 gastal_r
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 void    exec_cmd_2(t_instruct *line, int pid, char **env, char **path)
 {

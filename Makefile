@@ -5,7 +5,7 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Sat May  7 13:04:46 2016 Jabbari Yassir
+## Last update Mon May 23 13:44:39 2016 
 ##
 
 ECHO            =       /bin/echo -e
@@ -14,13 +14,12 @@ GREEN           =       "\033[0;32m"
 TEAL            =       "\033[1;36m"
 RED             =       "\033[0;31m"
 
-CC              =       gcc
+CC              =       gcc -g -g3
 
-NAME            =       mysh
+NAME            =       42sh
 
 CFLAGS		+=	-D_POSIX_C_SOURCE -D_XOPEN_SOURCE -D_POSIX_SOURCE
-
-CFLAGS          +=       -Wextra -Wall -W -pedantic -ansi -g -Iinclude -g
+CFLAGS          +=      -Wextra -Wall -W -pedantic -ansi -I./include
 
 SRC             =       sources/main.c		\
 			sources/env.c		\
