@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 13:21:33 2016 Antoine Roig
-** Last update Mon May 23 13:42:16 2016 gastal_r
+** Last update Tue Apr 26 15:55:42 2016 Antoine Roig
 */
 
-#include "42sh.h"
+#include "minishell2.h"
 
 void    fille_line(t_instruct **line, char *instruct)
 {
@@ -82,7 +82,6 @@ void	prepare_list_instruct(t_dinstructions *list_instruct, /* on va donc prépae
 	}
       k++;
     }
-  free(instruct);
 }
 
 char 	*get_instruct(int fd) /* on va prendre le parsing de rémi pour les redir et pipes */
@@ -91,11 +90,7 @@ char 	*get_instruct(int fd) /* on va prendre le parsing de rémi pour les redir 
 
   instruct = get_next_line(fd);
   if (instruct == NULL)
-    {
-      my_putstr("exit\n");
-      free(instruct);
-      return (NULL);
-    }
+    exit(0);
   instruct = my_epurstr(instruct);
   instruct = without_space_pipe(instruct, 0, 0);
   instruct = without_space_redg(instruct, 0, 0);

@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sun Apr  3 16:04:34 2016 Antoine Roig
-** Last update Mon May 23 13:41:27 2016 gastal_r
+** Last update Tue Apr 26 16:04:29 2016 Antoine Roig
 */
 
-#include "42sh.h"
+#include "minishell2.h"
 
 void    exec_cmd_2(t_instruct *line, int pid, char **env, char **path)
 {
@@ -99,12 +99,15 @@ int     exec_func(t_instruct *line, char **env)
 
 int     search_cmd(t_instruct *line, char **path, char **env, t_dlist *list) /* ordre de recherche des fonctions à revoir */
 {
-int           built;
+  int           built;
+  int		built2;
 
-built = exec_builtins(line, list,env);
-if (built == 0 && line->cmd[0] != '/')
-  exec_cmd(line, path, env);
-else if (built == 0)
-  exec_func(line, env);
-return (0);
+  if (exec_func(line, env) == 0) /* recherche d'une fonction perso , genre "./mysh" */
+    built2 = 1;
+  else
+    built2 = 0;
+  built = exec_builtins(line, list, env); /* recherche des builtins */
+  if (built2 == 0 && built == 0)
+    exec_cmd(line, path, env); /* recherche de fonction système */
+  return (0);
 }

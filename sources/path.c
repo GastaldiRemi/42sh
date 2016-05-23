@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 13:12:33 2016 Antoine Roig
-** Last update Mon May 23 13:43:05 2016 gastal_r
+** Last update Tue Apr 26 15:57:41 2016 Antoine Roig
 */
 
-#include "42sh.h"
+#include "minishell2.h"
 
 void    free_path(char **path)
 {
@@ -29,7 +29,7 @@ char    **search_path(t_dlist *list)
   char          *line_path;
   t_list        *tmp;
 
-  my_putstr("42sh > ");
+  my_putstr("MINISHELL2 > ");
   if (list->begin == NULL)
     return (NULL);
   tmp = list->begin;

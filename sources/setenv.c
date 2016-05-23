@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sun Apr  3 16:40:42 2016 Antoine Roig
-** Last update Mon May 23 13:43:41 2016 gastal_r
+** Last update Sun Apr  3 16:41:05 2016 Antoine Roig
 */
 
-#include "42sh.h"
+#include "minishell2.h"
 
 int     check_variable(char *variable, char *value, t_dlist *list)
 {

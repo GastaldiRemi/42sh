@@ -1,14 +1,14 @@
 /*
 ** epur.c for epur.c in /home/roig_a/rendu/getnextline/PSU_2015_minishell1
-**
+** 
 ** Made by Antoine Roig
 ** Login   <roig_a@epitech.net>
-**
+** 
 ** Started on  Sat Jan 23 23:42:55 2016 Antoine Roig
-** Last update Mon May 23 13:41:55 2016 gastal_r
+** Last update Sat Apr  2 17:34:23 2016 Antoine Roig
 */
 
-#include "42sh.h"
+#include "minishell2.h"
 
 char	*epur_first_part(char *string)
 {
@@ -30,7 +30,6 @@ char	*epur_first_part(char *string)
     }
   if (str[i - 1] == ' ' || str[i - 1] == '\t' || str[i - 1] == ';')
     str[i - 1] = '\0';
-  free(string);
   return (str);
 }
 
@@ -58,6 +57,5 @@ char	*my_epurstr(char *str)
   ret[j] = '\0';
   if (ret[my_strlen(ret) - 1] == ' ' || ret[my_strlen(ret) - 1] == '\t')
     ret[my_strlen(ret) - 1] = '\0';
-  free(str);
   return (ret);
 }

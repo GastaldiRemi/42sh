@@ -1,14 +1,14 @@
 /*
 ** utils2.c for utils2.C in /home/roig_a/rendu/getnextline/PSU_2015_minishell1
-**
+** 
 ** Made by Antoine Roig
 ** Login   <roig_a@epitech.net>
-**
+** 
 ** Started on  Tue Jan  5 20:19:25 2016 Antoine Roig
-** Last update Mon May 23 13:44:15 2016 gastal_r
+** Last update Sat Apr  2 12:38:04 2016 Antoine Roig
 */
 
-#include "42sh.h"
+#include "minishell2.h"
 
 char    *my_strdup_o(char *src)
 {

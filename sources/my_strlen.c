@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 12:42:02 2016 Antoine Roig
-** Last update Mon May 23 13:42:58 2016 gastal_r
+** Last update Wed Apr 13 13:43:26 2016 Antoine Roig
 */
 
-#include "42sh.h"
+#include "minishell2.h"
 
 int	my_strlen(char *str)
 {

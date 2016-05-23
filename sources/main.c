@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 11:41:10 2016 Antoine Roig
-** Last update Mon May 23 16:14:27 2016 Jabbari Yassir
+** Last update Tue Apr 26 15:52:36 2016 Antoine Roig
 */
 
-#include "42sh.h"
+#include "minishell2.h"
 
 void	clear_list_inst(t_dinstructions *list)
 {
@@ -25,9 +25,9 @@ void	clear_list_inst(t_dinstructions *list)
   free(tmp);
 }
 
-char		**list_to_env(t_dlist *list)
+char   **list_to_env(t_dlist *list)
 {
-  int		i;
+  int   i;
   t_list        *tmp;
   char          **my_env;
 
@@ -43,7 +43,6 @@ char		**list_to_env(t_dlist *list)
       tmp = tmp->next;
     }
   my_env[i] = NULL;
-  free(tmp);
   return (my_env);
 }
 
@@ -68,8 +67,7 @@ int	main(int ac, char **av, char **env)
   while (1)
     {
       path = search_path(list_env); /* on stock la varaible d'env PATH */
-      if ((instruct = get_instruct(0)) == NULL)  /* on récupère l'entrée standad dans une instruction */
-	return (-1);
+      instruct = get_instruct(0); /* on récupère l'entrée standad dans une instruction */
       if (instruct[0] != '\0')
 	{
 	  prepare_list_instruct(list_instruct, instruct, -1); /* on met les instructions contenues dans instruct dns une liste */

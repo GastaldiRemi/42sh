@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Mon Jan  4 15:41:33 2016 Antoine Roig
-** Last update Mon May 23 13:44:09 2016 gastal_r
+** Last update Wed Apr  6 21:03:41 2016 Antoine Roig
 */
 
-#include "42sh.h"
+#include "minishell2.h"
 
 int	my_putstr(char *str)
 {
@@ -62,6 +62,7 @@ char    **my_str_to_wordtab_path(char *str)
   j = 0;
   wnb = count_word(str);
   tab = xmalloc(sizeof(char *) * wnb + sizeof(char *));
+
   while (str[i])
     {
       tab[j] = xmalloc(sizeof(char) * my_strlen(str) + 1);
