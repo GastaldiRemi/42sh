@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 11:41:10 2016 Antoine Roig
-** Last update Mon May 23 13:42:38 2016 gastal_r
+** Last update Mon May 23 16:14:27 2016 Jabbari Yassir
 */
 
 #include "42sh.h"
@@ -69,23 +69,13 @@ int	main(int ac, char **av, char **env)
     {
       path = search_path(list_env); /* on stock la varaible d'env PATH */
       if ((instruct = get_instruct(0)) == NULL)  /* on récupère l'entrée standad dans une instruction */
-	{
-	  free(instruct);
-	  free_memorie(list_env, my_env, list_instruct);
-	  return (-1);
-	}
+	return (-1);
       if (instruct[0] != '\0')
 	{
 	  prepare_list_instruct(list_instruct, instruct, -1); /* on met les instructions contenues dans instruct dns une liste */
 	  ret = ride(list_instruct, my_env, list_env, path); /* c'est parti on va executer des trucs ! */
 	  if (ret->ex == 1)
-	    {
-	      /* free(instruct); */
-	      free_memorie(list_env, my_env, list_instruct);
-	    /*  free(instruct); */
- 	      free_memorie(list_env, my_env, list_instruct);
-	      return (ret->ret);
-	    }
+	    return (ret->ret);
 	  my_env = list_to_env(list_env); /* on met à jour notre env */
 	}
       clear_list_inst(list_instruct); /* on clean la liste d'instruction */
