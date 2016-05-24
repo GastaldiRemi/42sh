@@ -5,12 +5,12 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Sun Apr 10 05:14:54 2016 Antoine Roig
+## Last update Tue May 24 17:37:06 2016 Jabbari Yassir
 ##
 
 CC              =       gcc
 
-NAME            =       mysh
+NAME            =       42sh
 
 CFLAGS          =       -Wextra -Wall -W -pedantic -Iinclude
 
