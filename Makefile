@@ -5,10 +5,16 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Tue May 24 17:37:06 2016 Jabbari Yassir
+## Last update Wed May 25 17:53:51 2016 
 ##
 
-CC              =       gcc
+ECHO            =       /bin/echo -e
+DEFAULT         =       "\033[00m"
+GREEN           =       "\033[0;32m"
+TEAL            =       "\033[1;36m"
+RED             =       "\033[0;31m"
+
+CC              =       gcc -g -g3
 
 NAME            =       42sh
 
@@ -25,7 +31,7 @@ SRC             =       sources/main.c		\
 			sources/path.c		\
 			sources/get_instruct.c	\
 			sources/epur.c		\
-			sources/getnextline.c	\
+			sources/get_next_line.c	\
 			sources/cmd.c		\
 			sources/cmd3.c		\
 			sources/cmd_check.c	\
@@ -41,18 +47,29 @@ SRC             =       sources/main.c		\
 
 OBJ             =       $(SRC:.c=.o)
 
-all             :       $(NAME)
+all             :       title $(NAME)
+
+title:
+			@$(ECHO) $(GREEN)42$(TEAL)sh$(DEFAULT)
+
 
 $(NAME)         :       $(OBJ)
-			$(CC) -o $(NAME) $(OBJ)
+			@$(CC) -o $(NAME) $(OBJ) && \
+			 $(ECHO) $(GREEN) "[OK]" $(TEAL) $(NAME) $(DEFAULT)  || \
+			 $(ECHO) $(RED) "[XX]" $(TEAL) $(NAME)
 
 clean           :
-			rm -f $(OBJ)
+			@rm -f $(OBJ)
 
 fclean          :       clean
-			$(RM) $(NAME)
+			@$(RM) $(NAME)
 
 re              :        fclean all
 
 .PHONY          :       all clean fclean re
+
+.c.o		:
+			@$(CC) $(CFLAGS) -c $< -o $@  && \
+			$(ECHO) $(GREEN) "[OK]" $(TEAL) $< $(DEFAULT) || \
+			$(ECHO) $(RED) "[XX]" $(TEAL) $< $(DEFAULT)
 
