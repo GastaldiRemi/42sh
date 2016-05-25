@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 ** 
 ** Started on  Sat Jan 23 23:42:55 2016 Antoine Roig
-** Last update Sat Apr  2 17:34:23 2016 Antoine Roig
+** Last update Wed May 25 18:41:07 2016 
 */
 
 #include "minishell2.h"
@@ -16,6 +16,7 @@ char	*epur_first_part(char *string)
   char	*str;
 
   i = 0;
+  str = NULL;
   str = xmalloc(sizeof(char) * (my_strlen(string) + 1));
   my_strcpy(str, string);
   while (str[i] == ' ' || str[i] == '\t')
