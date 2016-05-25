@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 ** 
 ** Started on  Tue Jan  5 20:19:25 2016 Antoine Roig
-** Last update Sat Apr  2 12:38:04 2016 Antoine Roig
+** Last update Wed May 25 17:59:53 2016 
 */
 
 #include "minishell2.h"
@@ -14,7 +14,7 @@ char    *my_strdup_o(char *src)
 {
   char *new;
 
-  new = xmalloc(sizeof(char) * my_strlen(src) + 1);
+  new = xmalloc(sizeof(char) * (my_strlen(src) + 1));
   if (new == NULL)
     return (new);
   my_strcpy(new, src);

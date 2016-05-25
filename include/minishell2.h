@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Mon Jan  4 15:35:12 2016 Antoine Roig
-** Last update Sun Apr 10 05:14:33 2016 Antoine Roig
+** Last update Wed May 25 18:12:00 2016 
 */
 
 #ifndef MINISHELL1_H_
@@ -89,8 +89,7 @@ typedef struct	s_ret
   int	ex;
 }		t_ret;
 
-#define READ_SIZE       1
-#define SIZE_PWD        20
+#define SIZE_PWD        40
 
 char    **init_list_env(t_dlist *list_env, char **env);
 void    add_list_end(t_dlist *list, char *variable, char *value);

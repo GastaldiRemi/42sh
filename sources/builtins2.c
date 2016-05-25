@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sun Apr  3 16:28:15 2016 Antoine Roig
-** Last update Thu Apr  7 14:57:27 2016 Antoine Roig
+** Last update Wed May 25 18:15:40 2016 
 */
 
 #include "minishell2.h"
@@ -34,17 +34,12 @@ int     change_pwd(t_dlist *list)
 {
   char          *buff;
   int           i;
-  char          *ptr;
-
-  i = 1;
+  
   buff = NULL;
   while (buff == NULL)
     {
-      buff = xmalloc(sizeof(char) * (SIZE_PWD * i));
-      ptr = buff;
-      buff = getcwd(buff, SIZE_PWD * i + 1);
-      if (buff == NULL)
-        free(ptr);
+      buff = xmalloc(sizeof(char) * (SIZE_PWD));
+      buff = getcwd(buff, SIZE_PWD);
       i++;
     }
   return (change_pwd2(buff, list));
