@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Fri Apr  8 22:28:47 2016 Antoine Roig
-** Last update Sun Apr 10 04:13:44 2016 Antoine Roig
+** Last update Thu May 26 12:01:59 2016 
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 char	*init_vars(char *str)
 {

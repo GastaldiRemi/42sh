@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Mon Jan  4 15:41:33 2016 Antoine Roig
-** Last update Wed Apr  6 21:03:41 2016 Antoine Roig
+** Last update Thu May 26 12:01:40 2016 
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 int	my_putstr(char *str)
 {
@@ -72,35 +72,6 @@ char    **my_str_to_wordtab_path(char *str)
       tab[j][k] = '\0';
       if (str[i] == ':')
 	i++;
-      j++;
-    }
-  tab[j] = NULL;
-  return (tab);
-}
-
-char    **my_str_to_wordtab(char *str)
-{
-  char  **tab;
-  int   wnb;
-  int   i;
-  int   j;
-  int   k;
-
-  i = 0;
-  j = 0;
-  wnb = count_word(str);
-  tab = xmalloc(sizeof(char*) * (wnb + sizeof(char *)));
-  while (str[i])
-    {
-      tab[j] = xmalloc(sizeof(char) * my_strlen(str) + 2);
-      while ((str[i] < 'A' || str[i] > 'Z') && (str[i] < 'a' ||
-      str[i] > 'z') && (str[i] <'-' || str[i] > '9') && (str[i] != '>')
-	     && (str[i] != '<') && (str[i] != '|'))
-        i++;
-      k = 0;
-      while (str[i] != ' ' && str[i] != '\0')
-	tab[j][k++] = str[i++];
-      tab[j][k] = '\0';
       j++;
     }
   tab[j] = NULL;

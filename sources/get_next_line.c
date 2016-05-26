@@ -5,15 +5,15 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri Mar  4 16:40:22 2016 remi gastaldi
-** Last update Wed May 25 17:49:27 2016 
+** Last update Thu May 26 11:59:00 2016 
 */
 
-#include	"minishell2.h"
+#include	"42sh.h"
 
-char    *my_realloc(char *str, int size)
+char		*my_realloc(char *str, int size)
 {
-  char  *new_str;
-  int   i;
+  char		*new_str;
+  int		i;
 
   i = 0;
   if (size == 0)

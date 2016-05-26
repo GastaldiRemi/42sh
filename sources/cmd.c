@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sun Apr  3 16:04:34 2016 Antoine Roig
-** Last update Wed May 25 15:56:23 2016 
+** Last update Thu May 26 11:56:45 2016 
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 void    exec_cmd_2(t_instruct *line, int pid, char **env, char **path)
 {
@@ -74,7 +74,9 @@ int     exec_func(t_instruct *line, char **env)
   int   pid;
   int   status;
 
-  status = 0;
+  status = 0; 
+ if (my_strlen(line->cmd) <= 2 || (line->cmd[0] != '.' || line->cmd[1] != '/'))
+    return (-1);
   if ((fd = open(line->cmd, O_RDONLY)) != -1)
     {
       pid = init_pid(fd);

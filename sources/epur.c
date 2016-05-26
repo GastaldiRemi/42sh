@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 ** 
 ** Started on  Sat Jan 23 23:42:55 2016 Antoine Roig
-** Last update Wed May 25 18:44:20 2016 
+** Last update Thu May 26 11:58:12 2016 
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 char	*epur_first_part(char *string)
 {
@@ -33,29 +33,66 @@ char	*epur_first_part(char *string)
   return (str);
 }
 
-char	*my_epurstr(char *str)
+int     char_isalpha(char str)
 {
-  char	*ret;
-  int	i;
-  int	j;
+  if (str != ' ')
+    return (1);
+  else
+    return (0);
+}
 
-  j = 0;
-  i = 0;
-  str = epur_first_part(str);
-  ret = xmalloc(sizeof(char) * (my_strlen(str) + 1));
-  while (str[i])
+char    *pre_parsing2(char *prompt, int *i)
+{
+  char  *buff;
+
+  if ((buff = malloc(sizeof(char *) * 2)) == NULL)
+    return (NULL);
+  buff[0] = '\0';
+  while (prompt[*i] == ';')
+    (*i)++;
+  return (buff);
+}
+
+void    pre_parsing3(char *prompt, char *buff, int *i, int *j)
+{
+  buff[*j] = prompt[*i];
+  buff[*j + 1] = ' ';
+  buff[*j + 2] = ';';
+  buff[*j + 3] = ' ';
+  buff[*j + 4] = '\0';
+  (*j) += 4;
+  (*i)++;
+  while ((prompt[*i] == ' ' ||
+	            prompt[*i] == ';' ||
+	  prompt[*i] == '\t') && prompt[*i] != '\0')
+    (*i)++;
+}
+
+char    *my_epurstr(char *prompt)
+{
+  t_pars        pars;
+
+  pars.j = 0;
+  pars.i = 0;
+  pars.buff = (pre_parsing2(prompt, &pars.i));
+  while (prompt[pars.i])
     {
-      ret[j] = str[i];
-      if ((str[i] == ' ' || str[i] == '\t') && (str[i + 1] == ' '
-						|| str[i + 1] == '\t'))
-	while ((str[i] == ' ' || str[i] == '\t'))
-	  i++;
+      if ((char_isalpha(prompt[pars.i]) == 1 || prompt[pars.i] == ' '||
+	   prompt[pars.i] == '\t')
+	  && prompt[pars.i + 1] == ';')
+	{
+	  pars.buff = my_realloc(pars.buff, pars.j + 5);
+	  pre_parsing3(prompt, pars.buff, &pars.i, &pars.j);
+	}
       else
-      	i++;
-      j++;
+	{
+	  pars.buff = my_realloc(pars.buff, pars.j + 2);
+	  pars.buff[pars.j] = prompt[pars.i];
+	  pars.buff[pars.j + 1] = '\0';
+	  pars.i++;
+	  pars.j++;
+	}
     }
-  ret[j] = '\0';
-  if (ret[my_strlen(ret) - 1] == ' ' || ret[my_strlen(ret) - 1] == '\t')
-    ret[my_strlen(ret) - 1] = '\0';
-  return (ret);
+  pars.buff[pars.j] = '\0';
+  return (pars.buff);
 }

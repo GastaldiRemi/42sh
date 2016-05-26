@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 ** 
 ** Started on  Fri Jan  8 00:20:12 2016 Antoine Roig
-** Last update Sat Apr  2 17:44:46 2016 Antoine Roig
+** Last update Thu May 26 11:52:27 2016 
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 void    add_list_end(t_dlist *list, char *variable, char *value)
 {

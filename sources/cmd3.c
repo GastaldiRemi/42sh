@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  9 16:42:46 2016 Antoine Roig
-** Last update Sat Apr  9 16:43:48 2016 Antoine Roig
+** Last update Thu May 26 11:56:34 2016 
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 int	init_pid(int fd)
 {

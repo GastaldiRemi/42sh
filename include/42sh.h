@@ -1,15 +1,15 @@
 /*
-** minishell1.h for minishell1 in /home/roig_a/rendu/getnextline/PSU_2015_minishell1/include
+** 42sh.h for 42sh in /home/roig_a/rendu/getnextline/PSU_2015_minishell1/include
 **
 ** Made by Antoine Roig
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Mon Jan  4 15:35:12 2016 Antoine Roig
-** Last update Wed May 25 18:12:00 2016 
+** Last update Thu May 26 12:04:31 2016 
 */
 
-#ifndef MINISHELL1_H_
-# define MINISHELL1_H_
+#ifndef _42sh_H_
+# define _42sh_H_
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -23,6 +23,15 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <unistd.h>
+
+
+typedef struct  s_pars
+{
+  int   i;
+  int   j;
+  char  *buff;
+}t_pars;
+
 
 typedef struct	s_path
 {
@@ -91,6 +100,8 @@ typedef struct	s_ret
 
 #define SIZE_PWD        40
 
+char	*my_realloc(char *str, int size);
+int     char_isalpha(char str);
 char    **init_list_env(t_dlist *list_env, char **env);
 void    add_list_end(t_dlist *list, char *variable, char *value);
 void    add_list_end_inst(t_dinstructions *list_instruct, t_instruct *instru);

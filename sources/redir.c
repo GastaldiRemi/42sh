@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Thu Apr  7 10:47:25 2016 Antoine Roig
-** Last update Sun Apr 10 05:07:11 2016 Antoine Roig
+** Last update Thu May 26 12:00:59 2016 
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 int	check_redir(t_instruct *line)
 {

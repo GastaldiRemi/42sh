@@ -5,10 +5,10 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sun Apr 10 03:35:07 2016 Antoine Roig
-** Last update Sun Apr 10 05:02:51 2016 Antoine Roig
+** Last update Thu May 26 12:00:20 2016 
 */
 
-#include "minishell2.h"
+#include "42sh.h"
 
 void	dad(int *ppid, t_instruct *line, t_path s_path, int pid)
 {
