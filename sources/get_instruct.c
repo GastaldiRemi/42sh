@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 13:21:33 2016 Antoine Roig
-** Last update Thu May 26 19:34:05 2016 Jabbari Yassir
+** Last update Thu May 26 18:34:25 2016 
 */
 
 #include "42sh.h"
@@ -66,8 +66,9 @@ char	**pars_prompt(char **prompt)
   while (prompt[i] != NULL)
     {
       buff[j] = my_realloc(prompt[i], my_strlen(prompt[i]));
-      if (prompt[i + 1] && prompt[i][0] != '\0' && prompt[i][0] == ';')
-	{
+      if (prompt[i] != NULL && prompt[i + 1] != NULL
+	  && prompt[i][0] != '\0' && prompt[i][0] == ';')
+      	{
 	  buff[j] = NULL;
 	  buff = order_args(buff);
 	  j = -1;
