@@ -5,10 +5,81 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 13:21:33 2016 Antoine Roig
-** Last update Thu May 26 11:58:23 2016 
+** Last update Thu May 26 16:00:08 2016 
 */
 
 #include "42sh.h"
+
+int     get_prompt_length(char **prompt)
+{
+  int   i;
+
+  i = 0;
+  while (prompt[i] != NULL)
+    i++;
+  return (i);
+}
+
+char    **order_args(char **prompt)
+{
+  int   i;
+  int   j;
+  char  **buff;
+
+  j = 2;
+  i = -1;
+  buff = malloc(sizeof(char *) * (get_prompt_length(prompt) + 1));
+  while (++i < get_prompt_length(prompt))
+    buff[i] = malloc(sizeof(char) * (my_strlen(prompt[i]) + 1));
+  i = 0;
+  if (my_strcmp(">", prompt[0]) == 0 || my_strcmp(">>", prompt[0]) == 0
+      || my_strcmp("<", prompt[0]) == 0 || my_strcmp("<<", prompt[0]) == 0)
+    return (prompt);
+  while (prompt[i] != NULL)
+    {
+      if (my_strcmp(">", prompt[i]) == 0 || my_strcmp(">>", prompt[i]) == 0
+	  || my_strcmp("<", prompt[i]) == 0 || my_strcmp("<<", prompt[i]) == 0)
+	{
+	  buff[0] = prompt[i];
+	  buff[1] = prompt[i + 1];
+	  while (j - 2 < i)
+	    {
+	      buff[j] = prompt[j - 2];
+	      j++;
+	    }
+	  return (buff);
+	}
+      i++;
+    }
+  return (prompt);
+}
+
+char	**pars_prompt(char **prompt)
+{
+  int   i;
+  int   j;
+  char  **buff;
+
+  i = 0;
+  j = 0;
+  buff = malloc(sizeof(char *) * (get_prompt_length(prompt) + 1));
+  while (prompt[i] != NULL)
+    {
+      buff[j] = my_realloc(prompt[i], my_strlen(prompt[i]));
+      if (prompt[i][0] == ';' && prompt[i + 1] != NULL)
+	{
+	  buff[j] = NULL;
+	  buff = order_args(buff);
+	  j = -1;
+	}
+      j++;
+      i++;
+    }
+  (buff[j - 1][0] == ';' ? buff[j - 1] = NULL : 0);
+  buff[j] = NULL;
+  /* buff = order_args(buff); */
+  return (buff);
+}
 
 void    fille_line(t_instruct **line, char *instruct)
 {
@@ -27,7 +98,10 @@ void    fille_line(t_instruct **line, char *instruct)
   (*line)->cmd[i] = '\0';
   i = 0;
   if (instruct)
-    (*line)->args = my_str_to_wordtab(instruct);
+    {
+      (*line)->args = my_str_to_wordtab(instruct);
+      (*line)->args = pars_prompt((*line)->args);
+    }
   else
     (*line)->args = NULL;
 }

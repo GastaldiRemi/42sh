@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Mon Jan  4 15:35:12 2016 Antoine Roig
-** Last update Thu May 26 12:04:31 2016 
+** Last update Thu May 26 14:38:17 2016 
 */
 
 #ifndef _42sh_H_
@@ -72,7 +72,6 @@ typedef struct		s_inst
   t_instruct		*inst;
   struct s_inst         *next;
   struct s_inst         *prev;
-
 }			t_instructions;
 
 typedef struct		s_instructions
