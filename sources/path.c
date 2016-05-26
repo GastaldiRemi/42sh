@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 13:12:33 2016 Antoine Roig
-** Last update Thu May 26 12:17:39 2016 
+** Last update Thu May 26 18:07:16 2016 Jabbari Yassir
 */
 
 #include "42sh.h"
@@ -29,7 +29,7 @@ char    **search_path(t_dlist *list)
   char          *line_path;
   t_list        *tmp;
 
-  my_putstr("MINISHELL2 > ");
+  my_putstr("42sh > ");
   if (list->begin == NULL)
     return (NULL);
   tmp = list->begin;
