@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:26:35 2016 
-** Last update Fri May 27 00:59:28 2016 
+** Last update Fri May 27 01:11:00 2016 
 */
 
 #ifndef			_42_SH_H_
@@ -37,7 +37,6 @@ typedef struct		s_plist
 int			my_strlen(char *str);
 char			*my_strdup(char *str, int size);
 void                    env_to_list(t_plist *list, char *env);
-void                    add_end(t_plist *list, char *name, char *data);
 char			*my_strcat(char *, char *, int, int);
 void			clear_list(t_plist *list);
 char                    **list_to_env(t_list *tmp, t_list *list);
