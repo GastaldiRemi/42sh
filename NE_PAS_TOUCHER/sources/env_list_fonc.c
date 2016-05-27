@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 00:54:48 2016 
-** Last update Fri May 27 01:03:03 2016 
+** Last update Fri May 27 17:13:57 2016 
 */
 
 #include		"42sh.h"
@@ -60,7 +60,7 @@ char                    **list_to_env(t_list *tmp, t_list *list)
 
   i = 0;
   if (tmp == NULL)
-    exit(0);
+    return (NULL);
   while (tmp)
     {
       tmp = tmp->next;

@@ -1,3 +1,4 @@
+
 /*
 ** utils.c for utils.c in /home/gastal_r/rendu/42sh/NE_PAS_TOUCHER/sources
 ** 
@@ -5,7 +6,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:43:04 2016 
-** Last update Fri May 27 00:58:48 2016 
+** Last update Fri May 27 13:51:00 2016 
 */
 
 #include	     	"42sh.h"
@@ -70,3 +71,7 @@ char			*my_strdup(char *str, int size)
   return (new_str);
 }
 
+void			my_putstr(char *str)
+{
+  write(1, str, my_strlen(str));
+}

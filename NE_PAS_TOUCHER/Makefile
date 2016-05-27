@@ -5,7 +5,7 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Fri May 27 00:55:47 2016 
+## Last update Fri May 27 18:59:43 2016 
 ##
 
 ECHO            =       /bin/echo -e
@@ -24,6 +24,11 @@ SRC             =       sources/main.c			\
 			sources/get_next_line.c		\
 			sources/list_fonc.c		\
 			sources/env_list_fonc.c		\
+			sources/my_getnbr.c		\
+			sources/prompt.c		\
+			sources/parsing.c		\
+			sources/init_fonc.c		\
+			sources/free_fonc.c		\
 			sources/utils.c
 
 OBJ             =       $(SRC:.c=.o)
