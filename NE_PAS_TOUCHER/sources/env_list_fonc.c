@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 00:54:48 2016 
-** Last update Fri May 27 17:13:57 2016 
+** Last update Sat May 28 22:30:39 2016 
 */
 
 #include		"42sh.h"
@@ -81,4 +81,3 @@ char                    **list_to_env(t_list *tmp, t_list *list)
   env[i] = NULL;
   return (env);
 }
-

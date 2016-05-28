@@ -5,13 +5,12 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 18:59:53 2016 
-** Last update Sat May 28 19:16:21 2016 
+** Last update Sat May 28 22:29:14 2016 
 */
 
 #include		"42sh.h"
 
-void                    free_prompt_list(t_pcmd *pcmd, t_cmd *cmd,
-					 t_psep *psep, t_sep *sep)
+void                    free_prompt_list(t_pcmd *pcmd, t_psep *psep)
 {
   t_cmd                 *cmd_tmp;
   t_sep                 *sep_tmp;
@@ -32,8 +31,6 @@ void                    free_prompt_list(t_pcmd *pcmd, t_cmd *cmd,
       free(sep_tmp->sep);
       free(sep_tmp);
     }
-  free(cmd);
-  free(sep);
 }
 
 void                    clear_list(t_plist *list)
