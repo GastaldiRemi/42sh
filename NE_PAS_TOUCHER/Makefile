@@ -5,7 +5,7 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Sat May 28 21:28:28 2016 
+## Last update Sat May 28 22:50:35 2016 
 ##
 
 ECHO            =       /bin/echo -e
@@ -32,6 +32,7 @@ SRC             =       sources/main.c			\
 			sources/my_str_to_wordtab.c	\
 			sources/get_path.c		\
 			sources/set_env.c		\
+			sources/unset_env.c		\
 			sources/show_list.c		\
 			sources/utils.c
 
