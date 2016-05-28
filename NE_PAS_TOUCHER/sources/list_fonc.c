@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 22:05:49 2016 
-** Last update Sat May 28 14:47:12 2016 
+** Last update Sat May 28 19:11:42 2016 
 */
 
 #include		"42sh.h"
@@ -73,7 +73,7 @@ void                    add_sep(t_psep *list, char *buff)
     return;
   if ((new = malloc(sizeof(t_list))) == NULL)
     return;
-  new->sep = my_strdup(buff, my_strlen(buff));
+  new->sep = my_strdup(buff);
   new->prev = NULL;
   new->next = NULL;
   if (list->begin == NULL)

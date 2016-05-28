@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 11:38:43 2016 
-** Last update Sat May 28 15:55:33 2016 
+** Last update Sat May 28 16:23:22 2016 
 */
 
 #include		"42sh.h"
@@ -56,6 +56,7 @@ int			prompt(char **env, t_plist *plist)
       /* signal(SIGINT, SIG_DFL); */
       if ((exit_value = pars_prompt(plist, env, st)) != 1)
 	{
+	  free(st);
 	  free_env(env);
 	  return (exit_value);
       	}

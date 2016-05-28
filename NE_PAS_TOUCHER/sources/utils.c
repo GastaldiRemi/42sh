@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:43:04 2016 
-** Last update Sat May 28 14:51:51 2016 
+** Last update Sat May 28 19:11:23 2016 
 */
 
 #include	     	"42sh.h"
@@ -50,16 +50,13 @@ int			my_strlen(char *str)
   return (i);
 }
 
-char			*my_strdup(char *str, int size)
+char			*my_strdup(char *str)
 {
   char			*new_str;
   int			i;
 
   i = 0;
-  if (size == 0)
-    return (str);
-
-  if ((new_str = malloc(sizeof(char) * (size + 1))) == NULL)
+  if ((new_str = malloc(sizeof(char) * (my_strlen(str) + 1))) == NULL)
     return (NULL);
   while (str[i])
     {
@@ -73,4 +70,14 @@ char			*my_strdup(char *str, int size)
 void			my_putstr(char *str)
 {
   write(1, str, my_strlen(str));
+}
+
+int     my_strcmp(char *s1, char *s2)
+{
+  int   i;
+
+  i = 0;
+  while ((s1[i] == s2[i]) && s1[i] && s2[i])
+    i++;
+  return (s1[i] - s2[i]);
 }

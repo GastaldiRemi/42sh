@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:26:35 2016 
-** Last update Sat May 28 15:48:21 2016 
+** Last update Sat May 28 19:16:47 2016 
 */
 
 #ifndef			_42_SH_H_
@@ -71,7 +71,7 @@ char                    **init_env(char **env, t_plist *plist);
 char			*get_next_line(const int fd);
 void			my_putstr(char *str);
 int			my_strlen(char *str);
-char			*my_strdup(char *str, int size);
+char			*my_strdup(char *str);
 void                    env_to_list(t_plist *list, char *env);
 char			*my_strcat(char *, char *, int, int);
 void			clear_list(t_plist *list);
@@ -86,5 +86,8 @@ int                     init_prompt_list(t_pcmd *pcmd, t_cmd **cmd,
 					 t_psep *psep, t_sep **sep);
 int                     init_list(t_plist *plist, t_list **list);
 void                    free_list(t_plist *plist, t_list *list);
-
+int			my_strcmp(char *, char *);
+char                    **get_path(t_plist *plist);
+char                    *test_access(t_plist *plist, char *cmd);
+void                    free_path(char **path);
 #endif			/* _42_SH_H_ */
