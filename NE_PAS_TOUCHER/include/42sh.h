@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:26:35 2016 
-** Last update Fri May 27 19:03:23 2016 
+** Last update Fri May 27 23:16:26 2016 
 */
 
 #ifndef			_42_SH_H_
@@ -19,6 +19,8 @@
 #include		<dirent.h>
 #include		<fcntl.h>
 #include		<signal.h>
+
+# define SEPARATOR	"<>|;"
 
 typedef struct		 s_list
 {
@@ -71,7 +73,7 @@ void			clear_list(t_plist *list);
 char                    **list_to_env(t_list *tmp, t_list *list);
 char                    *pars_prompt(t_plist *list, char **env, char *st);
 int			my_getnbr(char *str);
-char                    *prompt(char **env, t_plist *plist);
+int                     prompt(char **env, t_plist *plist);
 void                    free_env(char **env);
 void                    free_prompt_list(t_pcmd *pcmd, t_cmd *cmd,
 					 t_psep *psep, t_sep *sep);
