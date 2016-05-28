@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:45:20 2016 
-** Last update Fri May 27 20:22:43 2016 
+** Last update Sat May 28 14:50:15 2016 
 */
 
 #include		"42sh.h"
@@ -18,7 +18,6 @@ int			main(int ac, char **av, char **env)
   int			exit_value;
   char			**my_env;
 
-  
   (void)ac;
   (void)av;
   my_env = NULL;

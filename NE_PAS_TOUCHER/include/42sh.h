@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:26:35 2016 
-** Last update Sat May 28 12:19:48 2016 
+** Last update Sat May 28 14:54:37 2016 
 */
 
 #ifndef			_42_SH_H_
@@ -62,6 +62,11 @@ typedef struct		s_psep
   t_sep			*end;
 }			t_psep;
 
+void                    show_sep(t_psep *psep);
+void                    show_cmd(t_pcmd *pcmd);
+void                    add_sep(t_psep *list, char *buff);
+void                    add_cmd(t_pcmd *list, char *buff);
+char			**my_str_to_wordtab(char *str);
 char                    **init_env(char **env, t_plist *plist);
 char			*get_next_line(const int fd);
 void			my_putstr(char *str);
@@ -79,7 +84,7 @@ void                    free_prompt_list(t_pcmd *pcmd, t_cmd *cmd,
 					 t_psep *psep, t_sep *sep);
 int                     init_prompt_list(t_pcmd *pcmd, t_cmd **cmd,
 					 t_psep *psep, t_sep **sep);
-int                     init_list(t_plist *plist,t_list **list);
+int                     init_list(t_plist *plist, t_list **list);
 void                    free_list(t_plist *plist, t_list *list);
 
 #endif			/* _42_SH_H_ */
