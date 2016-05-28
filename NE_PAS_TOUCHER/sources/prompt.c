@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 11:38:43 2016 
-** Last update Sat May 28 10:26:34 2016 
+** Last update Sat May 28 15:55:33 2016 
 */
 
 #include		"42sh.h"
@@ -38,7 +38,7 @@ char    *check_prompt(char *prompt)
 int			prompt(char **env, t_plist *plist)
 {
   char  *st;
-  char	*exit_value;
+  int	 exit_value;
 
   while (1)
     {
@@ -54,18 +54,10 @@ int			prompt(char **env, t_plist *plist)
 	  st = aff_prompt();
 	}
       /* signal(SIGINT, SIG_DFL); */
-      if ((exit_value = pars_prompt(plist, env, st)) == NULL)
-      	{
-      	  if (exit_value == NULL)
-	    {
-	      free_env(env);
-	      return (0);
-	    }
-      	  else
-	    {
-	      free_env(env);
-	      return (my_getnbr(exit_value));
-	    }
+      if ((exit_value = pars_prompt(plist, env, st)) != 1)
+	{
+	  free_env(env);
+	  return (exit_value);
       	}
       free(st);
       free_env(env);

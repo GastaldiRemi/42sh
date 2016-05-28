@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:26:35 2016 
-** Last update Sat May 28 14:54:37 2016 
+** Last update Sat May 28 15:48:21 2016 
 */
 
 #ifndef			_42_SH_H_
@@ -76,7 +76,7 @@ void                    env_to_list(t_plist *list, char *env);
 char			*my_strcat(char *, char *, int, int);
 void			clear_list(t_plist *list);
 char                    **list_to_env(t_list *tmp, t_list *list);
-char                    *pars_prompt(t_plist *list, char **env, char *st);
+int                     pars_prompt(t_plist *list, char **env, char *st);
 int			my_getnbr(char *str);
 int                     prompt(char **env, t_plist *plist);
 void                    free_env(char **env);
