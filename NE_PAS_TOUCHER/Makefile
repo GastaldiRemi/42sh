@@ -5,7 +5,7 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Fri May 27 18:59:43 2016 
+## Last update Sat May 28 12:08:24 2016 
 ##
 
 ECHO            =       /bin/echo -e
@@ -29,6 +29,7 @@ SRC             =       sources/main.c			\
 			sources/parsing.c		\
 			sources/init_fonc.c		\
 			sources/free_fonc.c		\
+			sources/my_str_to_wordtab.c	\
 			sources/utils.c
 
 OBJ             =       $(SRC:.c=.o)

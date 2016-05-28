@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 18:59:53 2016 
-** Last update Fri May 27 19:01:23 2016 
+** Last update Sat May 28 12:16:13 2016 
 */
 
 #include		"42sh.h"
@@ -17,9 +17,9 @@ void                    free_prompt_list(t_pcmd *pcmd, t_cmd *cmd,
   t_sep                 *sep_tmp;
   int                   i;
 
-  i = -1;
   while ((cmd_tmp = pcmd->begin) != NULL)
     {
+      i = -1;
       pcmd->begin = pcmd->begin->next;
       while (cmd_tmp->cmd[++i])
 	free(cmd_tmp->cmd[i]);

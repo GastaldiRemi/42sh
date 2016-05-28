@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 11:38:43 2016 
-** Last update Sat May 28 10:11:32 2016 
+** Last update Sat May 28 10:26:34 2016 
 */
 
 #include		"42sh.h"
@@ -28,7 +28,7 @@ char    *check_prompt(char *prompt)
     return (NULL);
   while (prompt[i])
     {
-      if (prompt[i] != ' ')
+      if (prompt[i] != ' ' && prompt[i] != '\t')
 	return (prompt);
       i++;
     }
