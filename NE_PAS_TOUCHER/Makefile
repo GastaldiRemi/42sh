@@ -5,7 +5,7 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Sat May 28 22:50:35 2016 
+## Last update Sun May 29 01:02:07 2016 
 ##
 
 ECHO            =       /bin/echo -e
@@ -34,6 +34,9 @@ SRC             =       sources/main.c			\
 			sources/set_env.c		\
 			sources/unset_env.c		\
 			sources/show_list.c		\
+			sources/cd.c			\
+			sources/cdmain.c		\
+			sources/pwd.c			\
 			sources/utils.c
 
 OBJ             =       $(SRC:.c=.o)

@@ -5,18 +5,13 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 18:58:27 2016 
-** Last update Sat May 28 22:18:52 2016 
+** Last update Sat May 28 23:07:13 2016 
 */
 
 #include		"42sh.h"
 
-int                     init_prompt_list(t_pcmd *pcmd, t_cmd **cmd,
-					 t_psep *psep, t_sep **sep)
+int                     init_prompt_list(t_pcmd *pcmd, t_psep *psep)
 {
-  /* if ((*cmd = malloc(sizeof(t_cmd))) == NULL) */
-  /*   return (-1); */
-  /* if ((*sep = malloc(sizeof(t_sep))) == NULL) */
-  /*   return (-1); */
   pcmd->end = NULL;
   pcmd->begin = NULL;
   psep->end = NULL;

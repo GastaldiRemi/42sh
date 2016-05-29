@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:26:35 2016 
-** Last update Sat May 28 22:22:17 2016 
+** Last update Sun May 29 02:00:24 2016 
 */
 
 #ifndef			_42_SH_H_
@@ -62,6 +62,7 @@ typedef struct		s_psep
   t_sep			*end;
 }			t_psep;
 
+
 void                    show_sep(t_psep *psep);
 void                    show_cmd(t_pcmd *pcmd);
 void                    add_sep(t_psep *list, char *buff);
@@ -81,8 +82,7 @@ int			my_getnbr(char *str);
 int                     prompt(char **env, t_plist *plist);
 void                    free_env(char **env);
 void                    free_prompt_list(t_pcmd *pcmd, t_psep *psep);
-int                     init_prompt_list(t_pcmd *pcmd, t_cmd **cmd,
-					 t_psep *psep, t_sep **sep);
+int                     init_prompt_list(t_pcmd *pcmd, t_psep *psep);
 int                     init_list(t_plist *plist, t_list **list);
 void                    free_list(t_plist *plist, t_list *list);
 int			my_strcmp(char *, char *);
@@ -91,4 +91,15 @@ char                    *test_access(t_plist *plist, char *cmd);
 void                    free_path(char **path);
 int			set_env(t_plist *plist, char **cmd);
 void			show_list(t_plist *plist);
+void                    act_pwd(t_plist *plist, char *path);
+char                    *get_oldpwd(t_plist *plist);
+char                    *get_pwd(t_plist *plist);
+void                    act_oldpwd(t_plist *plist, char *path);
+int                     cd_tile(t_plist *plist, char *dir);
+void                    cd_prec(t_plist *plist, char *path);
+int                     cd_home(t_plist *plist);
+int                     cd_dir(t_plist *plist, char *dir);
+int                     cd_old(t_plist *plist);
+char			*my_realloc(char *, int);
+
 #endif			/* _42_SH_H_ */
