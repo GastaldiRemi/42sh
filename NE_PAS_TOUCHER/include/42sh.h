@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:26:35 2016 
-** Last update Sun May 29 02:00:24 2016 
+** Last update Sun May 29 18:06:12 2016 
 */
 
 #ifndef			_42_SH_H_
@@ -101,5 +101,8 @@ int                     cd_home(t_plist *plist);
 int                     cd_dir(t_plist *plist, char *dir);
 int                     cd_old(t_plist *plist);
 char			*my_realloc(char *, int);
+int                     cd_main(t_plist *plist, char **cmd);
+void                    double_red_right(t_plist *plist, char **cmd, char **env);
+void                    red_right(t_plist *plist, char **cmd, char **env);
 
 #endif			/* _42_SH_H_ */

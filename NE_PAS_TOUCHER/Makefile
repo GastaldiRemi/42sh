@@ -5,7 +5,7 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Sun May 29 01:02:07 2016 
+## Last update Sun May 29 17:59:25 2016 
 ##
 
 ECHO            =       /bin/echo -e
@@ -37,6 +37,7 @@ SRC             =       sources/main.c			\
 			sources/cd.c			\
 			sources/cdmain.c		\
 			sources/pwd.c			\
+			sources/red_right.c		\
 			sources/utils.c
 
 OBJ             =       $(SRC:.c=.o)
