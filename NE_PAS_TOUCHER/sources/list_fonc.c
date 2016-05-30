@@ -5,41 +5,10 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 22:05:49 2016 
-** Last update Mon May 30 12:28:21 2016 
+** Last update Mon May 30 13:59:19 2016 
 */
 
 #include		"42sh.h"
-
-void			show_cmd(t_pcmd *pcmd)
-{
-  t_cmd			*cmd;
-  int			i;
-
-  cmd = pcmd->begin;
-  while (cmd)
-    {
-      i = -1;
-      while (cmd->cmd[++i])
-	{
-	  my_putstr(cmd->cmd[i]);
-	  my_putstr("\n");
-	}
-      cmd = cmd->next;
-    }
-}
-
-void			show_sep(t_psep *psep)
-{
-  t_sep			*sep;
-
-  sep = psep->begin;
-  while (sep)
-    {
-      my_putstr(sep->sep);
-      my_putstr("\n");
-      sep = sep->next;
-    }
-}
 
 void                    add_cmd(t_pcmd *list, char *buff)
 {
