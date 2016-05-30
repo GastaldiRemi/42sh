@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Sat May 28 16:01:27 2016 Juliani Renaud
-** Last update Mon May 30 18:00:33 2016 Juliani Renaud
+** Last update Mon May 30 18:03:15 2016 Juliani Renaud
 */
 
 #include	"42sh.h"
@@ -63,6 +63,7 @@ void		move_tmp(t_cmd **tmp, int i, t_psep **sep)
     }
   else
     (*tmp) = (*tmp)->next;
+  (*sep) = (*sep)->next;
   return;
 }
 
