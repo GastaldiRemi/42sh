@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Sat May 28 16:01:27 2016 Juliani Renaud
-** Last update Mon May 30 18:03:15 2016 Juliani Renaud
+** Last update Mon May 30 18:17:57 2016 
 */
 
 #include	"42sh.h"
@@ -43,8 +43,13 @@ char		*check_exit(char **tab)
   return ("FAIL");
 }
 
-void		move_tmp(t_cmd **tmp, int i, t_psep **sep)
+void		move_tmp(t_cmd **tmp, int i, t_sep **sep)
 {
+  if (!(*sep))
+    {
+      (*tmp) = (*tmp)->next;
+      return;
+    }
   if (my_strcmp((*sep)->sep, "&&") == 0)
     {
       (*tmp) = (*tmp)->next;
@@ -69,10 +74,12 @@ void		move_tmp(t_cmd **tmp, int i, t_psep **sep)
 
 char		*launch(char **env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
 {
+  t_sep		*tmp_sep;
   t_cmd		*tmp;
   int		i;
 
   tmp = cmd->begin;
+  tmp_sep = sep->begin;
   while (tmp)
     {
       if (my_strcmp(check_exit(tmp->cmd), "FAIL") != 0)
@@ -83,7 +90,7 @@ char		*launch(char **env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
 	    return ("0");
 	}
       i = check_action(tmp->cmd, env, envlist);
-      move_tmp(&tmp, i, &sep);
+      move_tmp(&tmp, i, &tmp_sep);
       env = init_env(env, envlist);
     }
   return (NULL);

@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 11:38:43 2016 
-** Last update Mon May 30 17:10:26 2016 
+** Last update Mon May 30 18:13:19 2016 
 */
 
 #include		"42sh.h"
@@ -61,7 +61,6 @@ char			*prompt(char **env, t_plist *plist)
 	  return (exit_value);
       	}
       free(st);
-      /* return (0); */
     }
   free_env(env);
   return (NULL);

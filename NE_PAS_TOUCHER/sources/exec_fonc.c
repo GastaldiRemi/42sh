@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 18:46:02 2016 
-** Last update Mon May 30 15:46:56 2016 
+** Last update Mon May 30 17:49:56 2016 
 */
 
 #include		"42sh.h"
@@ -18,9 +18,9 @@ int			system_fonc(t_plist *plist, char **cmd, char **env)
   if ((path = test_access(plist, cmd[0])) != NULL)
     {
       if ((pid = fork()) == 0)
-	execve(path, cmd, env);
+      	execve(path, cmd, env);
       else
-	wait(NULL);
+      	wait(NULL);
     }
   free(path);
   return (0);
