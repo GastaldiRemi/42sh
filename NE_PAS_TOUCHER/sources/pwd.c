@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 00:00:44 2016 
-** Last update Sun May 29 01:39:54 2016 
+** Last update Mon May 30 22:35:58 2016 
 */
 
 #include		"42sh.h"
@@ -41,12 +41,15 @@ char			*get_oldpwd(t_plist *plist)
 void			act_pwd(t_plist *plist, char *path)
 {
   t_list		*list;
+  char			*buff;
 
+  buff = my_strdup(path);
   list = plist->begin;
   while (my_strcmp("PWD", list->name) != 0)
     list = list->next;
-  free(list->data);
-  list->data = my_strdup(path);
+  if (list->data != NULL)
+    free(list->data);
+  list->data = buff;
 }
 
 void		        act_oldpwd(t_plist *plist, char *path)

@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat May 28 23:54:07 2016 
-** Last update Sun May 29 01:18:28 2016 
+** Last update Mon May 30 21:41:15 2016 
 */
 
 #include		"42sh.h"
@@ -22,7 +22,7 @@ int			cd_main(t_plist *plist, char **cmd)
           while (my_strcmp("PWD", list->name) != 0)
             list = list->next;
           cd_prec(plist, list->data);
-          while  (list->prev != NULL)
+          while (list->prev != NULL)
             list = list->prev;
         }
       else if (my_strcmp("-", cmd[1]) == 0)
