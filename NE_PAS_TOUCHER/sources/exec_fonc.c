@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 18:46:02 2016 
-** Last update Mon May 30 17:49:56 2016 
+** Last update Mon May 30 21:06:59 2016 
 */
 
 #include		"42sh.h"
@@ -21,8 +21,8 @@ int			system_fonc(t_plist *plist, char **cmd, char **env)
       	execve(path, cmd, env);
       else
       	wait(NULL);
+      free(path);
     }
-  free(path);
   return (0);
 }
 

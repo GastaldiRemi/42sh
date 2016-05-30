@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 15:55:40 2016 
-** Last update Mon May 30 18:09:08 2016 
+** Last update Mon May 30 18:42:12 2016 
 */
 
 #include		"42sh.h"
@@ -100,7 +100,7 @@ int			fill_list(char *str, t_pcmd *pcmd, t_psep *psep, int i)
   return (0);
 }
 
-char			*pars_prompt(t_plist *plist, char **env, char *st)
+char			*pars_prompt(t_plist *plist, t_env *env, char *st)
 {
   t_pcmd		pcmd;
   t_psep		psep;

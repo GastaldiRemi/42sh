@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat May 28 17:29:02 2016 
-** Last update Sat May 28 19:30:27 2016 
+** Last update Mon May 30 21:07:22 2016 
 */
 
 #include		"42sh.h"
@@ -83,7 +83,8 @@ char			*test_access(t_plist *plist, char *cmd)
   char			**path;
 
   i = -1;
-  path = get_path(plist);
+  if ((path = get_path(plist)) == NULL)
+    return (NULL);
   while (path[++i] != NULL)
     {
       buff = my_strdup(path[i]);

@@ -1,3 +1,4 @@
+
 /*
 ** env_list_fonc.c for env_list_fonc in /home/gastal_r/rendu/42sh/NE_PAS_TOUCHER/sources
 ** 
@@ -5,7 +6,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 00:54:48 2016 
-** Last update Mon May 30 18:11:49 2016 
+** Last update Mon May 30 20:53:22 2016 
 */
 
 #include		"42sh.h"
@@ -49,8 +50,8 @@ void                    env_to_list(t_plist *list, char *env)
     }
   else
     {
-      list->end->next = new;
       new->prev = list->end;
+      list->end->next = new;
       list->end = new;
     }
 }
@@ -76,7 +77,8 @@ char                    **list_to_env(t_list *tmp, t_list *list)
       env[i] = NULL;
       env[i] = my_strcat(env[i], list->name, -1, -1);
       env[i] = my_strcat(env[i], "=", -1, -1);
-      env[i] = my_strcat(env[i], list->data, -1, -1);
+      if (list->data != NULL)
+	env[i] = my_strcat(env[i], list->data, -1, -1);
       list = list->next;
       i++;
     }

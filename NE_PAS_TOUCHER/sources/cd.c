@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 00:14:10 2016 
-** Last update Mon May 30 15:20:30 2016 Juliani Renaud
+** Last update Mon May 30 21:10:30 2016 
 */
 
 #include		"42sh.h"
@@ -70,23 +70,25 @@ int			cd_dir(t_plist *plist, char *dir)
   newpath = my_strcat(newpath, dir, -1, -1);
   if (chdir(dir) != 0)
     {
-      my_putstr("cd: no such file or directory: \n");
+      my_putstr("cd: no such file or directory: ");
       my_putstr(dir);
+      write(1, "\n", 1);
       free(newpath);
       return (0);
     }
-  else
-    {
-      free(newpath);
-      newpath = my_strdup(dir);
-      if (chdir(dir) != 0)
-	{
-	  my_putstr("cd: no such file or directory: \n");
-	  my_putstr(dir);
-	  free(newpath);
-	  return (0);
-	}
-    }
+  /* else */
+  /*   { */
+  /*     free(newpath); */
+  /*     newpath = my_strdup(dir); */
+  /*     if (chdir(dir) != 0) */
+  /* 	{ */
+  /* 	  my_putstr("cd: no such file or directory: "); */
+  /* 	  my_putstr(dir); */
+  /* 	  write(1, "\n", 1); */
+  /* 	  free(newpath); */
+  /* 	  return (0); */
+  /* 	} */
+    /* } */
   if (get_oldpwd(plist) != NULL)
     act_oldpwd(plist, get_pwd(plist));
   act_pwd(plist, newpath);

@@ -5,14 +5,16 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Sat May 28 16:01:27 2016 Juliani Renaud
-** Last update Mon May 30 18:17:57 2016 
+** Last update Mon May 30 20:42:38 2016 
 */
 
 #include	"42sh.h"
 
 int		check_action(char **tab, char **env, t_plist *envlist)
 {
-  if (my_strcmp(tab[0], "setenv") == 0)
+  if (my_strcmp(tab[0], "env") == 0)
+    return (show_list(envlist));
+  else if (my_strcmp(tab[0], "setenv") == 0)
     return (set_env(envlist, tab));
   else if (my_strcmp(tab[0], "unsetenv") == 0)
     return (unset_env(envlist, tab));
@@ -72,7 +74,7 @@ void		move_tmp(t_cmd **tmp, int i, t_sep **sep)
   return;
 }
 
-char		*launch(char **env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
+char		*launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
 {
   t_sep		*tmp_sep;
   t_cmd		*tmp;
@@ -89,9 +91,9 @@ char		*launch(char **env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
 	  else
 	    return ("0");
 	}
-      i = check_action(tmp->cmd, env, envlist);
+      i = check_action(tmp->cmd, env->env, envlist);
       move_tmp(&tmp, i, &tmp_sep);
-      env = init_env(env, envlist);
+      env->env = init_env(env->env, envlist);
     }
   return (NULL);
 }

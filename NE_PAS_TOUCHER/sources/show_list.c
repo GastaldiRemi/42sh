@@ -5,12 +5,12 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat May 28 21:25:01 2016 
-** Last update Mon May 30 13:59:13 2016 
+** Last update Mon May 30 20:43:03 2016 
 */
 
 #include			"42sh.h"
 
-void			show_list(t_plist *plist)
+int			show_list(t_plist *plist)
 {
   t_list		*tmp;
 
@@ -19,10 +19,11 @@ void			show_list(t_plist *plist)
     {
       my_putstr(tmp->name);
       write(1, "=", 1);
-      my_putstr(tmp->data);
+      (tmp->data != NULL ? my_putstr(tmp->data) : (void)0);
       write(1, "\n", 1);
       tmp = tmp->next;
     }
+  return (1);
 }
 
 void			show_cmd(t_pcmd *pcmd)
