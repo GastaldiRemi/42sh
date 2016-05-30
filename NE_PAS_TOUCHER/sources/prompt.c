@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 11:38:43 2016 
-** Last update Mon May 30 16:11:20 2016 
+** Last update Mon May 30 17:10:26 2016 
 */
 
 #include		"42sh.h"
@@ -38,7 +38,7 @@ char			*check_prompt(char *prompt)
 char			*prompt(char **env, t_plist *plist)
 {
   char			*st;
-  int			exit_value;
+  char			*exit_value;
 
   if ((env = init_env(env, plist)) == NULL)
     return (0);

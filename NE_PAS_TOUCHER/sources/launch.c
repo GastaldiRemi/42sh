@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Sat May 28 16:01:27 2016 Juliani Renaud
-** Last update Mon May 30 16:01:40 2016 
+** Last update Mon May 30 17:29:19 2016 
 */
 
 #include	"42sh.h"
@@ -23,7 +23,7 @@ int		check_action(char **tab, char **env, t_plist *envlist)
   else if (my_strcmp(tab[0], ">>") == 0)
     return (double_red_right(envlist, tab, env));
   else if (my_strcmp(tab[0], "<") == 0)
-    return (red_left(envlist, tab ,env));
+    return (red_left(tab));
   else if (my_strcmp(tab[0], "<<") == 0)
     return (double_red_left(envlist, tab, env));
   else
@@ -46,7 +46,6 @@ char		*check_exit(char **tab)
 char		*launch(char **env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
 {
   t_cmd		*tmp;
-  char		*acces;
   int		i;
 
   tmp = cmd->begin;

@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:45:20 2016 
-** Last update Mon May 30 16:11:50 2016 
+** Last update Mon May 30 17:08:19 2016 
 */
 
 #include		"42sh.h"
@@ -15,7 +15,7 @@ int			main(int ac, char **av, char **env)
   int			i;
   t_plist		plist;
   t_list		*list;
-  int			exit_value;
+  char			*exit_value;
   char			**my_env;
 
   (void)ac;

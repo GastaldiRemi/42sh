@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:26:35 2016 
-** Last update Mon May 30 16:11:34 2016 
+** Last update Mon May 30 17:27:56 2016 
 */
 
 # ifndef		_42_SH_H_
@@ -105,5 +105,10 @@ int                     cd_main(t_plist *plist, char **cmd);
 int                     double_red_right(t_plist *plist, char **cmd, char **env);
 int                     red_right(t_plist *plist, char **cmd, char **env);
 char                    **order_args(char **prompt);
-
+int                     system_fonc(t_plist *plist, char **cmd, char **env);
+int                     unset_env(t_plist *plist, char **cmd);
+int                     red_right(t_plist *plist, char **cmd, char **env);
+int                     red_left(char **cmd);
+int                     double_red_left(t_plist *plist, char **cmd, char **env);
+char			*launch(char **env, t_plist *envlist, t_pcmd *cmd, t_psep *sep);
 #endif			/* _42_SH_H_ */
