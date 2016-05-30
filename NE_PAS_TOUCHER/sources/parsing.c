@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 15:55:40 2016 
-** Last update Sun May 29 19:00:00 2016 
+** Last update Mon May 30 12:28:27 2016 
 */
 
 #include		"42sh.h"
@@ -110,7 +110,12 @@ int			pars_prompt(t_plist *plist, char **env, char *st)
   st = pre_parsing(st, 0, -1);
   if (fill_list(st, &pcmd, &psep, 0) == -1)
     return (0);
-  system_fonc(plist, pcmd.begin->cmd, env);
+  /* printf("===%s\n", pcmd.begin->cmd[1]); */
+  /* pcmd.begin->cmd = order_args(pcmd.begin->cmd); */
+  printf("%s\n", pcmd.begin->cmd[0]);
+  printf("%s\n", pcmd.begin->cmd[1]);
+  printf("%s\n", pcmd.begin->cmd[2]);
+  /* red_right(plist, pcmd.begin->cmd, env); */
   free(st);
   free_prompt_list(&pcmd, &psep);
   return (1);

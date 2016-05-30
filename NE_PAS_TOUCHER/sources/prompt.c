@@ -5,23 +5,23 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 11:38:43 2016 
-** Last update Sat May 28 16:23:22 2016 
+** Last update Mon May 30 10:12:39 2016 
 */
 
 #include		"42sh.h"
 
-char    *aff_prompt()
+char			*aff_prompt()
 {
-  char  *st;
+  char			*st;
 
   my_putstr("42sh ");
   st = get_next_line(0);
   return (st);
 }
 
-char    *check_prompt(char *prompt)
+char			*check_prompt(char *prompt)
 {
-  int   i;
+  int			i;
 
   i = 0;
   if (my_strlen(prompt) == 0)
@@ -37,8 +37,8 @@ char    *check_prompt(char *prompt)
 
 int			prompt(char **env, t_plist *plist)
 {
-  char  *st;
-  int	 exit_value;
+  char			*st;
+  int			exit_value;
 
   while (1)
     {

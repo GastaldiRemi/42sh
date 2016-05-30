@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 17:59:32 2016 
-** Last update Sun May 29 18:56:59 2016 
+** Last update Mon May 30 09:54:22 2016 
 */
 
 #include		"42sh.h"
@@ -16,8 +16,8 @@ void			red_right(t_plist *plist, char **cmd, char **env)
   int			pid;
   char			*path;
 
-  out = open(cmd[0], O_WRONLY | O_TRUNC | O_CREAT, 0666);
-  cmd += 1;
+  out = open(cmd[1], O_WRONLY | O_TRUNC | O_CREAT, 0666);
+  cmd += 2;
   if ((pid = fork()) == 0)
     {
       if ((path = test_access(plist, cmd[0])) == NULL)
@@ -37,8 +37,8 @@ void			double_red_right(t_plist *plist, char **cmd, char **env)
   int			pid;
   char			*path;
 
-  out = open(cmd[0], O_WRONLY | O_APPEND | O_CREAT, 0666);
-  cmd += 1;
+  out = open(cmd[1], O_WRONLY | O_APPEND | O_CREAT, 0666);
+  cmd += 2;
   if ((pid = fork()) == 0)
     {
       if ((path = test_access(plist, cmd[0])) == NULL)

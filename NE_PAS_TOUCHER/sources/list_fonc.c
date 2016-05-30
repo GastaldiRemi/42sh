@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 22:05:49 2016 
-** Last update Sat May 28 19:11:42 2016 
+** Last update Mon May 30 12:28:21 2016 
 */
 
 #include		"42sh.h"
@@ -49,7 +49,7 @@ void                    add_cmd(t_pcmd *list, char *buff)
     return;
   if ((new = malloc(sizeof(t_list))) == NULL)
     return;
-  new->cmd = my_str_to_wordtab(buff);
+  new->cmd = order_args(my_str_to_wordtab(buff));
   new->prev = NULL;
   new->next = NULL;
   if (list->begin == NULL)

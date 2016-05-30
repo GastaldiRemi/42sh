@@ -5,10 +5,10 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:26:35 2016 
-** Last update Sun May 29 18:06:12 2016 
+** Last update Mon May 30 12:21:08 2016 
 */
 
-#ifndef			_42_SH_H_
+# ifndef		_42_SH_H_
 # define		_42_SH_H_
 
 #include		<stdlib.h>
@@ -20,7 +20,7 @@
 #include		<fcntl.h>
 #include		<signal.h>
 
-# define SEPARATOR	"<>|;"
+# define SEPARATOR	"&|;"
 
 typedef struct		 s_list
 {
@@ -104,5 +104,6 @@ char			*my_realloc(char *, int);
 int                     cd_main(t_plist *plist, char **cmd);
 void                    double_red_right(t_plist *plist, char **cmd, char **env);
 void                    red_right(t_plist *plist, char **cmd, char **env);
+char                    **order_args(char **prompt);
 
 #endif			/* _42_SH_H_ */
