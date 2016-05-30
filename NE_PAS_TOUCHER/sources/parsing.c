@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 15:55:40 2016 
-** Last update Mon May 30 18:42:12 2016 
+** Last update Mon May 30 23:55:16 2016 
 */
 
 #include		"42sh.h"
@@ -105,14 +105,13 @@ char			*pars_prompt(t_plist *plist, t_env *env, char *st)
   t_pcmd		pcmd;
   t_psep		psep;
   char			*exit_value;
-
   
   if (init_prompt_list(&pcmd, &psep) == -1)
     return (0);
   st = pre_parsing(st, 0, -1);
   if (fill_list(st, &pcmd, &psep, 0) == -1)
     return (0);
-  if ((exit_value = launch(env, plist, &pcmd, &psep)) != NULL)
+  if ((exit_value = my_strdup(launch(env, plist, &pcmd, &psep))) != NULL)
     {
       free(st);
       free_prompt_list(&pcmd, &psep);

@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:26:35 2016 
-** Last update Mon May 30 20:43:13 2016 
+** Last update Mon May 30 23:44:06 2016 
 */
 
 # ifndef		_42_SH_H_
@@ -115,4 +115,6 @@ int                     red_right(t_plist *plist, char **cmd, char **env);
 int                     red_left(char **cmd);
 int                     double_red_left(t_plist *plist, char **cmd, char **env);
 char			*launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep);
+int                     exec_fonc(char **cmd, char **env);
+
 #endif			/* _42_SH_H_ */

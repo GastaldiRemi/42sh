@@ -5,10 +5,19 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:45:20 2016 
-** Last update Mon May 30 18:43:57 2016 
+** Last update Mon May 30 23:56:16 2016 
 */
 
 #include		"42sh.h"
+
+int			exit_end(char *st)
+{
+  int			tmp;
+
+  tmp = my_getnbr(st);
+  free(st);
+  return (tmp);
+}
 
 int			main(int ac, char **av, char **env)
 {
@@ -17,7 +26,7 @@ int			main(int ac, char **av, char **env)
   t_list		*list;
   char			*exit_value;
   t_env			my_env;
-  
+
   (void)ac;
   (void)av;
   my_env.env = NULL;
@@ -30,5 +39,5 @@ int			main(int ac, char **av, char **env)
     env_to_list(&plist, env[i]);
   exit_value = prompt(&my_env, &plist);
   free_list(&plist, list);
-  return (my_getnbr(exit_value));
+  return (exit_end(exit_value));
 }

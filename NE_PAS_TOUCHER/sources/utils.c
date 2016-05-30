@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:43:04 2016 
-** Last update Sat May 28 19:11:23 2016 
+** Last update Mon May 30 23:55:46 2016 
 */
 
 #include	     	"42sh.h"
@@ -56,6 +56,8 @@ char			*my_strdup(char *str)
   int			i;
 
   i = 0;
+  if (str == NULL)
+    return (NULL);
   if ((new_str = malloc(sizeof(char) * (my_strlen(str) + 1))) == NULL)
     return (NULL);
   while (str[i])

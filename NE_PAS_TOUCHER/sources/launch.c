@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Sat May 28 16:01:27 2016 Juliani Renaud
-** Last update Mon May 30 20:42:38 2016 
+** Last update Mon May 30 23:51:34 2016 
 */
 
 #include	"42sh.h"
@@ -28,21 +28,9 @@ int		check_action(char **tab, char **env, t_plist *envlist)
     return (red_left(tab));
   else if (my_strcmp(tab[0], "<<") == 0)
     return (double_red_left(envlist, tab, env));
-  else
+  else if (exec_fonc(tab, env) == -1)
     return (system_fonc(envlist, tab, env));
   return (-1);
-}
-
-char		*check_exit(char **tab)
-{
-  if (my_strcmp(tab[0], "exit") == 0)
-    {
-      if (tab[1] != NULL)
-	return (tab[1]);
-      else
-	return ("OK");
-    }
-  return ("FAIL");
 }
 
 void		move_tmp(t_cmd **tmp, int i, t_sep **sep)
@@ -84,12 +72,13 @@ char		*launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
   tmp_sep = sep->begin;
   while (tmp)
     {
-      if (my_strcmp(check_exit(tmp->cmd), "FAIL") != 0)
+      if (my_strcmp(tmp->cmd[0], "exit") == 0)
 	{
-	  if (tmp->cmd[1] != NULL)
+	  if (tmp->cmd[1] != NULL && tmp->cmd[1][0] >= '0'
+	      && tmp->cmd[1][0] <= '9')
 	    return (tmp->cmd[1]);
 	  else
-	    return ("0");
+	    return ("1");
 	}
       i = check_action(tmp->cmd, env->env, envlist);
       move_tmp(&tmp, i, &tmp_sep);
