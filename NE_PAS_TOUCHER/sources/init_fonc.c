@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 18:58:27 2016 
-** Last update Sat May 28 23:07:13 2016 
+** Last update Mon May 30 14:57:27 2016 
 */
 
 #include		"42sh.h"
@@ -35,4 +35,3 @@ char                    **init_env(char **env, t_plist *plist)
     return (NULL);
   return (env);
 }
-

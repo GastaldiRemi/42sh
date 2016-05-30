@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:45:20 2016 
-** Last update Sat May 28 23:20:47 2016 
+** Last update Mon May 30 16:11:50 2016 
 */
 
 #include		"42sh.h"
@@ -30,5 +30,5 @@ int			main(int ac, char **av, char **env)
     env_to_list(&plist, env[i]);
   exit_value = prompt(my_env, &plist);
   free_list(&plist, list);
-  return (exit_value);
+  return (my_getnbr(exit_value));
 }

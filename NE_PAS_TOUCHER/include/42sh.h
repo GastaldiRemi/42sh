@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:26:35 2016 
-** Last update Mon May 30 12:21:08 2016 
+** Last update Mon May 30 16:11:34 2016 
 */
 
 # ifndef		_42_SH_H_
@@ -77,9 +77,9 @@ void                    env_to_list(t_plist *list, char *env);
 char			*my_strcat(char *, char *, int, int);
 void			clear_list(t_plist *list);
 char                    **list_to_env(t_list *tmp, t_list *list);
-int                     pars_prompt(t_plist *list, char **env, char *st);
+char                    *pars_prompt(t_plist *list, char **env, char *st);
 int			my_getnbr(char *str);
-int                     prompt(char **env, t_plist *plist);
+char                    *prompt(char **env, t_plist *plist);
 void                    free_env(char **env);
 void                    free_prompt_list(t_pcmd *pcmd, t_psep *psep);
 int                     init_prompt_list(t_pcmd *pcmd, t_psep *psep);
@@ -102,8 +102,8 @@ int                     cd_dir(t_plist *plist, char *dir);
 int                     cd_old(t_plist *plist);
 char			*my_realloc(char *, int);
 int                     cd_main(t_plist *plist, char **cmd);
-void                    double_red_right(t_plist *plist, char **cmd, char **env);
-void                    red_right(t_plist *plist, char **cmd, char **env);
+int                     double_red_right(t_plist *plist, char **cmd, char **env);
+int                     red_right(t_plist *plist, char **cmd, char **env);
 char                    **order_args(char **prompt);
 
 #endif			/* _42_SH_H_ */

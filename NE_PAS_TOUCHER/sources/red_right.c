@@ -5,12 +5,12 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 17:59:32 2016 
-** Last update Mon May 30 09:54:22 2016 
+** Last update Mon May 30 15:56:02 2016 
 */
 
 #include		"42sh.h"
 
-void			red_right(t_plist *plist, char **cmd, char **env)
+int			red_right(t_plist *plist, char **cmd, char **env)
 {
   int			out;
   int			pid;
@@ -29,9 +29,10 @@ void			red_right(t_plist *plist, char **cmd, char **env)
   else
     wait(NULL);
   close(out);
+  return (0);
 }
 
-void			double_red_right(t_plist *plist, char **cmd, char **env)
+int			double_red_right(t_plist *plist, char **cmd, char **env)
 {
   int			out;
   int			pid;
@@ -50,4 +51,5 @@ void			double_red_right(t_plist *plist, char **cmd, char **env)
   else
     wait(NULL);
   close(out);
+  return (0);
 }

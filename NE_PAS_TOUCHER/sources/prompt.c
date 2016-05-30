@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 11:38:43 2016 
-** Last update Mon May 30 10:12:39 2016 
+** Last update Mon May 30 16:11:20 2016 
 */
 
 #include		"42sh.h"
@@ -35,34 +35,34 @@ char			*check_prompt(char *prompt)
   return (NULL);
 }
 
-int			prompt(char **env, t_plist *plist)
+char			*prompt(char **env, t_plist *plist)
 {
   char			*st;
   int			exit_value;
 
+  if ((env = init_env(env, plist)) == NULL)
+    return (0);
   while (1)
     {
-      if ((env = init_env(env, plist)) == NULL)
-      	return (0);
       /* signal(SIGINT, SIG_IGN); */
       st = aff_prompt();
       if (st == NULL)
-	return (0);
+	return ("0");
       while (check_prompt(st) == NULL)
 	{
 	  free(st);
 	  st = aff_prompt();
 	}
       /* signal(SIGINT, SIG_DFL); */
-      if ((exit_value = pars_prompt(plist, env, st)) != 1)
+      if ((exit_value = pars_prompt(plist, env, st)) != NULL)
 	{
 	  free(st);
 	  free_env(env);
 	  return (exit_value);
       	}
       free(st);
-      free_env(env);
-      return (0);
+      /* return (0); */
     }
-  return (0);
+  free_env(env);
+  return (NULL);
 }
