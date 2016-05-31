@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat May 28 19:38:28 2016 
-** Last update Mon May 30 20:54:09 2016 
+** Last update Tue May 31 16:11:34 2016 
 */
 
 #include		"42sh.h"
@@ -64,8 +64,8 @@ int			set_env(t_plist *plist, char **cmd)
   new_env = NULL;
   if (cmd[1] == NULL)
     {
-      write(2, "error: setenv need arguments\n", 29);
-      return (-1);
+      show_list(plist);
+      return (0);
     }
   if (cmd[2] == NULL)
     return (set_env_nothing(plist, cmd));

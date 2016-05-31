@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:26:35 2016
-** Last update Tue May 31 15:31:56 2016 Matthias PROST
+** Last update Tue May 31 16:26:54 2016 
 */
 
 # ifndef		_42_SH_H_

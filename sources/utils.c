@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:43:04 2016 
-** Last update Mon May 30 23:55:46 2016 
+** Last update Tue May 31 16:26:48 2016 
 */
 
 #include	     	"42sh.h"
@@ -74,9 +74,9 @@ void			my_putstr(char *str)
   write(1, str, my_strlen(str));
 }
 
-int     my_strcmp(char *s1, char *s2)
+int			my_strcmp(char *s1, char *s2)
 {
-  int   i;
+  int			i;
 
   i = 0;
   while ((s1[i] == s2[i]) && s1[i] && s2[i])

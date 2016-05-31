@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 **
 ** Started on  Sat May 28 16:01:27 2016 Juliani Renaud
-** Last update Tue May 31 15:16:42 2016 
+** Last update Tue May 31 16:39:39 2016 
 */
 
 #include	"42sh.h"
@@ -76,6 +76,7 @@ char		*launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
     {
       if (my_strcmp(tmp->cmd[0], "exit") == 0)
 	{
+	  my_putstr("exit\n");
 	  if (tmp->cmd[1] != NULL && tmp->cmd[1][0] >= '0'
 	      && tmp->cmd[1][0] <= '9')
 	    return (tmp->cmd[1]);
