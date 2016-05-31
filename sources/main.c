@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:45:20 2016 
-** Last update Mon May 30 23:56:16 2016 
+** Last update Tue May 31 13:42:11 2016 
 */
 
 #include		"42sh.h"
@@ -15,7 +15,7 @@ int			exit_end(char *st)
   int			tmp;
 
   tmp = my_getnbr(st);
-  free(st);
+  /* free(st); */
   return (tmp);
 }
 
