@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sat Apr  2 11:41:10 2016 Antoine Roig
-** Last update Thu May 26 17:11:51 2016 
+** Last update	Mon May 30 14:25:42 2016 Full Name
 */
 
 #include "42sh.h"
@@ -71,7 +71,7 @@ int	main(int ac, char **av, char **env)
       if (instruct[0] != '\0')
 	{
 	  prepare_list_instruct(list_instruct, instruct, -1);
-	  ret = ride(list_instruct, my_env, list_env, path); 
+	  ret = ride(list_instruct, my_env, list_env, path);
 	  if (ret->ex == 1)
 	    return (ret->ret);
 	  my_env = list_to_env(list_env);

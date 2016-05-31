@@ -1,11 +1,10 @@
-##
 ## Makefile for Makefile in /home/roig_a/PSU_2015_minishell2
-## 
+##
 ## Made by Antoine Roig
 ## Login   <roig_a@epitech.net>
-## 
+##
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Mon May 30 15:53:45 2016 
+## Last update Tue May 31 13:53:58 2016 John Doe
 ##
 
 ECHO            =       /bin/echo -e
@@ -71,4 +70,3 @@ re              :        fclean all
 			@$(CC) $(CFLAGS) -c $< -o $@  && \
 			$(ECHO) $(GREEN) "[OK]" $(TEAL) $< $(DEFAULT) || \
 			$(ECHO) $(RED) "[XX]" $(TEAL) $< $(DEFAULT)
-
