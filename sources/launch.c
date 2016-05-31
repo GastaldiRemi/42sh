@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 **
 ** Started on  Sat May 28 16:01:27 2016 Juliani Renaud
-** Last update Tue May 31 15:24:53 2016 Jabbari Yassir
+** Last update Tue May 31 15:16:42 2016 
 */
 
 #include	"42sh.h"
@@ -20,8 +20,8 @@ int		check_action(char **tab, char **env, t_plist *envlist)
     return (unset_env(envlist, tab));
   else if (my_strcmp(tab[0], "cd") == 0)
     return (cd_main(envlist, tab));
-  else if (my_strcmp(tab[0], "echo") == 0)
-    return (echo(tab));
+  /* else if (my_strcmp(tab[0], "echo") == 0) */
+  /*   return (echo(tab)); */
   else if (my_strcmp(tab[0], ">") == 0)
     return (red_right(envlist, tab, env));
   else if (my_strcmp(tab[0], ">>") == 0)

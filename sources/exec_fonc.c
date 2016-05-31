@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 18:46:02 2016 
-** Last update Mon May 30 21:06:59 2016 
+** Last update Tue May 31 15:56:29 2016 
 */
 
 #include		"42sh.h"
@@ -22,6 +22,12 @@ int			system_fonc(t_plist *plist, char **cmd, char **env)
       else
       	wait(NULL);
       free(path);
+    }
+  else
+    {
+      write(2, cmd[0], my_strlen(cmd[0]));
+      write(2, ": Command not found", 19);
+      write(2, "\n", 1);
     }
   return (0);
 }
