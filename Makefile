@@ -5,7 +5,7 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Tue May 31 14:56:02 2016 
+## Last update Tue May 31 17:04:13 2016 Jabbari Yassir
 ##
 
 ECHO            =       /bin/echo -e
@@ -43,7 +43,9 @@ SRC             =       sources/main.c			\
 			sources/exec_fonc.c		\
 			sources/order_args.c		\
 			sources/launch.c		\
-			sources/utils.c
+			sources/utils.c			\
+			sources/echo_func.c		\
+			sources/echo_func_bis.c		
 
 OBJ             =       $(SRC:.c=.o)
 
