@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Tue May 31 15:15:24 2016 Jabbari Yassir
-** Last update Tue May 31 17:11:18 2016 Jabbari Yassir
+** Last update Tue May 31 15:32:05 2016 Matthias PROST
 */
 
 #include "42sh.h"
@@ -30,46 +30,42 @@ int		echo_n(char **tab)
 
 void	tab_funct(char **tab, int (*funct[])())
 {
-  tab[0] = '\\';
-  tab[1] = 'a';
-  tab[2] = 'b';
-  tab[3] = 'c';
-  tab[4] = 'e';
-  tab[5] = 'f';
-  tab[6] = 'n';
-  tab[7] = 'r';
-  tab[8] = 't';
-  tab[9] = 'v';
-  tab[11] = NULL;
-  tab[0] = f_slash;
-  tab[1] = f_a:
-  tab[2] = f_b;
-  tab[3] = f_c;
-  tab[4] = f_e;
-  tab[5] = f_f;
-  tab[6] = f_n;
-  tab[7] = f_r;
-  tab[8] = f_t;
-  tab[9] = f_v;
-  tab[11] = NULL;
+  tab[0][0] = '\\';
+  tab[1][0] = 'a';
+  tab[2][0] = 'b';
+  tab[3][0] = 'f';
+  tab[4][0] = 'n';
+  tab[5][0] = 'r';
+  tab[6][0] = 't';
+  tab[7][0] = 'v';
+  tab[8] = NULL;
+  funct[0] = &f_slash;
+  funct[1] = &f_a;
+  funct[2] = &f_b;
+  funct[3] = &f_f;
+  funct[4] = &f_n;
+  funct[5] = &f_r;
+  funct[6] = &f_t;
+  funct[7] = &f_v;
+  funct[8] = NULL;
 }
 
 int		check_char(char *str)
 {
   int		i;
   int		a;
-  char		*tab[12];
-  int		(*funct[12])();
+  char		*tab[9];
+  int		(*funct[9])();
 
   i = -1;
-  tab_funt(tab, funct);
+  tab_funct(tab, funct);
   while (str[++i])
     {
       a = -1;
       if (str[i] == '\\')
 	{
 	  while (tab[++a])
-	    if (str[i + 1] == tab[a])
+	    if (str[i + 1] == tab[a][0])
 	      funct[a]();
 	}
     }

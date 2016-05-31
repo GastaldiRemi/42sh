@@ -5,32 +5,37 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Tue May 31 16:43:53 2016 Jabbari Yassir
-** Last update Tue May 31 16:46:50 2016 Jabbari Yassir
+** Last update Tue May 31 15:31:17 2016 Matthias PROST
 */
 
 #include "42sh.h"
 
-void		f_f()
+int		f_f()
 {
   my_putchar('\f');
+  return (0);
 }
 
-void		f_n()
+int		f_n()
 {
   my_putchar('\n');
+  return (0);
 }
 
-void		f_r()
+int		f_r()
 {
   my_putchar('\r');
+  return (0);
 }
 
-void		f_t()
+int		f_t()
 {
   my_putchar('\t');
+  return (0);
 }
 
-void		f_v()
+int		f_v()
 {
   my_putchar('\v');
+  return (0);
 }

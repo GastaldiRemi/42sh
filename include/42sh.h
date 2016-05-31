@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:26:35 2016
-** Last update Tue May 31 15:26:27 2016 Jabbari Yassir
+** Last update Tue May 31 15:31:56 2016 Matthias PROST
 */
 
 # ifndef		_42_SH_H_
@@ -67,6 +67,15 @@ typedef struct		s_env
   char			**env;
 }			t_env;
 
+int			f_slash();
+int			f_a();
+int			f_b();
+int			f_f();
+int			f_n();
+int			f_r();
+int			f_t();
+int			f_v();
+void			my_putchar(char c);
 void                    show_sep(t_psep *psep);
 void                    show_cmd(t_pcmd *pcmd);
 void                    add_sep(t_psep *list, char *buff);
