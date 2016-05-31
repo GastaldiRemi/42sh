@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 11:38:43 2016 
-** Last update Tue May 31 16:23:42 2016 
+** Last update Tue May 31 17:01:28 2016 
 */
 
 #include		"42sh.h"
@@ -51,6 +51,7 @@ char			*prompt(t_env *env, t_plist *plist)
       	  free_env(env->env);
       	  return ("0");
       	}
+      printf("==================%p\n", st);
       while (check_prompt(st) == NULL)
 	{
 	  free(st);
