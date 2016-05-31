@@ -5,18 +5,18 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sun Apr 10 03:35:07 2016 Antoine Roig
-** Last update Sun Apr 10 05:02:51 2016 Antoine Roig
+** Last update Tue May 31 14:08:48 2016 
 */
 
-#include "minishell2.h"
+#include		"minishell2.h"
 
-void	dad(int *ppid, t_instruct *line, t_path s_path, int pid)
+void			dad(int *ppid, t_instruct *line, t_path s_path, int pid)
 {
-  char  *first_path_name;
-  char  *pathname;
-  int	j;
-  int	ret;
-  int	status;
+  char			*first_path_name;
+  char			*pathname;
+  int			j;
+  int			ret;
+  int			status;
 
   close(ppid[1]);
   dup2(ppid[0], 0);
@@ -38,11 +38,11 @@ void	dad(int *ppid, t_instruct *line, t_path s_path, int pid)
   kill(pid, SIGINT);
 }
 
-void	child(int *ppid, t_instruct *line, t_path s_path)
+void			child(int *ppid, t_instruct *line, t_path s_path)
 {
-  int   ret;
-  char  *first_path_name;
-  char  *pathname;
+  int			ret;
+  char			*first_path_name;
+  char			*pathname;
 
   line->args[s_path.i] = NULL;
   close(ppid[0]);
@@ -62,12 +62,12 @@ void	child(int *ppid, t_instruct *line, t_path s_path)
     free(pathname);
 }
 
-int	check_pipe(t_instruct *line,  char **env, char **path)
+int			check_pipe(t_instruct *line,  char **env, char **path)
 {
-  int	i;
-  int	pid;
-  int	ppid[2];
-  t_path	s_path;
+  int			i;
+  int			pid;
+  int			ppid[2];
+  t_path		s_path;
 
   s_path.env = env;
   s_path.path = path;
