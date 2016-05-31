@@ -5,19 +5,10 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:45:20 2016 
-** Last update Tue May 31 19:28:21 2016 
+** Last update Tue May 31 23:35:43 2016 
 */
 
 #include		"42sh.h"
-
-int			exit_end(char *st)
-{
-  int			tmp;
-
-  tmp = my_getnbr(st);
-  /* free(st); */
-  return (tmp);
-}
 
 void			init_path(t_plist *plist)
 {
@@ -40,7 +31,6 @@ int			main(int ac, char **av, char **env)
   int			i;
   t_plist		plist;
   t_list		*list;
-  char			*exit_value;
   t_env			my_env;
 
   (void)ac;
@@ -54,7 +44,8 @@ int			main(int ac, char **av, char **env)
   while (env[++i] != NULL)
     env_to_list(&plist, env[i]);
   init_path(&plist);
-  exit_value = prompt(&my_env, &plist);
+  plist.exit_value = 0;
+  prompt(&my_env, &plist);
   free_list(&plist, list);
-  return (exit_end(exit_value));
+  return (plist.exit_value);
 }

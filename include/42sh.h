@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:26:35 2016
-** Last update Tue May 31 18:43:56 2016 
+** Last update Tue May 31 23:35:13 2016 
 */
 
 # ifndef		_42_SH_H_
@@ -32,6 +32,7 @@ typedef struct		 s_list
 
 typedef struct		s_plist
 {
+  int			exit_value;
   t_list		*begin;
   t_list		*end;
 }			t_plist;
@@ -91,9 +92,9 @@ int			echo(char **tab);
 char			*my_strcat(char *, char *, int, int);
 void			clear_list(t_plist *list);
 char                    **list_to_env(t_list *tmp, t_list *list);
-char                    *pars_prompt(t_plist *plist, t_env *env, char *st);
+int                     pars_prompt(t_plist *plist, t_env *env, char *st);
 int			my_getnbr(char *str);
-char                    *prompt(t_env *env, t_plist *plist);
+int                     prompt(t_env *env, t_plist *plist);
 void                    free_env(char **env);
 void                    free_prompt_list(t_pcmd *pcmd, t_psep *psep);
 int                     init_prompt_list(t_pcmd *pcmd, t_psep *psep);
@@ -124,7 +125,7 @@ int                     unset_env(t_plist *plist, char **cmd);
 int                     red_right(t_plist *plist, char **cmd, char **env);
 int                     red_left(char **cmd);
 int                     double_red_left(t_plist *plist, char **cmd, char **env);
-char			*launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep);
+int			launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep);
 int                     exec_fonc(char **cmd, char **env);
 
 #endif			/* _42_SH_H_ */

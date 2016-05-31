@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 **
 ** Started on  Sat May 28 16:01:27 2016 Juliani Renaud
-** Last update Tue May 31 18:45:28 2016 
+** Last update Tue May 31 23:49:06 2016 
 */
 
 #include	"42sh.h"
@@ -13,26 +13,26 @@
 int		check_action(char **tab, char **env, t_plist *envlist)
 {
   if (my_strcmp(tab[0], "env") == 0)
-    return (show_list(envlist));
+    envlist->exit_value = show_list(envlist);
   else if (my_strcmp(tab[0], "setenv") == 0)
-    return (set_env(envlist, tab));
+    envlist->exit_value = set_env(envlist, tab);
   else if (my_strcmp(tab[0], "unsetenv") == 0)
-    return (unset_env(envlist, tab));
+    envlist->exit_value = unset_env(envlist, tab);
   else if (my_strcmp(tab[0], "cd") == 0)
-    return (cd_main(envlist, tab));
+    envlist->exit_value = cd_main(envlist, tab);
   else if (my_strcmp(tab[0], "echo") == 0)
-    return (echo(tab));
+    envlist->exit_value = echo(tab);
   else if (my_strcmp(tab[0], ">") == 0)
-    return (red_right(envlist, tab, env));
+    envlist->exit_value = red_right(envlist, tab, env);
   else if (my_strcmp(tab[0], ">>") == 0)
-    return (double_red_right(envlist, tab, env));
+    envlist->exit_value = double_red_right(envlist, tab, env);
   else if (my_strcmp(tab[0], "<") == 0)
-    return (red_left(tab));
+    envlist->exit_value = red_left(tab);
   else if (my_strcmp(tab[0], "<<") == 0)
-    return (double_red_left(envlist, tab, env));
-  else if (exec_fonc(tab, env) == 1)
-    return (system_fonc(envlist, tab, env));
-  return (0);
+    envlist->exit_value = double_red_left(envlist, tab, env);
+  else if ((envlist->exit_value = exec_fonc(tab, env)) == 1)
+    envlist->exit_value = system_fonc(envlist, tab, env);
+  return(envlist->exit_value);
 }
 
 void		move_tmp(t_cmd **tmp, int i, t_sep **sep)
@@ -64,7 +64,13 @@ void		move_tmp(t_cmd **tmp, int i, t_sep **sep)
   return;
 }
 
-char		*launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
+int		exit_end(t_plist *list, int i)
+{
+  list->exit_value = i;
+  return (-1);
+}
+
+int		launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
 {
   t_sep		*tmp_sep;
   t_cmd		*tmp;
@@ -79,14 +85,13 @@ char		*launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
 	  my_putstr("exit\n");
 	  if (tmp->cmd[1] != NULL && tmp->cmd[1][0] >= '0'
 	      && tmp->cmd[1][0] <= '9')
-	    return (tmp->cmd[1]);
+	    return (exit_end(envlist, my_getnbr(tmp->cmd[1])));
 	  else
-	    return ("1");
+	    return (exit_end(envlist, 1));
 	}
-      if ((i = check_action(tmp->cmd, env->env, envlist)) != 0)
-	return ("1");
+      check_action(tmp->cmd, env->env, envlist);
       move_tmp(&tmp, i, &tmp_sep);
       env->env = init_env(env->env, envlist);
     }
-  return (NULL);
+  return (0);
 }
