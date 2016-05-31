@@ -1,11 +1,11 @@
 /*
 ** 42sh.h for 42sh in /home/gastal_r/rendu/42sh/NE_PAS_TOUCHER/include
-** 
-** Made by 
+**
+** Made by
 ** Login   <gastal_r@epitech.net>
-** 
-** Started on  Thu May 26 21:26:35 2016 
-** Last update Mon May 30 23:44:06 2016 
+**
+** Started on  Thu May 26 21:26:35 2016
+** Last update Tue May 31 15:26:27 2016 Jabbari Yassir
 */
 
 # ifndef		_42_SH_H_
@@ -78,6 +78,7 @@ void			my_putstr(char *str);
 int			my_strlen(char *str);
 char			*my_strdup(char *str);
 void                    env_to_list(t_plist *list, char *env);
+int			echo(char **tab);
 char			*my_strcat(char *, char *, int, int);
 void			clear_list(t_plist *list);
 char                    **list_to_env(t_list *tmp, t_list *list);

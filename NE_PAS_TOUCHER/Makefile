@@ -5,7 +5,7 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Mon May 30 15:53:45 2016 
+## Last update Tue May 31 15:27:06 2016 Jabbari Yassir
 ##
 
 ECHO            =       /bin/echo -e
@@ -25,6 +25,7 @@ SRC             =       sources/main.c			\
 			sources/list_fonc.c		\
 			sources/env_list_fonc.c		\
 			sources/my_getnbr.c		\
+			sources/echo.c			\
 			sources/prompt.c		\
 			sources/parsing.c		\
 			sources/init_fonc.c		\
