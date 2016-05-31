@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 11:38:43 2016 
-** Last update Mon May 30 23:51:10 2016 
+** Last update Tue May 31 13:52:07 2016 
 */
 
 #include		"42sh.h"
@@ -44,16 +44,19 @@ char			*prompt(t_env *env, t_plist *plist)
     return (0);
   while (1)
     {
-      /* signal(SIGINT, SIG_IGN); */
+      signal(SIGINT, SIG_IGN);
       st = aff_prompt();
       if (st == NULL)
-	return ("0");
+	{
+	  free_env(env->env);
+	  return ("0");
+	}
       while (check_prompt(st) == NULL)
 	{
 	  free(st);
 	  st = aff_prompt();
 	}
-      /* signal(SIGINT, SIG_DFL); */
+      signal(SIGINT, SIG_DFL);
       if ((exit_value = pars_prompt(plist, env, st)) != NULL)
 	{
 	  free(st);

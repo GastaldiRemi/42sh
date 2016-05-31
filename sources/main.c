@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
 ** main.c for main.c in /home/roig_a/rendu/PSU_2015_minishell2
 **
 ** Made by Antoine Roig
@@ -6,27 +7,31 @@
 **
 ** Started on  Sat Apr  2 11:41:10 2016 Antoine Roig
 ** Last update	Mon May 30 14:25:42 2016 Full Name
+=======
+** main.c for 42sh in /home/gastal_r/rendu/42sh/NE_PAS_TOUCHER/sources
+** 
+** Made by 
+** Login   <gastal_r@epitech.net>
+** 
+** Started on  Thu May 26 21:45:20 2016 
+** Last update Tue May 31 13:51:57 2016 
+>>>>>>> 2bb95306c7df2b5c0e220edee3603b94da3453b1
 */
 
-#include "42sh.h"
+#include		"42sh.h"
 
-void	clear_list_inst(t_dinstructions *list)
+int			exit_end(char *st)
 {
-  t_instructions	*tmp;
-  t_instructions	*tmp2;
+  int			tmp;
 
-  tmp = list->begin;
-  while (tmp != NULL)
-    {
-      tmp2 = pop_list_begin_inst(list);
-      tmp = list->begin;
-      free(tmp2);
-    }
-  free(tmp);
+  tmp = my_getnbr(st);
+  /* free(st); */
+  return (tmp);
 }
 
-char   **list_to_env(t_dlist *list)
+int			main(int ac, char **av, char **env)
 {
+<<<<<<< HEAD
   int   i;
   t_list        *tmp;
   char          **my_env;
@@ -79,4 +84,25 @@ int	main(int ac, char **av, char **env)
       clear_list_inst(list_instruct);
     }
   return (0);
+=======
+  int			i;
+  t_plist		plist;
+  t_list		*list;
+  char			*exit_value;
+  t_env			my_env;
+
+  (void)ac;
+  (void)av;
+  my_env.env = NULL;
+  if (env[0] == NULL)
+    return (0);
+  if (init_list(&plist, &list) == -1)
+    return (0);
+  i = -1;
+  while (env[++i] != NULL)
+    env_to_list(&plist, env[i]);
+  exit_value = prompt(&my_env, &plist);
+  free_list(&plist, list);
+  return (exit_end(exit_value));
+>>>>>>> 2bb95306c7df2b5c0e220edee3603b94da3453b1
 }

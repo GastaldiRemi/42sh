@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri Mar  4 16:40:22 2016 remi gastaldi
-** Last update Thu May 26 11:59:00 2016 
+** Last update Tue May 31 13:49:25 2016 
 */
 
 #include	"42sh.h"
@@ -35,7 +35,10 @@ char		*return_end(char *final, int i)
 {
   final[i] = '\0';
   if (my_strlen(final) == 0)
-    return (NULL);
+    {
+      free(final);
+      return (NULL);
+    }
   return (final);
 }
 

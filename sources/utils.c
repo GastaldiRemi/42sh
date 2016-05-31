@@ -1,79 +1,85 @@
 /*
-** utils.c for utils.c in /home/roig_a/rendu/getnextline/PSU_2015_minishell1
-**
-** Made by Antoine Roig
-** Login   <roig_a@epitech.net>
-**
-** Started on  Mon Jan  4 15:41:33 2016 Antoine Roig
-** Last update Thu May 26 12:01:40 2016 
+** utils.c for utils.c in /home/gastal_r/rendu/42sh/NE_PAS_TOUCHER/sources
+** 
+** Made by 
+** Login   <gastal_r@epitech.net>
+** 
+** Started on  Thu May 26 21:43:04 2016 
+** Last update Mon May 30 23:55:46 2016 
 */
 
-#include "42sh.h"
+#include	     	"42sh.h"
 
-int	my_putstr(char *str)
+char			*my_strcat(char *dest, char *src, int i, int\
+			   j)
 {
-  int	i;
+  char			*tmp;
+  int			len_src;
+  int			len_dest;
+
+  if ((len_src = my_strlen(src)) <= 0)
+    return (NULL);
+  if (dest == NULL)
+    {
+      if ((dest = malloc((len_src + 1))) == NULL)
+	return (NULL);
+      while (src[++i])
+	dest[i] = src[i];
+      dest[i] = '\0';
+      return (dest);
+    }
+  len_dest = my_strlen(dest);
+  if ((tmp = malloc((len_src + len_dest + 1))) == NULL)
+    return (NULL);
+  while (dest[++j])
+    tmp[j] = dest[j];
+  while (src[++i])
+    tmp[j++] = src[i];
+  tmp[j] = '\0';
+  free(dest);
+  return (tmp);
+}
+
+int			my_strlen(char *str)
+{
+  int		       	i;
 
   i = 0;
   while (str[i])
-    write(1, &str[i++], 1);
-  return (1);
-}
-
-int	my_strcmp(char *s1, char *s2)
-{
-  int	i;
-
-  i = 0;
-  while (s1[i] && s2[i] && s1[i] == s2[i])
     i++;
-  if (s1[i] == '\0' && s2[i] == '\0')
-    return (0);
-  else
-    return (s1[i] - s2[i]);
-  return (0);
+  return (i);
 }
 
-int	count_word(char *str)
+char			*my_strdup(char *str)
 {
-  int	i;
-  int	nb;
+  char			*new_str;
+  int			i;
 
   i = 0;
-  nb = 0;
+  if (str == NULL)
+    return (NULL);
+  if ((new_str = malloc(sizeof(char) * (my_strlen(str) + 1))) == NULL)
+    return (NULL);
   while (str[i])
     {
-      if (str[i] == ':')
-	nb++;
+      new_str[i] = str[i];
       i++;
     }
-  nb += 1;
-  return (nb);
+  new_str[i]= '\0';
+  return (new_str);
 }
-char    **my_str_to_wordtab_path(char *str)
+
+void			my_putstr(char *str)
 {
-  char  **tab;
-  int   wnb;
+  write(1, str, my_strlen(str));
+}
+
+int     my_strcmp(char *s1, char *s2)
+{
   int   i;
-  int   j;
-  int   k;
 
   i = 0;
-  j = 0;
-  wnb = count_word(str);
-  tab = xmalloc(sizeof(char *) * wnb + sizeof(char *));
-
-  while (str[i])
-    {
-      tab[j] = xmalloc(sizeof(char) * my_strlen(str) + 1);
-      k = 0;
-      while (str[i] != ':' && str[i] != '\0')
-	tab[j][k++] = str[i++];
-      tab[j][k] = '\0';
-      if (str[i] == ':')
-	i++;
-      j++;
-    }
-  tab[j] = NULL;
-  return (tab);
+  while ((s1[i] == s2[i]) && s1[i] && s2[i])
+    i++;
+  return (s1[i] - s2[i]);
 }

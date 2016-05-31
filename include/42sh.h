@@ -1,175 +1,121 @@
 /*
-** 42sh.h for 42sh in /home/roig_a/rendu/getnextline/PSU_2015_minishell1/include
+** 42sh.h for 42sh in /home/gastal_r/rendu/42sh/NE_PAS_TOUCHER/include
 **
-** Made by Antoine Roig
-** Login   <roig_a@epitech.net>
+** Made by
+** Login   <gastal_r@epitech.net>
 **
-** Started on  Mon Jan  4 15:35:12 2016 Antoine Roig
-** Last update Thu May 26 14:38:17 2016 
+** Started on  Thu May 26 21:26:35 2016
+** Last update Tue May 31 15:26:27 2016 Jabbari Yassir
 */
 
-#ifndef _42sh_H_
-# define _42sh_H_
+# ifndef		_42_SH_H_
+# define		_42_SH_H_
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <sys/time.h>
-# include <sys/resource.h>
-# include <signal.h>
-# include <string.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <unistd.h>
+#include		<stdlib.h>
+#include		<unistd.h>
+#include		<sys/types.h>
+#include		<sys/stat.h>
+#include		<sys/wait.h>
+#include		<dirent.h>
+#include		<fcntl.h>
+#include		<signal.h>
 
+# define SEPARATOR	"&|;"
 
-typedef struct  s_pars
+typedef struct		 s_list
 {
-  int   i;
-  int   j;
-  char  *buff;
-}t_pars;
+  char			*name;
+  char			*data;
+  struct s_list		*prev;
+  struct s_list		*next;
+}			t_list;
 
-
-typedef struct	s_path
+typedef struct		s_plist
 {
-  char	**env;
-  char	**path;
-  int	i;
-}		t_path;
+  t_list		*begin;
+  t_list		*end;
+}			t_plist;
 
-typedef struct          s_list
+typedef struct		s_cmd
 {
-  char                  *variablenv;
-  char                  *valuenv;
-  struct s_list         *next;
-  struct s_list         *prev;
-}		        t_list;
+  char			**cmd;
+  struct s_cmd		*prev;
+  struct s_cmd		*next;
+}			t_cmd;
 
-typedef struct          s_dlist
+typedef struct		s_pcmd
 {
-  t_list                *begin;
-  t_list                *end;
-  int                   size;
-}			t_dlist;
+  t_cmd			*begin;
+  t_cmd			*end;
+}			t_pcmd;
 
-typedef struct          s_linenv
+typedef struct		s_sep
 {
-  char                  *variable;
-  char                  *value;
-}		       t_linenv;
+  char			*sep;
+  struct s_sep		*prev;
+  struct s_sep		*next;
+}			t_sep;
 
-typedef struct          s_instruct
+typedef struct		s_psep
 {
-  char                  *cmd;
-  char                  **args;
-}			t_instruct;
+  t_sep			*begin;
+  t_sep			*end;
+}			t_psep;
 
-typedef struct		s_inst
+typedef struct		s_env
 {
-  t_instruct		*inst;
-  struct s_inst         *next;
-  struct s_inst         *prev;
-}			t_instructions;
+  char			**env;
+}			t_env;
 
-typedef struct		s_instructions
-{
-  t_instructions        *begin;
-  t_instructions        *end;
-  int                   size;
-}			t_dinstructions;
+void                    show_sep(t_psep *psep);
+void                    show_cmd(t_pcmd *pcmd);
+void                    add_sep(t_psep *list, char *buff);
+void                    add_cmd(t_pcmd *list, char *buff);
+char			**my_str_to_wordtab(char *str);
+char                    **init_env(char **env, t_plist *plist);
+char			*get_next_line(const int fd);
+void			my_putstr(char *str);
+int			my_strlen(char *str);
+char			*my_strdup(char *str);
+void                    env_to_list(t_plist *list, char *env);
+int			echo(char **tab);
+char			*my_strcat(char *, char *, int, int);
+void			clear_list(t_plist *list);
+char                    **list_to_env(t_list *tmp, t_list *list);
+char                    *pars_prompt(t_plist *plist, t_env *env, char *st);
+int			my_getnbr(char *str);
+char                    *prompt(t_env *env, t_plist *plist);
+void                    free_env(char **env);
+void                    free_prompt_list(t_pcmd *pcmd, t_psep *psep);
+int                     init_prompt_list(t_pcmd *pcmd, t_psep *psep);
+int                     init_list(t_plist *plist, t_list **list);
+void                    free_list(t_plist *plist, t_list *list);
+int			my_strcmp(char *, char *);
+char                    **get_path(t_plist *plist);
+char                    *test_access(t_plist *plist, char *cmd);
+void                    free_path(char **path);
+int			set_env(t_plist *plist, char **cmd);
+int			show_list(t_plist *plist);
+void                    act_pwd(t_plist *plist, char *path);
+char                    *get_oldpwd(t_plist *plist);
+char                    *get_pwd(t_plist *plist);
+void                    act_oldpwd(t_plist *plist, char *path);
+int                     cd_tile(t_plist *plist, char *dir);
+void                    cd_prec(t_plist *plist, char *path);
+int                     cd_home(t_plist *plist);
+int                     cd_dir(t_plist *plist, char *dir);
+int                     cd_old(t_plist *plist);
+char			*my_realloc(char *, int);
+int                     cd_main(t_plist *plist, char **cmd);
+int                     double_red_right(t_plist *plist, char **cmd, char **env);
+int                     red_right(t_plist *plist, char **cmd, char **env);
+char                    **order_args(char **prompt);
+int                     system_fonc(t_plist *plist, char **cmd, char **env);
+int                     unset_env(t_plist *plist, char **cmd);
+int                     red_right(t_plist *plist, char **cmd, char **env);
+int                     red_left(char **cmd);
+int                     double_red_left(t_plist *plist, char **cmd, char **env);
+char			*launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep);
+int                     exec_fonc(char **cmd, char **env);
 
-typedef struct  s_var
-{
-  char          *s_tmp;
-  char          *tmp;
-  int           i;
-  char          *keep;
-  char          *buff;
-  char          *save_stat;
-}               t_var;
-
-typedef struct	s_ret
-{
-  int	ret;
-  int	ex;
-}		t_ret;
-
-#define SIZE_PWD        40
-
-char	*my_realloc(char *str, int size);
-int     char_isalpha(char str);
-char    **init_list_env(t_dlist *list_env, char **env);
-void    add_list_end(t_dlist *list, char *variable, char *value);
-void    add_list_end_inst(t_dinstructions *list_instruct, t_instruct *instru);
-t_list	*pop_list_begin(t_dlist *list);
-t_list	*pop_list_end(t_dlist *list);
-t_list  *pop_list_somewhere2(t_dlist *list, int pos);
-t_list  *pop_list_somewhere(t_dlist *list, int pos);
-t_instructions  *pop_list_begin_inst(t_dinstructions *list);
-void	*xmalloc(int size);
-void	show_list(t_dlist *list);
-void    new_list_instruct(t_dinstructions **instruct);
-void	new_list(t_dlist **list);
-void	clear_list(t_dlist *list);
-void	rev_list(t_dlist *list);
-char    *my_strdup_o(char *src);
-int     my_show_wordtab(char **tab);
-char    *my_strcpy(char *dest, char *src);
-char    *my_strcat(char *dest, char *src);
-int     my_putstr(char *str);
-int     my_strcmp(char *s1, char *s2);
-int     count_word(char *str);
-char    **my_str_to_wordtab_path(char *str);
-char    **my_str_to_wordtab(char *str);
-int	my_strlen(char *str);
-char    **search_path(t_dlist *list);
-char	*my_epurstr(char *str);
-char    *get_instruct(int fd);
-void    prepare_list_instruct(t_dinstructions *list_instruct,
-			      char *instruct, int i);
-char    *get_next_line(const int fd);
-int     search_cmd(t_instruct *, char **path, char **env, t_dlist *list);
-void    free_path(char **path);
-t_ret	*builtin_exit(t_instruct *line, t_ret *);
-int     builtin_setenv(t_instruct *line, t_dlist *list, char **env);
-int     builtin_unsetenv(t_instruct *line, t_dlist *list);
-int     builtin_env(char **env);
-int     builtin_cd(t_instruct *line, t_dlist *list);
-char    *get_user(t_dlist *list);
-int     change_pwd(t_dlist *list);
-int     change_pwd2(char *buff, t_dlist *list);
-int     builtin_setenv(t_instruct *line, t_dlist *list, char **env);
-int     builtin_unsetenv(t_instruct *line, t_dlist *list);
-int     builtin_env(char **env);
-int     builtin_cd(t_instruct *line, t_dlist *list);
-int     my_getnbr(char *str);
-int    end(t_dlist *list);
-int     check_variable(char *variable, char *value, t_dlist *list);
-t_dlist *unset_env(t_instruct *line, t_dlist *list);
-void    cd_error(t_instruct *line);
-void    just_cd_error();
-int     just_cd(t_dlist *list);
-int     go_old(t_dlist *list);
-void    go_old_2(t_dlist *list, char *old_pwd);
-void    exec_cmd_2(t_instruct *line, int pid, char **env, char **path);
-int    exec_cmd_2_unknown(char *cmd);
-int	check_redir(t_instruct *line);
-int	check_redir2(t_instruct *line);
-int	check_redir_g(t_instruct *line);
-int	check_redir_dg(t_instruct *line, int i);
-int	check_pipe(t_instruct *line,  char **env, char **path);
-char	*without_space_pipe(char *str, int, int);
-char	*without_space_dredd(char *str, int , int);
-char	*without_space_redd(char *str, int, int);
-char	*without_space_redg(char *str, int , int);
-int	cmd_check(t_instruct *line, pid_t pid, char **env, char **path);
-int	init_pid(int fd);
-char   **list_to_env(t_dlist *list);
-char	**init_env(t_dlist *, char **env, int , char **);
-void	init(int ac, char **av);
-t_ret	*ride(t_dinstructions *list_instruct, char **my_env,
-	      t_dlist *list_env, char**path);
-#endif
+#endif			/* _42_SH_H_ */

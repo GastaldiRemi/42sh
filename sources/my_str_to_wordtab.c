@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Mon Apr  4 11:00:20 2016 remi gastal_r
-** Last update Thu May 26 12:00:00 2016 
+** Last update Sat May 28 12:11:10 2016 
 */
 
 #include "42sh.h"
@@ -17,14 +17,14 @@ int	my_count_word(char *str)
 
   i = 0;
   j = 0;
-  while (str[i] != '\0' && char_isalpha(str[i]) == 0)
+  while (str[i] != '\0' && (str[i]) == ' ')
     i++;
   while (str[i] != '\0')
     {
-      if (char_isalpha(str[i]) != 1)
+      if ((str[i]) != ' ')
 	{
 	  j++;
-	  while (char_isalpha(str[i]) == 0 && str[i])
+	  while (str[i] && str[i] != ' ')
 	    i++;
 	  if (str[i] == '\0')
 	    j--;
@@ -58,9 +58,9 @@ char	**my_str_to_wordtab(char *str)
   while (++i != my_count_word(str))
     {
       tab[i] = malloc(sizeof(char) * my_strlen(str) + 1);
-      while (str[n] != '\0' && char_isalpha(str[n]) == 0)
+      while (str[n] != '\0' && str[n] == ' ')
 	n++;
-      while (str[n] != '\0' && char_isalpha(str[n]) != 0)
+      while (str[n] != '\0' && str[n] != ' ')
 	{
 	  tab[i][x] = str[n];
 	  n++;

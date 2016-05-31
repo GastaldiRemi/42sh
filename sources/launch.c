@@ -1,11 +1,11 @@
 /*
-** launch.c for 42 in 
-** 
+** launch.c for 42 in
+**
 ** Made by Juliani Renaud
 ** Login   <julian_r@epitech.net>
-** 
+**
 ** Started on  Sat May 28 16:01:27 2016 Juliani Renaud
-** Last update Mon May 30 23:51:34 2016 
+** Last update Tue May 31 15:24:53 2016 Jabbari Yassir
 */
 
 #include	"42sh.h"
@@ -20,6 +20,8 @@ int		check_action(char **tab, char **env, t_plist *envlist)
     return (unset_env(envlist, tab));
   else if (my_strcmp(tab[0], "cd") == 0)
     return (cd_main(envlist, tab));
+  else if (my_strcmp(tab[0], "echo") == 0)
+    return (echo(tab));
   else if (my_strcmp(tab[0], ">") == 0)
     return (red_right(envlist, tab, env));
   else if (my_strcmp(tab[0], ">>") == 0)
