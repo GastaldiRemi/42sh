@@ -5,7 +5,7 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Tue May 31 14:00:39 2016 
+## Last update Tue May 31 14:56:02 2016 
 ##
 
 ECHO            =       /bin/echo -e
@@ -43,7 +43,6 @@ SRC             =       sources/main.c			\
 			sources/exec_fonc.c		\
 			sources/order_args.c		\
 			sources/launch.c		\
-			sources/pipe.c			\
 			sources/utils.c
 
 OBJ             =       $(SRC:.c=.o)
