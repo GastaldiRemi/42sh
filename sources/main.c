@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:45:20 2016 
-** Last update Tue May 31 16:41:35 2016 
+** Last update Tue May 31 19:28:21 2016 
 */
 
 #include		"42sh.h"
@@ -18,7 +18,24 @@ int			exit_end(char *st)
   /* free(st); */
   return (tmp);
 }
-int	main(int ac, char **av, char **env)
+
+void			init_path(t_plist *plist)
+{
+  t_list		*list;
+
+  list = plist->begin;
+  while (my_strcmp(list->name, "PATH") != 0)
+    {
+      list = list->next;
+      if (list == NULL)
+	{
+	  env_to_list(plist, "PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/bin:/opt/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl");
+	  return;
+	}
+    }
+}
+
+int			main(int ac, char **av, char **env)
 {
   int			i;
   t_plist		plist;
@@ -36,6 +53,7 @@ int	main(int ac, char **av, char **env)
   i = -1;
   while (env[++i] != NULL)
     env_to_list(&plist, env[i]);
+  init_path(&plist);
   exit_value = prompt(&my_env, &plist);
   free_list(&plist, list);
   return (exit_end(exit_value));

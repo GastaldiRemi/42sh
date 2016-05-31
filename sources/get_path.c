@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat May 28 17:29:02 2016 
-** Last update Mon May 30 21:07:22 2016 
+** Last update Tue May 31 19:31:14 2016 
 */
 
 #include		"42sh.h"
@@ -68,7 +68,7 @@ char			**get_path(t_plist *plist)
   while (my_strcmp("PATH", list->name) != 0)
     {
       list = list->next;
-      if (list->next == NULL)
+      if (list == NULL)
 	return (NULL);
     }
   if (list->data == NULL)

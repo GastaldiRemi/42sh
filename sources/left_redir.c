@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 18:08:25 2016 
-** Last update Mon May 30 15:50:41 2016 
+** Last update Tue May 31 19:33:54 2016 
 */
 
 #include		"42sh.h"
@@ -19,10 +19,10 @@ int			red_left(char **cmd)
    {
      my_putstr(cmd[1]);
      my_putstr(": No such file or directory\n");
-     return (-1);
+     return (1);
    }
  dup2(fd, 0);
- return (1);
+ return (0);
 }
 
 int			looping(t_plist *plist, char **cmd, char *buff, char **env)

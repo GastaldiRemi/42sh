@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat May 28 21:25:01 2016 
-** Last update Mon May 30 20:43:03 2016 
+** Last update Tue May 31 19:29:12 2016 
 */
 
 #include			"42sh.h"
@@ -23,7 +23,7 @@ int			show_list(t_plist *plist)
       write(1, "\n", 1);
       tmp = tmp->next;
     }
-  return (1);
+  return (0);
 }
 
 void			show_cmd(t_pcmd *pcmd)

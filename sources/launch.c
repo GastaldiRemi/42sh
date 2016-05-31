@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 **
 ** Started on  Sat May 28 16:01:27 2016 Juliani Renaud
-** Last update Tue May 31 16:39:39 2016 
+** Last update Tue May 31 18:45:28 2016 
 */
 
 #include	"42sh.h"
@@ -20,8 +20,8 @@ int		check_action(char **tab, char **env, t_plist *envlist)
     return (unset_env(envlist, tab));
   else if (my_strcmp(tab[0], "cd") == 0)
     return (cd_main(envlist, tab));
-  /* else if (my_strcmp(tab[0], "echo") == 0) */
-  /*   return (echo(tab)); */
+  else if (my_strcmp(tab[0], "echo") == 0)
+    return (echo(tab));
   else if (my_strcmp(tab[0], ">") == 0)
     return (red_right(envlist, tab, env));
   else if (my_strcmp(tab[0], ">>") == 0)
@@ -30,9 +30,9 @@ int		check_action(char **tab, char **env, t_plist *envlist)
     return (red_left(tab));
   else if (my_strcmp(tab[0], "<<") == 0)
     return (double_red_left(envlist, tab, env));
-  else if (exec_fonc(tab, env) == -1)
+  else if (exec_fonc(tab, env) == 1)
     return (system_fonc(envlist, tab, env));
-  return (-1);
+  return (0);
 }
 
 void		move_tmp(t_cmd **tmp, int i, t_sep **sep)
@@ -83,7 +83,8 @@ char		*launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
 	  else
 	    return ("1");
 	}
-      i = check_action(tmp->cmd, env->env, envlist);
+      if ((i = check_action(tmp->cmd, env->env, envlist)) != 0)
+	return ("1");
       move_tmp(&tmp, i, &tmp_sep);
       env->env = init_env(env->env, envlist);
     }
