@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Tue May 31 15:15:24 2016 Jabbari Yassir
-** Last update Tue May 31 15:32:05 2016 Matthias PROST
+** Last update Tue May 31 15:49:09 2016 Matthias PROST
 */
 
 #include "42sh.h"
@@ -84,8 +84,6 @@ int		echo_e(char **tab)
 	  if ((check_char(tab[i])) == 0)
 	    i++;
 	  my_putstr(tab[i]);
-	  if (tab[i + 1])
-	    my_putstr(" ");
 	  i++;
 	}
     }
