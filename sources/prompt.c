@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 11:38:43 2016 
-** Last update Tue May 31 13:45:02 2016 
+** Last update Tue May 31 13:52:07 2016 
 */
 
 #include		"42sh.h"
@@ -49,7 +49,7 @@ char			*prompt(t_env *env, t_plist *plist)
       if (st == NULL)
 	{
 	  free_env(env->env);
-	  return ("1");
+	  return ("0");
 	}
       while (check_prompt(st) == NULL)
 	{
