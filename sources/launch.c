@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 **
 ** Started on  Sat May 28 16:01:27 2016 Juliani Renaud
-** Last update Tue May 31 23:49:06 2016 
+** Last update Wed Jun  1 00:29:36 2016 
 */
 
 #include	"42sh.h"
@@ -45,15 +45,15 @@ void		move_tmp(t_cmd **tmp, int i, t_sep **sep)
   if (my_strcmp((*sep)->sep, "&&") == 0)
     {
       (*tmp) = (*tmp)->next;
-      if (i == 1)
+      if (i == 0)
 	return;
-      else if ((*tmp)->next && i != 1)
+      else if ((*tmp) && i != 0)
 	(*tmp) = (*tmp)->next;
     }
   else if (my_strcmp((*sep)->sep, "||") == 0)
     {
       (*tmp) = (*tmp)->next;
-      if ((*tmp)->next && i == 1)
+      if ((*tmp) && i == 0)
 	(*tmp) = (*tmp)->next;
       else
 	return;
@@ -89,7 +89,7 @@ int		launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
 	  else
 	    return (exit_end(envlist, 1));
 	}
-      check_action(tmp->cmd, env->env, envlist);
+      i = check_action(tmp->cmd, env->env, envlist);
       move_tmp(&tmp, i, &tmp_sep);
       env->env = init_env(env->env, envlist);
     }
