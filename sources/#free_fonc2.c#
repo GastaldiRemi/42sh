@@ -1,0 +1,13 @@
+/*
+** free_fonc2.c for free_fonc2 in /home/gastal_r/rendu/42sh/sources
+** 
+** Made by 
+** Login   <gastal_r@epitech.net>
+** 
+** Started on  Wed Jun  1 16:20:13 2016 
+** Last update Wed Jun  1 16:20:13 2016 
+*/
+
+#include		"42sh.h"
+
+void			free_prompt(char *

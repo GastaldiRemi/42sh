@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 18:59:53 2016 
-** Last update Mon May 30 18:00:56 2016 
+** Last update Wed Jun  1 16:22:32 2016 
 */
 
 #include		"42sh.h"
@@ -47,7 +47,7 @@ void                    clear_list(t_plist *list)
     }
 }
 
-void                    free_env(char **env)
+void                    free_tab(char **env)
 {
   int                   i;
 
@@ -63,14 +63,4 @@ void                    free_list(t_plist *plist, t_list *list)
 {
   clear_list(plist);
   free(list);
-}
-
-void			free_path(char **path)
-{
-  int			i;
-
-  i = -1;
-  while (path[++i])
-    free(path[i]);
-  free(path);
 }

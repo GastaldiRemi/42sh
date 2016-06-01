@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:45:20 2016 
-** Last update Wed Jun  1 13:13:03 2016 
+** Last update Wed Jun  1 14:24:16 2016 
 */
 
 #include		"42sh.h"
@@ -20,7 +20,10 @@ void			init_path(t_plist *plist)
       list = list->next;
       if (list == NULL)
 	{
-	  env_to_list(plist, "PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/bin:/opt/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl");
+	  env_to_list(plist, "PATH=/usr/local/sbin:/usr/local/bin:\
+/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:\
+/usr/bin/core_perl:/bin:/opt/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:\
+/usr/bin/vendor_perl:/usr/bin/core_perl");
 	  return;
 	}
     }

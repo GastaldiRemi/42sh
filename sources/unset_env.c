@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat May 28 22:44:19 2016 
-** Last update Mon May 30 22:19:12 2016 
+** Last update Wed Jun  1 16:26:17 2016 
 */
 
 #include		"42sh.h"
@@ -13,7 +13,7 @@
 int			unset_env(t_plist *plist, char **cmd)
 {
   t_list		*list;
-  
+
   list = plist->begin;
   if (cmd[1] == NULL)
     return (0);

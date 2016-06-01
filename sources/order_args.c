@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Mon May 30 10:16:07 2016 
-** Last update Mon May 30 12:19:30 2016 
+** Last update Wed Jun  1 16:25:46 2016 
 */
 
 #include		"42sh.h"
@@ -20,20 +20,14 @@ int			get_prompt_length(char **prompt)
   return (i);
 }
 
-char			**order_args(char **prompt)
+char			**order_args(char **prompt, int i, int j)
 {
-  int			i;
-  int			j;
   char			**buff;
-  int			k;
 
-  k = -1;
-  j = 2;
   if ((my_strcmp(">", prompt[0]) == 0 || my_strcmp(">>", prompt[0]) == 0)
       || (my_strcmp("<", prompt[0]) == 0 || my_strcmp("<<", prompt[0]) == 0))
     return (prompt);
-  i = 0;
-  while (prompt[i] != NULL)
+  while (prompt[++i] != NULL)
     {
       if ((my_strcmp(">", prompt[i]) == 0 || my_strcmp(">>", prompt[i]) == 0)
 	  || (my_strcmp("<", prompt[i]) == 0 || my_strcmp("<<", prompt[i]) == 0))
@@ -47,13 +41,9 @@ char			**order_args(char **prompt)
 	      j++;
 	    }
 	  buff[j] = NULL;
-	  k = -1;
-	  while (prompt[++k])
-	    free(prompt[k]);
-	  free(prompt);
+	  free_tab(prompt);
 	  return (buff);
 	}
-      i++;
     }
   return (prompt);
 }

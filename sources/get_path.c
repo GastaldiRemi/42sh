@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat May 28 17:29:02 2016 
-** Last update Tue May 31 19:31:14 2016 
+** Last update Wed Jun  1 16:23:34 2016 
 */
 
 #include		"42sh.h"
@@ -92,11 +92,11 @@ char			*test_access(t_plist *plist, char *cmd)
       buff = my_strcat(buff, cmd, -1, -1);
       if (access(buff, X_OK) == 0)
 	{
-	  free_path(path);
+	  free_tab(path);
 	  return (buff);
 	}
       free(buff);
     }
-  free_path(path);
+  free_tab(path);
   return (NULL);
 }

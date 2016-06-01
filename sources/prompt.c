@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 11:38:43 2016 
-** Last update Wed Jun  1 14:13:53 2016 
+** Last update Wed Jun  1 16:23:04 2016 
 */
 
 #include		"42sh.h"
@@ -74,7 +74,7 @@ int			prompt(t_env *env, t_plist *plist)
       st = aff_prompt(plist);
       if (st == NULL)
       	{
-      	  free_env(env->env);
+      	  free_tab(env->env);
       	  return (0);
       	}
       while (check_prompt(st) == NULL)
@@ -86,11 +86,11 @@ int			prompt(t_env *env, t_plist *plist)
       if (pars_prompt(plist, env, st) != 0)
 	{
 	  free(st);
-	  free_env(env->env);
+	  free_tab(env->env);
 	  return (0);
       	}
       free(st);
     }
-  free_env(env->env);
+  free_tab(env->env);
   return (0);
 }

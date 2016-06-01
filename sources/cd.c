@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 00:14:10 2016 
-** Last update Mon May 30 22:35:38 2016 
+** Last update Wed Jun  1 16:30:26 2016 
 */
 
 #include		"42sh.h"
@@ -55,14 +55,11 @@ int			cd_dir(t_plist *plist, char *dir)
 
   list = plist->begin;
   if (dir[0] == '~')
-    {
-      cd_tile(plist, dir);
-      return (0);
-    }
+    return (cd_tile(plist, dir));
   while (my_strcmp("PWD", list->name) != 0)
     {
       list = list->next;
-      if (list->next == NULL)
+      if (list == NULL)
 	return (0);
     }
   (list->data ? newpath = my_strdup(list->data) : 0);
@@ -76,19 +73,6 @@ int			cd_dir(t_plist *plist, char *dir)
       free(newpath);
       return (0);
     }
-  /* else */
-  /*   { */
-  /*     free(newpath); */
-  /*     newpath = my_strdup(dir); */
-  /*     if (chdir(dir) != 0) */
-  /* 	{ */
-  /* 	  my_putstr("cd: no such file or directory: "); */
-  /* 	  my_putstr(dir); */
-  /* 	  write(1, "\n", 1); */
-  /* 	  free(newpath); */
-  /* 	  return (0); */
-  /* 	} */
-    /* } */
   if (get_oldpwd(plist) != NULL)
     act_oldpwd(plist, get_pwd(plist));
   act_pwd(plist, newpath);

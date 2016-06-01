@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 00:00:44 2016 
-** Last update Mon May 30 22:35:58 2016 
+** Last update Wed Jun  1 16:18:52 2016 
 */
 
 #include		"42sh.h"
@@ -55,7 +55,7 @@ void			act_pwd(t_plist *plist, char *path)
 void		        act_oldpwd(t_plist *plist, char *path)
 {
   t_list		*list;
-  
+
   list = plist->begin;
   while (my_strcmp("OLDPWD", list->name) != 0)
     list = list->next;

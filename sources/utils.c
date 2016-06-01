@@ -5,13 +5,12 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:43:04 2016 
-** Last update Tue May 31 16:50:27 2016 
+** Last update Wed Jun  1 16:17:28 2016 
 */
 
 #include	     	"42sh.h"
 
-char			*my_strcat(char *dest, char *src, int i, int\
-			   j)
+char			*my_strcat(char *dest, char *src, int i, int j)
 {
   char			*tmp;
   int			len_src;

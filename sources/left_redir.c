@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 18:08:25 2016 
-** Last update Tue May 31 19:33:54 2016 
+** Last update Wed Jun  1 16:17:44 2016 
 */
 
 #include		"42sh.h"
@@ -34,7 +34,7 @@ int			looping(t_plist *plist, char **cmd, char *buff, char **env)
   close(pipefd[1]);
   dup2(pipefd[0], 0);
   cmd += 2;
-  system_fonc(plist, cmd, env); 
+  system_fonc(plist, cmd, env);
   free(buff);
   return (1);
 }

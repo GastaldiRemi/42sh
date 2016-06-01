@@ -5,49 +5,10 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 15:55:40 2016 
-** Last update Tue May 31 23:34:03 2016 
+** Last update Wed Jun  1 16:17:10 2016 
 */
 
 #include		"42sh.h"
-
-char			*pre_parsing(char *prompt, int i, int j)
-{
-  char			*buff;
-  int			check;
-  int			space;
-  int			tab;
-
-  tab = 0;
-  space = 0;
-  check = 0;
-  buff = malloc(sizeof(char) * (my_strlen(prompt) + 1));
-  while (prompt[i])
-    {
-      while (prompt[i] && ((tab == 1 ? prompt[i] == '\t' : 0)
-			   || (check == 1 ? prompt[i] == ';' : 0)
-			   || (space == 1 ? prompt[i] == ' ' : 0)))
-	i++;
-      buff[++j] = prompt[i];
-      if (prompt[i] != '\0' && prompt[i] == ';')
-	check = 1;
-      else
-	check = 0;
-      if (prompt[i] != '\0' && prompt[i] == ' ')
-	space = 1;
-      else
-	space = 0;
-      if (prompt[i] != '\0' && prompt[i] == '\t')
-      	{
-      	  buff[j] = ' ';
-      	  while (prompt[i] != '\0' && prompt[i] == '\t')
-      	      i++;
-      	}
-      else
-      	(prompt[i] != '\0' ? i++ : 0);
-    }
-  buff[j + 1] = '\0';
-  return (buff);
-}
 
 int			test_separator(char c)
 {
@@ -115,7 +76,7 @@ int			pars_prompt(t_plist *plist, t_env *env, char *st)
 {
   t_pcmd		pcmd;
   t_psep		psep;
-  
+
   if (init_prompt_list(&pcmd, &psep) == -1)
     return (-1);
   st = pre_parsing(st, 0, -1);

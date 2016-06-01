@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 18:58:27 2016 
-** Last update Mon May 30 18:07:29 2016 
+** Last update Wed Jun  1 16:23:14 2016 
 */
 
 #include		"42sh.h"
@@ -30,7 +30,7 @@ int                     init_list(t_plist *plist, t_list **list)
 
 char                    **init_env(char **env, t_plist *plist)
 {
-  free_env(env);
+  free_tab(env);
   if ((env = list_to_env(plist->begin, plist->begin)) == NULL)
     return (NULL);
   return (env);

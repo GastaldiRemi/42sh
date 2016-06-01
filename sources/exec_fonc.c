@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 18:46:02 2016 
-** Last update Wed Jun  1 00:14:14 2016 
+** Last update Wed Jun  1 15:19:28 2016 
 */
 
 #include		"42sh.h"
@@ -49,6 +49,8 @@ int			exec_fonc(char **cmd, char **env)
   int			status;
 
   status = 0;
+  if (cmd[0] && my_strcmp(cmd[0], "..") == 0)
+    return (0);
   if ((fd = open(cmd[0], O_RDONLY)) != -1)
     {
       pid = init_pid(fd);

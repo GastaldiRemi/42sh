@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:26:35 2016
-** Last update Wed Jun  1 14:13:01 2016 
+** Last update Wed Jun  1 16:25:55 2016 
 */
 
 # ifndef		_42_SH_H_
@@ -113,7 +113,7 @@ char                    **list_to_env(t_list *tmp, t_list *list);
 int                     pars_prompt(t_plist *plist, t_env *env, char *st);
 int			my_getnbr(char *str);
 int                     prompt(t_env *env, t_plist *plist);
-void                    free_env(char **env);
+void                    free_tab(char **env);
 void                    free_prompt_list(t_pcmd *pcmd, t_psep *psep);
 int                     init_prompt_list(t_pcmd *pcmd, t_psep *psep);
 int                     init_list(t_plist *plist, t_list **list);
@@ -137,7 +137,7 @@ char			*my_realloc(char *, int);
 int                     cd_main(t_plist *plist, char **cmd);
 int                     double_red_right(t_plist *plist, char **cmd, char **env);
 int                     red_right(t_plist *plist, char **cmd, char **env);
-char                    **order_args(char **prompt);
+char                    **order_args(char **prompt, int i, int j);
 int                     system_fonc(t_plist *plist, char **cmd, char **env);
 int                     unset_env(t_plist *plist, char **cmd);
 int                     red_right(t_plist *plist, char **cmd, char **env);
@@ -145,5 +145,6 @@ int                     red_left(char **cmd);
 int                     double_red_left(t_plist *plist, char **cmd, char **env);
 int			launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep);
 int                     exec_fonc(char **cmd, char **env);
+char                    *pre_parsing(char *prompt, int i, int j);
 
 #endif			/* _42_SH_H_ */

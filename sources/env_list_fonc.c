@@ -1,4 +1,3 @@
-
 /*
 ** env_list_fonc.c for env_list_fonc in /home/gastal_r/rendu/42sh/NE_PAS_TOUCHER/sources
 ** 
@@ -6,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 00:54:48 2016 
-** Last update Mon May 30 22:25:35 2016 
+** Last update Wed Jun  1 16:18:09 2016 
 */
 
 #include		"42sh.h"
@@ -25,7 +24,8 @@ void                    pars_env_line(t_list **list, char *env)
   while (env[++i] != '=')
     (*list)->name[i] = env[i];
   (*list)->name[i] = '\0';
-  if (((*list)->data = malloc(sizeof(char) * (my_strlen(env) - i) + 1)) == NULL)
+  if (((*list)->data = malloc(sizeof(char) *
+			      (my_strlen(env) - i) + 1)) == NULL)
     return;
   while (env[++i])
     (*list)->data[++w] = env[i];
