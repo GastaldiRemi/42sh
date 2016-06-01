@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:26:35 2016
-** Last update Tue May 31 23:35:13 2016 
+** Last update Wed Jun  1 13:11:21 2016 
 */
 
 # ifndef		_42_SH_H_
@@ -21,6 +21,11 @@
 #include		<signal.h>
 
 # define SEPARATOR	"&|;"
+# define BLEUCLAIR	"\033[01;34m"
+# define ROUGE		"\033[00;31m"
+# define BLEU		"\033[00;34m"
+# define SOULIGNE	"\033[04m"
+# define NORMAL		"\033[00m"
 
 typedef struct		 s_list
 {

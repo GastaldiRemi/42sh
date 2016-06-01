@@ -5,16 +5,41 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 11:38:43 2016 
-** Last update Wed Jun  1 00:27:09 2016 
+** Last update Wed Jun  1 13:47:53 2016 
 */
 
 #include		"42sh.h"
 
-char			*aff_prompt()
+void			get_user(t_plist *plist)
+{
+  t_list		*list;
+
+  if (!plist)
+    return ;
+  list = plist->begin;
+    while (list && my_strcmp(list->name, "USER") != 0)
+      {
+	list = list->next;
+	if (list == NULL)
+	  return ;
+      }
+  my_putstr(ROUGE);
+  my_putstr(list->data);
+  write(1, " ", 1);
+  my_putstr(NORMAL);
+}
+
+char			*aff_prompt(t_plist *plist)
 {
   char			*st;
 
-  my_putstr("42sh ");
+  get_user(plist);
+  my_putstr(BLEUCLAIR);
+  write(1, "~", 1);
+  my_putstr(BLEU);
+  my_putstr(get_pwd(plist));
+  write(1, " ", 1);
+  my_putstr(NORMAL);
   st = get_next_line(0);
   return (st);
 }
@@ -24,6 +49,8 @@ char			*check_prompt(char *prompt)
   int			i;
 
   i = 0;
+  if (prompt[0] == '\0')
+    return (NULL);
   if (my_strlen(prompt) == 0)
     return (NULL);
   while (prompt[i])
@@ -44,17 +71,16 @@ int			prompt(t_env *env, t_plist *plist)
   while (1)
     {
       signal(SIGINT, SIG_IGN);
-      st = aff_prompt();
-      if (st == NULL || st[0] == '\0')
+      st = aff_prompt(plist);
+      if (st == NULL)
       	{
-	  (st != NULL ? free(st) : (void)0);
       	  free_env(env->env);
       	  return (0);
       	}
       while (check_prompt(st) == NULL)
 	{
 	  free(st);
-	  st = aff_prompt();
+	  st = aff_prompt(plist);
 	}
       signal(SIGINT, SIG_DFL);
       if (pars_prompt(plist, env, st) != 0)
