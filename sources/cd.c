@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 00:14:10 2016 
-** Last update Thu Jun  2 00:23:42 2016 
+** Last update Thu Jun  2 00:49:56 2016 
 */
 
 #include		"42sh.h"
@@ -68,6 +68,7 @@ int			cd_dir(t_plist *plist, char *dir)
   newpath = my_strcat(newpath, dir, -1, -1);
   if (check_dir(plist, newpath, dir) != 0)
     return (1);
+  chdir(newpath);
   free(newpath);
   return (0);
 }
