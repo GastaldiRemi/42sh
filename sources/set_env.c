@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat May 28 19:38:28 2016 
-** Last update Tue May 31 16:11:34 2016 
+** Last update Wed Jun  1 17:16:29 2016 
 */
 
 #include		"42sh.h"
@@ -18,7 +18,7 @@ int			check_env(t_plist *plist, char **cmd)
   while (my_strcmp(tmp->name, cmd[1]) != 0)
     {
       tmp = tmp->next;
-      if (tmp->next == NULL)
+      if (tmp == NULL)
 	return (-1);
     }
   free(tmp->data);

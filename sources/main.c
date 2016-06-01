@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:45:20 2016 
-** Last update Wed Jun  1 14:24:16 2016 
+** Last update Wed Jun  1 17:33:17 2016 
 */
 
 #include		"42sh.h"
@@ -48,6 +48,8 @@ int			main(int ac, char **av, char **env)
     env_to_list(&plist, env[i]);
   init_path(&plist);
   plist.exit_value = 0;
+  if ((my_env.env = init_env(my_env.env, &plist)) == NULL)
+    return (0);
   prompt(&my_env, &plist);
   free_list(&plist, list);
   return (plist.exit_value);

@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 00:54:48 2016 
-** Last update Wed Jun  1 16:18:09 2016 
+** Last update Wed Jun  1 17:28:03 2016 
 */
 
 #include		"42sh.h"
@@ -24,6 +24,11 @@ void                    pars_env_line(t_list **list, char *env)
   while (env[++i] != '=')
     (*list)->name[i] = env[i];
   (*list)->name[i] = '\0';
+  if (env[i] != '\0' && env[i + 1] == '\0')
+    {
+      (*list)->data= NULL;
+      return;
+    }
   if (((*list)->data = malloc(sizeof(char) *
 			      (my_strlen(env) - i) + 1)) == NULL)
     return;
