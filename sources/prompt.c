@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 11:38:43 2016 
-** Last update Wed Jun  1 13:47:53 2016 
+** Last update Wed Jun  1 14:13:53 2016 
 */
 
 #include		"42sh.h"
@@ -24,7 +24,7 @@ void			get_user(t_plist *plist)
 	  return ;
       }
   my_putstr(ROUGE);
-  my_putstr(list->data);
+  (list->data != NULL ? my_putstr(list->data) : (void)0);
   write(1, " ", 1);
   my_putstr(NORMAL);
 }
@@ -34,9 +34,9 @@ char			*aff_prompt(t_plist *plist)
   char			*st;
 
   get_user(plist);
-  my_putstr(BLEUCLAIR);
+  my_putstr(CYANCLAIR);
   write(1, "~", 1);
-  my_putstr(BLEU);
+  my_putstr(VERTCLAIR);
   my_putstr(get_pwd(plist));
   write(1, " ", 1);
   my_putstr(NORMAL);
