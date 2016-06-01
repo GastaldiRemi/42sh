@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:26:35 2016
-** Last update Wed Jun  1 17:31:03 2016 
+** Last update Thu Jun  2 00:25:50 2016 
 */
 
 # ifndef		_42_SH_H_
@@ -150,5 +150,6 @@ int			launch(t_env *env, t_plist *envlist,
 int                     exec_fonc(char **cmd, char **env);
 char                    *pre_parsing(char *prompt, int i, int j);
 int                     return_chdir(char *dir, char *newpath);
+int                     check_dir(t_plist *plist, char *newpath, char *dir);
 
 #endif			/* _42_SH_H_ */

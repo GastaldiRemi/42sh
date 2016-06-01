@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat May 28 23:54:07 2016 
-** Last update Thu Jun  2 00:12:09 2016 
+** Last update Thu Jun  2 00:24:27 2016 
 */
 
 #include		"42sh.h"
@@ -40,4 +40,27 @@ int                     return_chdir(char *dir, char *newpath)
   write(1, "\n", 1);
   free(newpath);
   return (1);
+}
+
+int			check_dir(t_plist *plist, char *newpath, char *dir)
+{
+  struct stat		folder;
+
+  if (stat(dir, &folder) == 0 && S_ISDIR(folder.st_mode))
+    if (folder.st_mode & S_IRGRP)
+      {
+	if (get_oldpwd(plist) != NULL)
+	  act_oldpwd(plist, get_pwd(plist));
+	act_pwd(plist, newpath);
+	return (0);
+      }
+    else
+      {
+	my_putstr(dir);
+	my_putstr(": Permission denied.\n");
+	free(newpath);
+	return (1);
+      }
+  else
+    return (return_chdir(dir, newpath));
 }
