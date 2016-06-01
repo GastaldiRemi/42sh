@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 00:14:10 2016 
-** Last update Wed Jun  1 16:42:49 2016 
+** Last update Thu Jun  2 00:08:33 2016 
 */
 
 #include		"42sh.h"
@@ -23,6 +23,7 @@ void			cd_prec(t_plist *plist, char *path)
     act_oldpwd(plist, get_pwd(plist));
   if (get_pwd(plist) != NULL)
     act_pwd(plist, path);
+  free(path);
 }
 
 int			cd_home(t_plist *plist)
@@ -52,6 +53,7 @@ int			cd_dir(t_plist *plist, char *dir)
 {
   char			*newpath;
   t_list		*list;
+  struct stat folder;
 
   list = plist->begin;
   if (dir[0] == '~')
@@ -65,11 +67,21 @@ int			cd_dir(t_plist *plist, char *dir)
   (list->data ? newpath = my_strdup(list->data) : 0);
   newpath = my_strcat(newpath, "/", -1, -1);
   newpath = my_strcat(newpath, dir, -1, -1);
-  if (chdir(dir) != 0)
+  if (stat(dir, &folder) == 0 && S_ISDIR(folder.st_mode))
+    if (folder.st_mode & S_IRGRP)
+      {
+	if (get_oldpwd(plist) != NULL)
+	  act_oldpwd(plist, get_pwd(plist));
+	act_pwd(plist, newpath);
+      }
+    else
+      {
+	my_putstr(dir);
+	my_putstr(": Permission denied.\n");
+	return (1);
+      }
+  else
     return (return_chdir(dir, newpath));
-  if (get_oldpwd(plist) != NULL)
-    act_oldpwd(plist, get_pwd(plist));
-  act_pwd(plist, newpath);
   free(newpath);
   return (0);
 }

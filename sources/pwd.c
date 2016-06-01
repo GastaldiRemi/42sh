@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 00:00:44 2016 
-** Last update Wed Jun  1 16:18:52 2016 
+** Last update Thu Jun  2 00:02:29 2016 
 */
 
 #include		"42sh.h"
@@ -45,7 +45,7 @@ void			act_pwd(t_plist *plist, char *path)
 
   buff = my_strdup(path);
   list = plist->begin;
-  while (my_strcmp("PWD", list->name) != 0)
+  while (list && my_strcmp("PWD", list->name) != 0)
     list = list->next;
   if (list->data != NULL)
     free(list->data);
