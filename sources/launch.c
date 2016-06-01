@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 **
 ** Started on  Sat May 28 16:01:27 2016 Juliani Renaud
-** Last update Wed Jun  1 00:29:36 2016 
+** Last update Wed Jun  1 16:43:20 2016 
 */
 
 #include	"42sh.h"
@@ -32,7 +32,7 @@ int		check_action(char **tab, char **env, t_plist *envlist)
     envlist->exit_value = double_red_left(envlist, tab, env);
   else if ((envlist->exit_value = exec_fonc(tab, env)) == 1)
     envlist->exit_value = system_fonc(envlist, tab, env);
-  return(envlist->exit_value);
+  return (envlist->exit_value);
 }
 
 void		move_tmp(t_cmd **tmp, int i, t_sep **sep)

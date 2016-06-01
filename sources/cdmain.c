@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat May 28 23:54:07 2016 
-** Last update Mon May 30 21:41:15 2016 
+** Last update Wed Jun  1 16:43:05 2016 
 */
 
 #include		"42sh.h"
@@ -32,5 +32,14 @@ int			cd_main(t_plist *plist, char **cmd)
     }
   else
     cd_home(plist);
+  return (0);
+}
+
+int                     return_chdir(char *dir, char *newpath)
+{
+  my_putstr("cd: no such file or directory: ");
+  my_putstr(dir);
+  write(1, "\n", 1);
+  free(newpath);
   return (0);
 }

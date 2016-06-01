@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:26:35 2016
-** Last update Wed Jun  1 16:25:55 2016 
+** Last update Wed Jun  1 16:44:08 2016 
 */
 
 # ifndef		_42_SH_H_
@@ -135,16 +135,19 @@ int                     cd_dir(t_plist *plist, char *dir);
 int                     cd_old(t_plist *plist);
 char			*my_realloc(char *, int);
 int                     cd_main(t_plist *plist, char **cmd);
-int                     double_red_right(t_plist *plist, char **cmd, char **env);
+int                     double_red_right(t_plist *plist, char **cmd,
+					 char **env);
 int                     red_right(t_plist *plist, char **cmd, char **env);
 char                    **order_args(char **prompt, int i, int j);
 int                     system_fonc(t_plist *plist, char **cmd, char **env);
 int                     unset_env(t_plist *plist, char **cmd);
 int                     red_right(t_plist *plist, char **cmd, char **env);
 int                     red_left(char **cmd);
-int                     double_red_left(t_plist *plist, char **cmd, char **env);
-int			launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep);
+int                     double_red_left(t_plist *plist, char **cmd,
+					char **env);
+int			launch(t_env *env, t_plist *envlist,
+			       t_pcmd *cmd, t_psep *sep);
 int                     exec_fonc(char **cmd, char **env);
 char                    *pre_parsing(char *prompt, int i, int j);
-
+int                     return_chdir(char *dir, char *newpath);
 #endif			/* _42_SH_H_ */
