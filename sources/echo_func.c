@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Tue May 31 16:41:32 2016 Jabbari Yassir
-** Last update Tue May 31 15:29:50 2016 Matthias PROST
+** Last update Thu Jun  2 12:57:00 2016 Jabbari Yassir
 */
 
 #include "42sh.h"
@@ -26,4 +26,33 @@ int		f_b()
 {
   my_putchar('\b');
   return (0);
+}
+
+void            echo_valuenv(char **tab, char **env)
+{
+  int           j;
+  int		i;
+  char		*tmp;
+
+  j = 0;
+  i = 1;
+  if (tab[1])
+    {
+      if ((tmp = malloc(sizeof(char) * my_strlen(tab[1]))) == NULL)
+	return;
+      while (tab[1][i])
+	{
+	  tmp[j] = tab[1][i];
+	  j++;
+	  i++;
+	}
+      tmp[j] = '\0';
+      i = 0;
+      my_putstr(env[i]);
+      while (my_strcmp(env[i], tmp) != 0)
+      	i++;
+      my_putstr(env[i]);
+      my_putchar('\n');
+      free(tmp);
+    }
 }
