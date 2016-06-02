@@ -5,7 +5,7 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Thu Jun  2 01:45:12 2016 
+## Last update Thu Jun  2 10:48:58 2016 
 ##
 
 ECHO            =       /bin/echo -e
@@ -48,6 +48,7 @@ SRC             =       sources/main.c			\
 			sources/echo_func_bis.c		\
 			sources/pre_parsing.c		\
 			sources/alias.c			\
+			sources/background.c		\
 			sources/my_putchar.c
 
 OBJ             =       $(SRC:.c=.o)
