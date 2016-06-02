@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu Jun  2 01:35:59 2016 
-** Last update Thu Jun  2 02:31:13 2016 
+** Last update Thu Jun  2 13:27:57 2016 
 */
 
 #include		"42sh.h"
@@ -15,6 +15,8 @@ char			**test_alias(t_plist *plist, char *cmd)
   t_alias		*alias;
 
   alias = plist->begin_a;
+  if (alias == NULL)
+    return (NULL);
   while (my_strcmp(alias->alias, cmd) != 0)
     {
       alias = alias->next;
