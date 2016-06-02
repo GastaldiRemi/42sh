@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu Jun  2 01:35:59 2016
-** Last update	Thu Jun 02 15:43:03 2016 Full Name
+** Last update	Thu Jun 02 15:49:50 2016 Full Name
 */
 
 #include		"42sh.h"
@@ -13,11 +13,9 @@
 char			**test_alias(t_plist *plist, char *cmd)
 {
   t_alias		*alias;
-  t_alias_cmd		*alias_cmd;
-
+  t_alias_cmd *alias_cmd;
   alias_cmd = plist->begin_acmd;
-  if (alias_cmd == NULL)
-    return (NULL);
+
   while (alias_cmd)
   {
     if (my_strcmp(alias_cmd->alias, cmd) == 0)
@@ -25,6 +23,8 @@ char			**test_alias(t_plist *plist, char *cmd)
     alias_cmd = alias_cmd->next;
   }
   alias = plist->begin_a;
+  if (alias == NULL)
+    return (NULL);
   while (my_strcmp(alias->alias, cmd) != 0)
     {
       alias = alias->next;
@@ -92,6 +92,8 @@ void	add_alias_cmd(char **tab, t_plist *list)
   char	*cmd;
   int	i;
 
+  if (tab[1] == NULL)
+    return;
   alias = my_strdup(tab[1]);
   i = 2;
   while (tab[i])
