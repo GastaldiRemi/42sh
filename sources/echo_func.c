@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Tue May 31 16:41:32 2016 Jabbari Yassir
-** Last update Thu Jun  2 13:41:34 2016 Jabbari Yassir
+** Last update Thu Jun  2 14:16:19 2016 Jabbari Yassir
 */
 
 #include "42sh.h"
@@ -25,6 +25,25 @@ int		f_a()
 int		f_b()
 {
   my_putchar('\b');
+  return (0);
+}
+
+int		search_value(t_list *list, char *tmp, int j)
+{
+  tmp[j] = '\0';
+  while (my_strcmp(list->name, tmp) != 0)
+    {
+      list = list->next;
+      if (list == NULL)
+	{
+	  my_putstr(tmp);
+	  my_putstr(": Undefined variable.\n");
+	  free(tmp);
+	  return (-1);
+	}
+    }
+  if (list->data)
+    my_puts(list->data);
   return (0);
 }
 
@@ -48,12 +67,11 @@ void            echo_valuenv(char **tab, t_list *list)
       else
 	{
 	  my_puts(tab[1]);
+	  free(tmp);
 	  return;
 	}
-      tmp[j] = '\0';
-      while (my_strcmp(list->name, tmp) != 0)
-	list = list->next;
-      my_puts(list->data);
+      if (search_value(list, tmp, j) == -1)
+	return;
       free(tmp);
     }
 }
