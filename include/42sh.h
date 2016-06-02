@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:26:35 2016
-** Last update Thu Jun  2 14:09:11 2016 Juliani Renaud
+** Last update Thu Jun  2 14:19:53 2016 Juliani Renaud
 */
 
 # ifndef		_42_SH_H_
@@ -59,6 +59,7 @@ typedef struct		s_alias
 typedef struct		s_history
 {
   char			*cmd;
+  int			ligne;
   struct s_history	*next;
   struct s_history	*prev;
 }			t_history;
@@ -177,5 +178,6 @@ char                    **test_alias(t_plist *plist, char *cmd);
 void			cmd_to_history(t_plist *list, char *cmd);
 void			show_history(t_plist *list);
 void			clear_history(t_plist *list);
+void			my_putnbr(int nbr);
 
 #endif			/* _42_SH_H_ */
