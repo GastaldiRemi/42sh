@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu Jun  2 01:35:59 2016
-** Last update	Thu Jun 02 14:44:28 2016 Full Name
+** Last update	Thu Jun 02 15:43:03 2016 Full Name
 */
 
 #include		"42sh.h"
@@ -13,10 +13,18 @@
 char			**test_alias(t_plist *plist, char *cmd)
 {
   t_alias		*alias;
+  t_alias_cmd *alias_cmd;
+  alias_cmd = plist->begin_acmd;
 
-  alias = plist->begin_a;
   if (alias == NULL)
     return (NULL);
+  while (alias_cmd)
+  {
+    if (my_strcmp(alias_cmd->alias, cmd) == 0)
+      return (alias_cmd->cmd);
+    alias_cmd = alias_cmd->next;
+  }
+  alias = plist->begin_a;
   while (my_strcmp(alias->alias, cmd) != 0)
     {
       alias = alias->next;
@@ -52,6 +60,32 @@ void			add_alias(t_plist *list, char *alias, char *cmd)
     }
 }
 
+void			add_alias_cmd_list(t_plist *list, char *alias, char *cmd)
+{
+  t_alias_cmd               *new;
+
+  new = list->begin_acmd;
+  if (!list)
+    return;
+  if ((new = malloc(sizeof(t_list))) == NULL)
+    return;
+  new->alias = my_strdup(alias);
+  new->cmd = order_args(my_str_to_wordtab(cmd), -1, 2);
+  new->prev = NULL;
+  new->next = NULL;
+  if (list->begin_acmd == NULL)
+    {
+      list->begin_acmd = new;
+      list->end_acmd = new;
+    }
+  else
+    {
+      list->end_acmd->next = new;
+      new->prev = list->end_acmd;
+      list->end_acmd = new;
+    }
+}
+
 void	add_alias_cmd(char **tab, t_plist *list)
 {
   char	*alias;
@@ -75,5 +109,5 @@ void	add_alias_cmd(char **tab, t_plist *list)
   while (cmd[i])
     i++;
   cmd[i - 1] = '\0';
-  add_alias(list, alias, cmd);
+  add_alias_cmd_list(list, alias, cmd);
 }

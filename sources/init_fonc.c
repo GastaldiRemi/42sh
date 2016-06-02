@@ -1,11 +1,11 @@
 /*
 ** init_fonc.c for init_fonc in /home/gastal_r/rendu/42sh/NE_PAS_TOUCHER/sources
-** 
-** Made by 
+**
+** Made by
 ** Login   <gastal_r@epitech.net>
-** 
-** Started on  Fri May 27 18:58:27 2016 
-** Last update Thu Jun  2 14:04:16 2016 Juliani Renaud
+**
+** Started on  Fri May 27 18:58:27 2016
+** Last update	Thu Jun 02 15:43:21 2016 Full Name
 */
 
 #include		"42sh.h"
@@ -25,6 +25,8 @@ int                     init_list(t_plist *plist)
   plist->begin = NULL;
   plist->begin_h = NULL;
   plist->end_h = NULL;
+  plist->begin_acmd = NULL;
+  plist->end_acmd = NULL;
   return (0);
 }
 
