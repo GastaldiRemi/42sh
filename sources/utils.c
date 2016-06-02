@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:43:04 2016
-** Last update Thu Jun  2 13:00:07 2016 Jabbari Yassir
+** Last update Thu Jun  2 13:08:32 2016 Jabbari Yassir
 */
 
 #include	     	"42sh.h"
@@ -78,7 +78,7 @@ int			my_strcmp(char *s1, char *s2)
   int           i;
 
   i = 0;
-  while (s1[i] && s2[i] && s1[i] == s2[i] && i < (n - 1))
+  while (s1[i] && s2[i] && s1[i] == s2[i] && i)
     i += 1;
   if ((s1[i] && s2[i]) == '\0')
     return (0);
