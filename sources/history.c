@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Thu Jun  2 13:34:44 2016 Juliani Renaud
-** Last update Thu Jun  2 14:25:11 2016 Juliani Renaud
+** Last update Thu Jun  2 14:35:49 2016 Juliani Renaud
 */
 
 #include "42sh.h"
@@ -42,13 +42,26 @@ void                    cmd_to_history(t_plist *list, char *cmd)
 void			show_history(t_plist *list)
 {
   t_history		*tmp;
+  int			space;
 
   tmp = list->begin_h;
   while (tmp)
     {
-      my_putstr("     ");
+      space = 0;
+      if (tmp->ligne < 10)
+	while (space++ < 5)
+	  my_putstr(" ");
+      else if (tmp->ligne < 100)
+	while (space++ < 4)
+	  my_putstr(" ");
+      else if (tmp->ligne < 1000)
+	while (space++ < 3)
+	  my_putstr(" ");
+      else
+	while (space++ < 2)
+	  my_putstr(" ");
       my_putnbr(tmp->ligne);
-      my_putstr("  ");
+      my_putstr("\t");
       my_putstr(tmp->cmd);
       my_putstr("\n");
       tmp = tmp->next;
