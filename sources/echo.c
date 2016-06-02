@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Tue May 31 15:15:24 2016 Jabbari Yassir
-** Last update Thu Jun  2 12:46:30 2016 Jabbari Yassir
+** Last update Thu Jun  2 13:27:21 2016 Jabbari Yassir
 */
 
 #include "42sh.h"
@@ -90,7 +90,7 @@ int		echo_e(char **tab)
   return (0);
 }
 
-int		echo(char **tab, char **env)
+int		echo(char **tab, t_list *list)
 {
   int		i;
 
@@ -100,7 +100,7 @@ int		echo(char **tab, char **env)
   else if (tab[i] && ((my_strcmp("-e", tab[i])) == 0))
     echo_e(tab);
   else if (tab[i] && (tab[i][0] == '$'))
-    echo_valuenv(tab, env);
+    echo_valuenv(tab, list);
   else
     {
       while (tab[i])
