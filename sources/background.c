@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu Jun  2 10:46:58 2016 
-** Last update Thu Jun  2 14:00:45 2016 
+** Last update Thu Jun  2 14:28:10 2016 
 */
 
 #include		"42sh.h"
@@ -20,10 +20,10 @@ int			background(t_plist *plist, char **cmd, char **env)
   if ((path = test_access(plist, cmd[0])) != NULL)
     {
       if ((pid = fork()) == 0)
-	{
-	  /* setpgid(0, 0); */
-	  /* execve(path, cmd, env); */
-	}
+      	{
+      	  setpgid(pid, 0);
+      	  execve(path, cmd, env);
+      	}
       free(path);
     }
   else

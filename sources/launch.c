@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 **
 ** Started on  Sat May 28 16:01:27 2016 Juliani Renaud
-** Last update Thu Jun  2 14:04:51 2016 Juliani Renaud
+** Last update Thu Jun  2 14:28:03 2016 
 */
 
 #include	"42sh.h"
@@ -94,8 +94,9 @@ int		launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
 	    return (exit_end(envlist, 1));
 	}
       else if (tmp_sep != NULL && my_strcmp(tmp_sep->sep, "&") == 0)
-	background(envlist, tmp->cmd, env);
-      i = check_action(tmp->cmd, env->env, envlist);
+	background(envlist, tmp->cmd, env->env);
+      else
+	i = check_action(tmp->cmd, env->env, envlist);
       move_tmp(&tmp, i, &tmp_sep);
       env->env = init_env(env->env, envlist);
     }

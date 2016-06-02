@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:26:35 2016
-** Last update Thu Jun  2 14:19:53 2016 Juliani Renaud
+** Last update Thu Jun  2 14:29:20 2016 
 */
 
 # ifndef		_42_SH_H_
@@ -179,5 +179,6 @@ void			cmd_to_history(t_plist *list, char *cmd);
 void			show_history(t_plist *list);
 void			clear_history(t_plist *list);
 void			my_putnbr(int nbr);
+int                     background(t_plist *plist, char **cmd, char **env);
 
 #endif			/* _42_SH_H_ */
