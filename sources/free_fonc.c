@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 18:59:53 2016 
-** Last update Thu Jun  2 02:15:59 2016 
+** Last update Thu Jun  2 14:05:18 2016 Juliani Renaud
 */
 
 #include		"42sh.h"
@@ -83,4 +83,5 @@ void                    free_list(t_plist *plist)
 {
   clear_list(plist);
   free_alias(plist);
+  clear_history(plist);
 } 

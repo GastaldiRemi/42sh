@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:26:35 2016
-** Last update Thu Jun  2 13:41:00 2016 Jabbari Yassir
+** Last update Thu Jun  2 14:09:11 2016 Juliani Renaud
 */
 
 # ifndef		_42_SH_H_
@@ -56,6 +56,13 @@ typedef struct		s_alias
   struct s_alias	*prev;
 }			t_alias;
 
+typedef struct		s_history
+{
+  char			*cmd;
+  struct s_history	*next;
+  struct s_history	*prev;
+}			t_history;
+
 typedef struct		s_plist
 {
   int			exit_value;
@@ -63,6 +70,8 @@ typedef struct		s_plist
   t_list		*end;
   t_alias		*begin_a;
   t_alias		*end_a;
+  t_history		*begin_h;
+  t_history		*end_h;
 }			t_plist;
 
 typedef struct		s_cmd
@@ -165,5 +174,8 @@ int                     return_chdir(char *dir, char *newpath);
 int                     check_dir(t_plist *plist, char *newpath, char *dir);
 void                    add_alias(t_plist *list, char *alias, char *cmd);
 char                    **test_alias(t_plist *plist, char *cmd);
+void			cmd_to_history(t_plist *list, char *cmd);
+void			show_history(t_plist *list);
+void			clear_history(t_plist *list);
 
 #endif			/* _42_SH_H_ */

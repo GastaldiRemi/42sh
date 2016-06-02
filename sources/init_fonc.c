@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 18:58:27 2016 
-** Last update Thu Jun  2 01:59:52 2016 
+** Last update Thu Jun  2 14:04:16 2016 Juliani Renaud
 */
 
 #include		"42sh.h"
@@ -23,6 +23,8 @@ int                     init_list(t_plist *plist)
 {
   plist->end = NULL;
   plist->begin = NULL;
+  plist->begin_h = NULL;
+  plist->end_h = NULL;
   return (0);
 }
 
