@@ -5,14 +5,16 @@
 ** Login   <julian_r@epitech.net>
 **
 ** Started on  Sat May 28 16:01:27 2016 Juliani Renaud
-** Last update Thu Jun  2 00:43:31 2016 
+** Last update Thu Jun  2 02:28:35 2016 
 */
 
 #include	"42sh.h"
 
 int		check_action(char **tab, char **env, t_plist *envlist)
 {
-  if (my_strcmp(tab[0], "env") == 0)
+  if (test_alias(envlist, tab[0]) != NULL)
+    envlist->exit_value = system_fonc(envlist, test_alias(envlist, tab[0]), env);
+  else if (my_strcmp(tab[0], "env") == 0)
     envlist->exit_value = show_list(envlist);
   else if (my_strcmp(tab[0], "setenv") == 0)
     envlist->exit_value = set_env(envlist, tab);

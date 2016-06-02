@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 18:59:53 2016 
-** Last update Wed Jun  1 17:29:26 2016 
+** Last update Thu Jun  2 02:15:59 2016 
 */
 
 #include		"42sh.h"
@@ -59,8 +59,28 @@ void                    free_tab(char **env)
   free(env);
 }
 
-void                    free_list(t_plist *plist, t_list *list)
+void			free_alias(t_plist *plist)
+{
+ t_alias               *tmp;
+ int			i;
+
+  while ((tmp = plist->begin_a) != NULL)
+    {
+      i = -1;
+      plist->begin_a = plist->begin_a->next;
+      free(tmp->alias);
+      if (tmp->cmd)
+	{
+	  while (tmp->cmd[++i])
+	    free(tmp->cmd[i]);
+	}
+      free(tmp->cmd);
+      free(tmp);
+    }
+}
+
+void                    free_list(t_plist *plist)
 {
   clear_list(plist);
-  free(list);
-}
+  free_alias(plist);
+} 

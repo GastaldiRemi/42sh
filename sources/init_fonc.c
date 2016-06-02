@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 18:58:27 2016 
-** Last update Wed Jun  1 17:11:42 2016 
+** Last update Thu Jun  2 01:59:52 2016 
 */
 
 #include		"42sh.h"
@@ -19,10 +19,8 @@ int                     init_prompt_list(t_pcmd *pcmd, t_psep *psep)
   return (0);
 }
 
-int                     init_list(t_plist *plist, t_list **list)
+int                     init_list(t_plist *plist)
 {
-  if ((*list = malloc(sizeof(t_list))) == NULL)
-    return (-1);
   plist->end = NULL;
   plist->begin = NULL;
   return (0);

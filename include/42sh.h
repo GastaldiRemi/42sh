@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:26:35 2016
-** Last update Thu Jun  2 00:25:50 2016 
+** Last update Thu Jun  2 02:10:24 2016 
 */
 
 # ifndef		_42_SH_H_
@@ -48,11 +48,21 @@ typedef struct		 s_list
   struct s_list		*next;
 }			t_list;
 
+typedef struct		s_alias
+{
+  char			*alias;
+  char		        **cmd;
+  struct s_alias	*next;
+  struct s_alias	*prev;
+}			t_alias;
+
 typedef struct		s_plist
 {
   int			exit_value;
   t_list		*begin;
   t_list		*end;
+  t_alias		*begin_a;
+  t_alias		*end_a;
 }			t_plist;
 
 typedef struct		s_cmd
@@ -116,8 +126,8 @@ int                     prompt(t_env *env, t_plist *plist);
 void                    free_tab(char **env);
 void                    free_prompt_list(t_pcmd *pcmd, t_psep *psep);
 int                     init_prompt_list(t_pcmd *pcmd, t_psep *psep);
-int                     init_list(t_plist *plist, t_list **list);
-void                    free_list(t_plist *plist, t_list *list);
+int                     init_list(t_plist *plist);
+void                    free_list(t_plist *plist);
 int			my_strcmp(char *, char *);
 char                    **get_path(t_plist *plist);
 char                    *test_access(t_plist *plist, char *cmd);
@@ -151,5 +161,7 @@ int                     exec_fonc(char **cmd, char **env);
 char                    *pre_parsing(char *prompt, int i, int j);
 int                     return_chdir(char *dir, char *newpath);
 int                     check_dir(t_plist *plist, char *newpath, char *dir);
+void                    add_alias(t_plist *list, char *alias, char *cmd);
+char                    **test_alias(t_plist *plist, char *cmd);
 
 #endif			/* _42_SH_H_ */

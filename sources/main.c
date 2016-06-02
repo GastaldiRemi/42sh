@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 21:45:20 2016 
-** Last update Wed Jun  1 17:33:17 2016 
+** Last update Thu Jun  2 02:31:37 2016 
 */
 
 #include		"42sh.h"
@@ -33,7 +33,6 @@ int			main(int ac, char **av, char **env)
 {
   int			i;
   t_plist		plist;
-  t_list		*list;
   t_env			my_env;
 
   (void)ac;
@@ -41,7 +40,7 @@ int			main(int ac, char **av, char **env)
   my_env.env = NULL;
   if (env[0] == NULL)
     return (0);
-  if (init_list(&plist, &list) == -1)
+  if (init_list(&plist) == -1)
     return (0);
   i = -1;
   while (env[++i] != NULL)
@@ -50,7 +49,11 @@ int			main(int ac, char **av, char **env)
   plist.exit_value = 0;
   if ((my_env.env = init_env(my_env.env, &plist)) == NULL)
     return (0);
+  plist.begin_a = NULL;
+  plist.end_a = NULL;
+  add_alias(&plist, "oui", "echo bite");
+  add_alias(&plist, "test", "echo cul");
   prompt(&my_env, &plist);
-  free_list(&plist, list);
+  free_list(&plist);
   return (plist.exit_value);
 }
