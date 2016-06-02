@@ -5,7 +5,7 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Thu Jun  2 10:48:58 2016 
+## Last update Thu Jun  2 13:41:11 2016 Jabbari Yassir
 ##
 
 ECHO            =       /bin/echo -e
@@ -28,6 +28,7 @@ SRC             =       sources/main.c			\
 			sources/echo.c			\
 			sources/prompt.c		\
 			sources/parsing.c		\
+			sources/my_puts.c		\
 			sources/init_fonc.c		\
 			sources/free_fonc.c		\
 			sources/my_str_to_wordtab.c	\

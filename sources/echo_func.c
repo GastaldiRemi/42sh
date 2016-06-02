@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Tue May 31 16:41:32 2016 Jabbari Yassir
-** Last update Thu Jun  2 13:31:33 2016 Jabbari Yassir
+** Last update Thu Jun  2 13:41:34 2016 Jabbari Yassir
 */
 
 #include "42sh.h"
@@ -40,17 +40,20 @@ void            echo_valuenv(char **tab, t_list *list)
     {
       if ((tmp = malloc(sizeof(char) * my_strlen(tab[1]))) == NULL)
 	return;
-      while (tab[1][i])
+      if (tab[1][i + 1])
 	{
-	  tmp[j] = tab[1][i];
-	  j++;
-	  i++;
+	  while (tab[1][i])
+	    tmp[j++] = tab[1][i++];
+	}
+      else
+	{
+	  my_puts(tab[1]);
+	  return;
 	}
       tmp[j] = '\0';
       while (my_strcmp(list->name, tmp) != 0)
 	list = list->next;
-      my_putstr(list->data);
-      my_putchar('\n');
+      my_puts(list->data);
       free(tmp);
     }
 }
