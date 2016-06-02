@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Thu Jun  2 13:34:44 2016 Juliani Renaud
-** Last update Thu Jun  2 14:20:40 2016 Juliani Renaud
+** Last update Thu Jun  2 14:25:11 2016 Juliani Renaud
 */
 
 #include "42sh.h"
@@ -46,9 +46,9 @@ void			show_history(t_plist *list)
   tmp = list->begin_h;
   while (tmp)
     {
-      my_putstr("\t");
+      my_putstr("     ");
       my_putnbr(tmp->ligne);
-      my_putstr(" ");
+      my_putstr("  ");
       my_putstr(tmp->cmd);
       my_putstr("\n");
       tmp = tmp->next;
