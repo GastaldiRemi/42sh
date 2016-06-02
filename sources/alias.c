@@ -13,10 +13,10 @@
 char			**test_alias(t_plist *plist, char *cmd)
 {
   t_alias		*alias;
-  t_alias_cmd *alias_cmd;
-  alias_cmd = plist->begin_acmd;
+  t_alias_cmd		*alias_cmd;
 
-  if (alias == NULL)
+  alias_cmd = plist->begin_acmd;
+  if (alias_cmd == NULL)
     return (NULL);
   while (alias_cmd)
   {

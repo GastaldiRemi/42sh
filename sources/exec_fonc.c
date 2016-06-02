@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 18:46:02 2016 
-** Last update Thu Jun  2 14:05:45 2016 
+** Last update Thu Jun  2 15:44:46 2016 
 */
 
 #include		"42sh.h"
@@ -28,7 +28,6 @@ int			system_fonc(t_plist *plist, char **cmd, char **env)
 	  signal(SIGINT, SIG_IGN);
 	  waitpid(pid, &status, 0);
 	  signal(SIGINT, SIG_DFL);
-	  /* kill(pid, SIGINT); */
 	}
       free(path);
     }

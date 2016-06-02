@@ -5,18 +5,18 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sun Apr 10 03:35:07 2016 Antoine Roig
-** Last update Sun Apr 10 05:02:51 2016 Antoine Roig
+** Last update Thu Jun  2 15:44:23 2016 
 */
 
-#include "minishell2.h"
+#include		"42sh.h"
 
-void	dad(int *ppid, t_instruct *line, t_path s_path, int pid)
+void			dad(int *ppid, char **cmd, t_path s_path, int pid)
 {
-  char  *first_path_name;
-  char  *pathname;
-  int	j;
-  int	ret;
-  int	status;
+  char			*first_path_name;
+  char			*pathname;
+  int			j;
+  int			ret;
+  int			status;
 
   close(ppid[1]);
   dup2(ppid[0], 0);
@@ -38,11 +38,11 @@ void	dad(int *ppid, t_instruct *line, t_path s_path, int pid)
   kill(pid, SIGINT);
 }
 
-void	child(int *ppid, t_instruct *line, t_path s_path)
+void			child(int *ppid, t_instruct *line, t_path s_path)
 {
-  int   ret;
-  char  *first_path_name;
-  char  *pathname;
+  int			ret;
+  char			*first_path_name;
+  char			*pathname;
 
   line->args[s_path.i] = NULL;
   close(ppid[0]);
@@ -62,30 +62,17 @@ void	child(int *ppid, t_instruct *line, t_path s_path)
     free(pathname);
 }
 
-int	check_pipe(t_instruct *line,  char **env, char **path)
+int			check_pipe(char **cmd1, char **cmd2,  char **env, char **path)
 {
-  int	i;
-  int	pid;
-  int	ppid[2];
-  t_path	s_path;
+  int			i;
+  int			pid;
+  int			ppid[2];
 
-  s_path.env = env;
-  s_path.path = path;
-  i = 0;
-  while (line->args[i])
-    {
-      if (line->args[i][0] == '|' && line->args[i][1] == '\0')
-	{
-	  pipe(ppid);
-	  pid = fork();
-	  s_path.i = i;
-	  if (pid > 0)
-	    dad(ppid, line, s_path, pid);
-	  else
-	    child(ppid, line, s_path);
-	  return (1);
-	}
-      i++;
-    }
+  pipe(ppid);
+  pid = fork();
+  if (pid > 0)
+    dad(ppid, cmd1, s_path, pid);
+  else
+    child(ppid, cmd2, s_path);
   return (0);
 }
