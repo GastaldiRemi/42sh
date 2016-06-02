@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 **
 ** Started on  Sat May 28 16:01:27 2016 Juliani Renaud
-** Last update Thu Jun  2 14:28:03 2016 
+** Last update	Thu Jun 02 14:39:28 2016 Full Name
 */
 
 #include	"42sh.h"
@@ -34,6 +34,8 @@ int		check_action(char **tab, char **env, t_plist *envlist)
     envlist->exit_value = red_left(tab);
   else if (my_strcmp(tab[0], "<<") == 0)
     envlist->exit_value = double_red_left(envlist, tab, env);
+  else if (my_strcmp(tab[0], "alias") == 0)
+    add_alias_cmd(tab, envlist);
   else if ((envlist->exit_value = exec_fonc(tab, env)) == 1)
     envlist->exit_value = system_fonc(envlist, tab, env);
   return (envlist->exit_value);

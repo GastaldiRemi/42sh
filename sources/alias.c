@@ -1,11 +1,11 @@
 /*
 ** alias.c for alias in /home/gastal_r/rendu/42sh/sources
-** 
-** Made by 
+**
+** Made by
 ** Login   <gastal_r@epitech.net>
-** 
-** Started on  Thu Jun  2 01:35:59 2016 
-** Last update Thu Jun  2 13:27:57 2016 
+**
+** Started on  Thu Jun  2 01:35:59 2016
+** Last update	Thu Jun 02 14:44:28 2016 Full Name
 */
 
 #include		"42sh.h"
@@ -49,5 +49,31 @@ void			add_alias(t_plist *list, char *alias, char *cmd)
       list->end_a->next = new;
       new->prev = list->end_a;
       list->end_a = new;
-    }  
+    }
+}
+
+void	add_alias_cmd(char **tab, t_plist *list)
+{
+  char	*alias;
+  char	*cmd;
+  int	i;
+
+  alias = my_strdup(tab[1]);
+  i = 2;
+  while (tab[i])
+  {
+    alias = my_strcat(alias, " ", -1, -1);
+    alias = my_strcat(alias, tab[i], -1, -1);
+    i++;
+  }
+  i = 0;
+  while (alias[i] != '\'')
+    i++;
+  cmd = (char *)alias + i + 1;
+  alias[i - 1] = '\0';
+  i = 0;
+  while (cmd[i])
+    i++;
+  cmd[i - 1] = '\0';
+  add_alias(list, alias, cmd);
 }
