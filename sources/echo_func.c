@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Tue May 31 16:41:32 2016 Jabbari Yassir
-** Last update Thu Jun  2 13:28:12 2016 Jabbari Yassir
+** Last update Thu Jun  2 13:31:33 2016 Jabbari Yassir
 */
 
 #include "42sh.h"
@@ -49,7 +49,7 @@ void            echo_valuenv(char **tab, t_list *list)
       tmp[j] = '\0';
       while (my_strcmp(list->name, tmp) != 0)
 	list = list->next;
-      my_putstr(list->name);
+      my_putstr(list->data);
       my_putchar('\n');
       free(tmp);
     }
