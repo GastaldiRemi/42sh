@@ -190,7 +190,7 @@ void			show_history(t_plist *list);
 void			clear_history(t_plist *list);
 void			my_putnbr(int nbr);
 int                     background(t_plist *plist, char **cmd, char **env);
-void	add_alias_cmd(char **tab, t_plist *list);
+void			add_alias_cmd(char **tab, t_plist *list);
 void			add_alias_cmd_list(t_plist *list, char *alias, char *cmd);
 
 #endif			/* _42_SH_H_ */

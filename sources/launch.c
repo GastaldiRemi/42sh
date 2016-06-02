@@ -64,7 +64,7 @@ void		move_tmp(t_cmd **tmp, int i, t_sep **sep)
       else
 	return;
     }
-  else
+  else if (*tmp)
     (*tmp) = (*tmp)->next;
   (*sep) = (*sep)->next;
   return;
@@ -95,6 +95,11 @@ int		launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
 	  else
 	    return (exit_end(envlist, 1));
 	}
+      else if (tmp_sep != NULL && tmp->next != NULL && my_strcmp(tmp_sep->sep, "|") == 0)
+      	{
+      	  check_pipe(envlist, tmp->cmd, tmp->next->cmd, env->env);
+	  tmp = tmp->next;
+      	}
       else if (tmp_sep != NULL && my_strcmp(tmp_sep->sep, "&") == 0)
 	background(envlist, tmp->cmd, env->env);
       else

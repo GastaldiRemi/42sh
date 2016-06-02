@@ -14,8 +14,8 @@ char			**test_alias(t_plist *plist, char *cmd)
 {
   t_alias		*alias;
   t_alias_cmd *alias_cmd;
-  alias_cmd = plist->begin_acmd;
 
+  alias_cmd = plist->begin_acmd;
   while (alias_cmd)
   {
     if (my_strcmp(alias_cmd->alias, cmd) == 0)
