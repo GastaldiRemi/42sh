@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 00:14:10 2016 
-** Last update Thu Jun  2 00:49:56 2016 
+** Last update Fri Jun  3 23:40:18 2016 
 */
 
 #include		"42sh.h"
@@ -15,9 +15,12 @@ void			cd_prec(t_plist *plist, char *path)
   int			length;
 
   length = my_strlen(path);
-  while (path[length] != '/')
-    length--;
-  path[length] = '\0';
+  if (my_strcmp(path, "/home") != 0)
+    {
+      while (length > 0 && path[length] != '/')
+	length--;
+      path[length] = '\0';
+    }
   chdir(path);
   if (get_oldpwd(plist) != NULL)
     act_oldpwd(plist, get_pwd(plist));
@@ -54,6 +57,7 @@ int			cd_dir(t_plist *plist, char *dir)
   char			*newpath;
   t_list		*list;
 
+  newpath = NULL;
   list = plist->begin;
   if (dir[0] == '~')
     return (cd_tile(plist, dir));
@@ -63,8 +67,11 @@ int			cd_dir(t_plist *plist, char *dir)
       if (list == NULL)
 	return (0);
     }
-  (list->data ? newpath = my_strdup(list->data) : 0);
-  newpath = my_strcat(newpath, "/", -1, -1);
+  if (list->data && dir[0] != '/')
+    {
+      (list->data ? newpath = my_strdup(list->data) : 0);
+      newpath = my_strcat(newpath, "/", -1, -1);
+    }
   newpath = my_strcat(newpath, dir, -1, -1);
   if (check_dir(plist, newpath, dir) != 0)
     return (1);

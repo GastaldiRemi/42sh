@@ -1,0 +1,153 @@
+exit
+ls
+ls
+env | cat -e > toto
+cat toto
+rm toto
+rm toto
+ls
+ls | cat -e > toto
+cat toto
+echo "toto" | cat -e > toto
+cat toto
+env | cat -e > toto
+cat toto
+exit
+ls
+env
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+ls
+exit
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+setenv PWD bonsoir
+cd ..
+exit
+setnv dsf
+setenv sdf
+ls
+env
+ls
+setenv PWD sdf
+cd ..
+exit
+setenv PWD oi
+ls
+pwd
+cenv
+env
+ls
+cd -
+cd -
+ls
+cd ..
+cd ..
+exit
+setenv PWD BONSOIR
+cd ..
+cd ..
+cd ..
+ls
+cd ..
+cd -
+ls
+pwd
+cd ..
+ls
+exit
+cd ..
+ls
+exit
+setenv PWD df
+ls
+cd ..
+cd ..
+l
+exit
+ls
+setenv PWD
+..
+setnv PWD TESST$
+setenv PWD sqd
+cd .
+ls
+cd ..
+cd ..
+ls
+cd -
+cd ./
+cd ././././././././
+ls
+exit
+cd ././
+ls
+cd ./././././././
+cd sd
+cd /
+ls
+cd //////////////////////////////
+ls
+pwd
+env
+cd ...............;
+cd .
+cd ./././././././////.
+exit
+cd /bin
+ls
+ls
+cd bin
+ls
+cd /bin
+ls
+exit
+cd /root
+ls
+pwd
+env
+exit
+cd ~/rendu
+cd /bin
+ls
+exit
+cd /bin
+ls
+cd /bin
+ls
+cd -
+ls
+cd -
+cd -
+ls
+cd /root
+ls
+ls
+cd -
+ls
+cd /bin
+ls
+cd -
+ls
+pwd
+cd -
+pwd
+cd -
+ls
+exit
+cd ..
+cd /sources
+cd sources
+ls
+cd ..
