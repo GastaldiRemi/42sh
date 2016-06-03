@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Fri Jun  3 17:35:27 2016 Jabbari Yassir
-** Last update Fri Jun  3 18:27:07 2016 Jabbari Yassir
+** Last update Fri Jun  3 16:35:15 2016 Matthias PROST
 */
 
 #include "42sh.h"
@@ -60,10 +60,8 @@ void		alias(t_plist *list)
 
   i = 0;
   if ((fd = open(".42shrc", O_RDONLY)) == -1)
-    {
-      if ((fd = open(".42shrc", O_RDWR | O_CREAT, 0666)) == -1)
-	return;
-    }
+    if ((fd = open(".42shrc", O_RDWR | O_CREAT, 0666)) == -1)
+      return;
   else
     {
       buffer = get_next_line(fd);
@@ -71,5 +69,6 @@ void		alias(t_plist *list)
       while (tab[i])
 	parser_alias(list, tab[i++]);
     }
+  free_tab(tab);
   free(buffer);
 }

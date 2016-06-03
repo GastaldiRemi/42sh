@@ -143,14 +143,12 @@ int	add_alias_cmd(char **tab, t_plist *list)
   }
   if (check_alias(alias) == 1)
     return (1);
-  i = 0;
-  while (alias[i] != '\'')
-    i++;
+  i = -1;
+  while (alias[++i] != '\'');
   cmd = (char *)alias + i + 1;
   alias[i - 1] = '\0';
-  i = 0;
-  while (cmd[i])
-    i++;
+  i = -1;
+  while (cmd[++i]);
   cmd[i - 1] = '\0';
   add_alias_cmd_list(list, alias, cmd);
   return (1);
