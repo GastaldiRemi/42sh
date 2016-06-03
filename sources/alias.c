@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu Jun  2 01:35:59 2016
-** Last update	Fri Jun 03 16:10:08 2016 Full Name
+** Last update	Fri Jun 03 16:12:52 2016 Full Name
 */
 
 #include		"42sh.h"
@@ -120,7 +120,10 @@ int	add_alias_cmd(char **tab, t_plist *list)
   }
   i = 0;
   if (alias[my_strlen(alias) - 1] != '\'')
+  {
+    free(alias);
     return (1);
+  }
   while (alias[i] != '\'')
     i++;
   cmd = (char *)alias + i + 1;
