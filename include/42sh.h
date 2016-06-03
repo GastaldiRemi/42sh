@@ -80,11 +80,13 @@ typedef struct		s_plist
   t_list		*end;
   t_alias		*begin_a;
   t_alias		*end_a;
-  t_alias_cmd *begin_acmd;
-  t_alias_cmd *end_acmd;
+  t_alias_cmd		*begin_acmd;
+  t_alias_cmd		*end_acmd;
   t_history		*begin_h;
   t_history		*end_h;
-  int	size;
+  int			size;
+  int			pipe;
+  
 }			t_plist;
 
 typedef struct		s_cmd
@@ -189,7 +191,7 @@ int                     double_red_left(t_plist *plist, char **cmd,
 					char **env);
 int			launch(t_env *env, t_plist *envlist,
 			       t_pcmd *cmd, t_psep *sep);
-int                     exec_fonc(char **cmd, char **env);
+int                     exec_fonc(t_plist *plist, char **cmd, char **env);
 char                    *pre_parsing(char *prompt, int i, int j);
 int                     return_chdir(char *dir, char *newpath);
 int                     check_dir(t_plist *plist, char *newpath, char *dir);
@@ -214,5 +216,6 @@ char			*open_history(t_plist *list, int fd);
 char			*add_to_history(t_plist *list);
 void			launch_history(t_plist *list, char *st);
 void                    free_alias_cmd(t_plist *list);
+int		        check_action(char **tab, char **env, t_plist *envlist);
 
 #endif			/* _42_SH_H_ */
