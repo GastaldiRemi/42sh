@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Thu Jun  2 13:34:44 2016 Juliani Renaud
-** Last update Fri Jun  3 17:29:37 2016 Juliani Renaud
+** Last update Fri Jun  3 18:14:48 2016 Juliani Renaud
 */
 
 #include "42sh.h"
@@ -67,16 +67,15 @@ char		*check_cmd_history(t_plist *list, char *str, int i, int j)
     }
   while (str[i] == '!')
     i++;
-  while (str[i] != '\0' && ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')))
+  while (str[i] != '\0' && ((str[i] >= 'a' && str[i] <= 'z')
+			    || (str[i] >= 'A' && str[i] <= 'Z')))
     i++;
   if (str[i] == '\0')
     return (str);
   else
     {
       while (str[i])
-	{
-	  str2[j++] = str[i++];
-	}
+	str2[j++] = str[i++];
       str2[j] = '\0';
       cmd_to_history(list, str2);
       add_to_history(list);

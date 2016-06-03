@@ -32,3 +32,10 @@ qf
 f
 history
 exit
+ls
+ls -l
+history
+history
+;ls
+history
+exit
