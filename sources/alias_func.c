@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Fri Jun  3 17:35:27 2016 Jabbari Yassir
-** Last update Fri Jun  3 16:47:15 2016 
+** Last update Fri Jun  3 19:21:00 2016 Jabbari Yassir
 */
 
 #include "42sh.h"
@@ -15,7 +15,7 @@ void		parser_alias_bis(t_plist *list, char *str, t_data data_alias)
   if (str[data_alias.i + 1] == 39)
     data_alias.i++;
   data_alias.j = data_alias.i;
-  while (str[data_alias.i] != 39)
+  while (str[data_alias.i] != 39 && str[data_alias.i])
     data_alias.i++;
   if ((data_alias.cmd2 = malloc(sizeof(char) * data_alias.i + 1)) == NULL)
     return;
@@ -36,12 +36,12 @@ void		parser_alias(t_plist *list, char *str)
   data_alias.j = 0;
   if (my_strcmp(str, "alias") == 0)
     return;
-  while (str[data_alias.i] != '=')
+  while (str[data_alias.i] != '=' && str[data_alias.i])
     data_alias.i++;
   if ((data_alias.cmd1 = malloc(sizeof(char) * data_alias.i + 1)) == NULL)
     return;
   data_alias.i = 0;
-  while (str[data_alias.i] != '=')
+  while (str[data_alias.i] != '=' && str[data_alias.i])
     {
       data_alias.cmd1[data_alias.i] = str[data_alias.i];
       data_alias.i++;
@@ -67,7 +67,10 @@ void		alias(t_plist *list)
   else
     {
       buffer = get_next_line(fd);
-      tab = my_str_to_wordtab(buffer);
+      if (buffer == NULL)
+	return;
+      if ((tab = my_str_to_wordtab(buffer)) == NULL)
+	return;
       while (tab[i])
 	parser_alias(list, tab[i++]);
       free(buffer);
