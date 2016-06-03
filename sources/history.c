@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Thu Jun  2 13:34:44 2016 Juliani Renaud
-** Last update Fri Jun  3 14:55:02 2016 Juliani Renaud
+** Last update Fri Jun  3 15:21:07 2016 
 */
 
 #include "42sh.h"
@@ -32,7 +32,6 @@ char		*check_cmd_history(t_plist *list, char *str, int i, int j)
       str2[j] = '\0';
       cmd_to_history(list, str2);
     }
-  str = str2;
   free(str2);
   return (str);
 }
