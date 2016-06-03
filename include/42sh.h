@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:26:35 2016
-** Last update	Thu Jun 02 15:34:55 2016 Full Name
+** Last update	Fri Jun 03 14:25:54 2016 Full Name
 */
 
 # ifndef		_42_SH_H_
@@ -83,6 +83,7 @@ typedef struct		s_plist
   t_alias_cmd *end_acmd;
   t_history		*begin_h;
   t_history		*end_h;
+  int	size;
 }			t_plist;
 
 typedef struct		s_cmd
@@ -192,5 +193,7 @@ void			my_putnbr(int nbr);
 int                     background(t_plist *plist, char **cmd, char **env);
 void			add_alias_cmd(char **tab, t_plist *list);
 void			add_alias_cmd_list(t_plist *list, char *alias, char *cmd);
+void	pop_list_alias(t_plist *list, int pos);
+void	pop_alias_cmd(char **tab, t_plist *list);
 
 #endif			/* _42_SH_H_ */

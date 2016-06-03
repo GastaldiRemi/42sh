@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Fri May 27 18:58:27 2016
-** Last update	Thu Jun 02 15:43:21 2016 Full Name
+** Last update	Fri Jun 03 14:26:52 2016 Full Name
 */
 
 #include		"42sh.h"
@@ -27,6 +27,7 @@ int                     init_list(t_plist *plist)
   plist->end_h = NULL;
   plist->begin_acmd = NULL;
   plist->end_acmd = NULL;
+  plist->size = 0;
   return (0);
 }
 
