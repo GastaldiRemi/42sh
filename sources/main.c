@@ -1,11 +1,11 @@
 /*
 ** main.c for 42sh in /home/gastal_r/rendu/42sh/NE_PAS_TOUCHER/sources
-** 
-** Made by 
+**
+** Made by
 ** Login   <gastal_r@epitech.net>
-** 
-** Started on  Thu May 26 21:45:20 2016 
-** Last update Thu Jun  2 15:48:05 2016 
+**
+** Started on  Thu May 26 21:45:20 2016
+** Last update Fri Jun  3 17:57:51 2016 Jabbari Yassir
 */
 
 #include		"42sh.h"
@@ -51,6 +51,7 @@ int			main(int ac, char **av, char **env)
     return (0);
   plist.begin_a = NULL;
   plist.end_a = NULL;
+  alias(&plist);
   prompt(&my_env, &plist);
   free_list(&plist);
   return (plist.exit_value);

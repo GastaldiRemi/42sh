@@ -117,6 +117,14 @@ typedef struct		s_env
   char			**env;
 }			t_env;
 
+typedef struct		s_data
+{
+  int			i;
+  int			j;
+  char			*cmd1;
+  char			*cmd2;
+}			t_data;
+
 int			f_slash();
 int			f_a();
 int			f_b();
@@ -200,5 +208,6 @@ int                     system_fonc_pipe(t_plist *plist, char **cmd, char **env)
 int                     exec_fonc_pipe(char **cmd, char **env);
 char			*check_cmd_history(t_plist *plist, char *st, int i, int j);
 int	check_exist(t_plist *list, char *alias, char *cmd);
+void			alias(t_plist *list);
 
 #endif			/* _42_SH_H_ */
