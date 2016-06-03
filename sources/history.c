@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Thu Jun  2 13:34:44 2016 Juliani Renaud
-** Last update Fri Jun  3 18:52:40 2016 
+** Last update Fri Jun  3 19:47:30 2016 Juliani Renaud
 */
 
 #include "42sh.h"
@@ -60,11 +60,6 @@ char		*check_cmd_history(t_plist *list, char *str, int i, int j)
 {
   char		*str2;
 
-  if ((str2 = malloc(sizeof(char) * (my_strlen(str) + 1))) == NULL)
-    {
-      dprintf(2, "Error with malloc\n");
-      return (NULL);
-    }
   while (str[i] == '!')
     i++;
   while (str[i] != '\0' && ((str[i] >= 'a' && str[i] <= 'z')
@@ -74,6 +69,11 @@ char		*check_cmd_history(t_plist *list, char *str, int i, int j)
     return (str);
   else
     {
+      if ((str2 = malloc(sizeof(char) * (my_strlen(&str[i]) + 1))) == NULL)
+	{
+	  dprintf(2, "Error with malloc\n");
+	  return (NULL);
+	}
       while (str[i])
 	str2[j++] = str[i++];
       str2[j] = '\0';
@@ -87,7 +87,6 @@ char		*check_cmd_history(t_plist *list, char *str, int i, int j)
 void                    cmd_to_history(t_plist *list, char *cmd)
 {
   t_history		*new;
-  static int		i = 1;
 
   if (!list)
     return;
@@ -98,17 +97,17 @@ void                    cmd_to_history(t_plist *list, char *cmd)
   if (list->begin_h == NULL)
     {
       new->cmd = my_strdup(cmd);
-      new->ligne = i;
+      new->ligne = 1;
       list->begin_h = new;
       list->end_h = new;
     }
   else
     {
-      new->ligne = i;
       new->cmd = my_strdup(cmd);
       new->prev = list->end_h;
       list->end_h->next = new;
       list->end_h = new;
+      if (new->prev != NULL)
+	new->ligne = new->prev->ligne + 1;
     }
-  i++;
 }
