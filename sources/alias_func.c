@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Fri Jun  3 17:35:27 2016 Jabbari Yassir
-** Last update Fri Jun  3 16:35:15 2016 Matthias PROST
+** Last update Fri Jun  3 16:37:36 2016 Matthias PROST
 */
 
 #include "42sh.h"
@@ -69,6 +69,5 @@ void		alias(t_plist *list)
       while (tab[i])
 	parser_alias(list, tab[i++]);
     }
-  free_tab(tab);
   free(buffer);
 }
