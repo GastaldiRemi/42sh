@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 18:46:02 2016 
-** Last update Fri Jun  3 14:42:21 2016 
+** Last update Fri Jun  3 14:45:42 2016 
 */
 
 #include		"42sh.h"
@@ -84,10 +84,7 @@ int			exec_fonc(char **cmd, char **env)
 int			system_fonc_pipe(t_plist *plist, char **cmd, char **env)
 {
   char			*path;
-  int			pid;
-  pid_t			status;
 
-  status = 0;
   if (cmd == NULL || my_strlen(cmd[0]) == 0)
     return (0);
   if ((path = test_access(plist, cmd[0])) != NULL)
@@ -109,7 +106,7 @@ int			exec_fonc_pipe(char **cmd, char **env)
 {
   int			fd;
   int			status;
-
+ 
   status = 0;
   if (cmd[0] && my_strcmp(cmd[0], "..") == 0)
     return (0);

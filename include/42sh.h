@@ -192,5 +192,8 @@ void			my_putnbr(int nbr);
 int                     background(t_plist *plist, char **cmd, char **env);
 void			add_alias_cmd(char **tab, t_plist *list);
 void			add_alias_cmd_list(t_plist *list, char *alias, char *cmd);
+int             my_pipe(t_plist *plist, char **cmd1, char **cmd2, char **env);
+int                     system_fonc_pipe(t_plist *plist, char **cmd, char **env);
+int                     exec_fonc_pipe(char **cmd, char **env);
 
 #endif			/* _42_SH_H_ */
