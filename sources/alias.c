@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu Jun  2 01:35:59 2016
-** Last update	Fri Jun 03 16:12:52 2016 Full Name
+** Last update	Fri Jun 03 16:19:01 2016 Full Name
 */
 
 #include		"42sh.h"
@@ -102,6 +102,29 @@ int	show_alias(t_plist *list)
   return (0);
 }
 
+int	check_alias(char *alias)
+{
+  int	i;
+  int e;
+
+  e = 0;
+  i = -1;
+  if (alias[my_strlen(alias) - 1] != '\'')
+  {
+    free(alias);
+    return (1);
+  }
+  while (alias[++i])
+    if (alias[i] == '=' && alias[i + 1] == '\'')
+      e = 1;
+  if (e == 0)
+    {
+      free(alias);
+      return (1);
+    }
+  return (0);
+}
+
 int	add_alias_cmd(char **tab, t_plist *list)
 {
   char	*alias;
@@ -118,12 +141,9 @@ int	add_alias_cmd(char **tab, t_plist *list)
     alias = my_strcat(alias, tab[i], -1, -1);
     i++;
   }
-  i = 0;
-  if (alias[my_strlen(alias) - 1] != '\'')
-  {
-    free(alias);
+  if (check_alias(alias) == 1)
     return (1);
-  }
+  i = 0;
   while (alias[i] != '\'')
     i++;
   cmd = (char *)alias + i + 1;
