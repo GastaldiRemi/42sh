@@ -143,10 +143,10 @@ TESTS=
 
 [17]
 NAME="cd"
-SETUP="rm -Rf plopplop"
+SETUP=""
 CLEAN="rm -Rf plopplop"
 TESTS=
-  echo "mkdir -f plopplop"
+  echo "mkdir plopplop"
   echo "cd plopplop"
   echo "pwd"
   echo -e "cd -\necho KEY\npwd\ncd /\nls"

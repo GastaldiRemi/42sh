@@ -5,24 +5,24 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Fri Jun  3 17:35:27 2016 Jabbari Yassir
-** Last update Fri Jun  3 23:23:38 2016 Jabbari Yassir
+** Last update Sat Jun  4 00:40:36 2016 
 */
 
 #include "42sh.h"
 
 void		parser_alias_bis(t_plist *list, char *str, t_data data_alias)
 {
-  if (str[data_alias.i + 1] == 39)
+  if (str[data_alias.i] && str[data_alias.i + 1] == 39)
     data_alias.i++;
   data_alias.j = data_alias.i;
   while (str[data_alias.i] != 39 && str[data_alias.i])
     data_alias.i++;
   if ((data_alias.cmd2 = malloc(sizeof(char) * data_alias.i + 1)) == NULL)
     return;
-  data_alias.i = ++data_alias.j;
+  data_alias.i = data_alias.j;
   data_alias.j = 0;
-  while (str[data_alias.i + 1])
-    data_alias.cmd2[data_alias.j++] = str[data_alias.i++];
+  while (str[++data_alias.i])
+    data_alias.cmd2[data_alias.j++] = str[data_alias.i];
   data_alias.cmd2[data_alias.j] = '\0';
   add_alias(list, data_alias.cmd1, data_alias.cmd2);
   free(data_alias.cmd2);
@@ -36,7 +36,7 @@ void		parser_alias(t_plist *list, char *str)
   data_alias.j = 0;
   if (my_strcmp(str, "alias") == 0)
     return;
-  while (str[data_alias.i] != '=' && str[data_alias.i])
+  while (str[data_alias.i] && str[data_alias.i] != '=')
     data_alias.i++;
   if ((data_alias.cmd1 = malloc(sizeof(char) * data_alias.i + 1)) == NULL)
     return;
@@ -53,16 +53,9 @@ void		parser_alias(t_plist *list, char *str)
 
 char		*xread(int fd)
 {
-  int		rd;
   char		*buffer;
 
-  rd = 0;
-  if ((buffer = malloc(sizeof(char) * 4096)) == NULL)
-    return (NULL);
-  rd = read(fd, buffer, 4095);
-  if (rd == -1)
-    return (NULL);
-  buffer[rd] = '\0';
+  buffer = get_next_line(fd);
   return (buffer);
 }
 
@@ -88,6 +81,6 @@ void		alias(t_plist *list)
       while (tab[i])
 	parser_alias(list, tab[i++]);
       free(buffer);
+      free_tab(tab);
     }
-  free_tab(tab);
 }
