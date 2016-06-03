@@ -143,9 +143,10 @@ TESTS=
 
 [17]
 NAME="cd"
-SETUP=""
+SETUP="rm -Rf plopplop"
 CLEAN="rm -Rf plopplop"
 TESTS=
+  echo "rm -rf plopplop"
   echo "mkdir plopplop"
   echo "cd plopplop"
   echo "pwd"

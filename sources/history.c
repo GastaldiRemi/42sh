@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Thu Jun  2 13:34:44 2016 Juliani Renaud
-** Last update Fri Jun  3 18:24:46 2016 Juliani Renaud
+** Last update Fri Jun  3 18:52:40 2016 
 */
 
 #include "42sh.h"
@@ -91,7 +91,7 @@ void                    cmd_to_history(t_plist *list, char *cmd)
 
   if (!list)
     return;
-  if ((new = malloc(sizeof(t_list))) == NULL)
+  if ((new = malloc(sizeof(t_history))) == NULL)
     return;
   new->prev = NULL;
   new->next = NULL;

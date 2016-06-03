@@ -1,11 +1,11 @@
 ##
 ## Makefile for Makefile in /home/roig_a/PSU_2015_minishell2
-##
+## 
 ## Made by Antoine Roig
 ## Login   <roig_a@epitech.net>
-##
+## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Fri Jun  3 16:52:16 2016 Juliani Renaud
+## Last update Fri Jun  3 18:30:06 2016 
 ##
 
 ECHO            =       /bin/echo -e
@@ -31,6 +31,7 @@ SRC             =       sources/main.c			\
 			sources/my_puts.c		\
 			sources/init_fonc.c		\
 			sources/free_fonc.c		\
+			sources/free_fonc2.c		\
 			sources/my_str_to_wordtab.c	\
 			sources/get_path.c		\
 			sources/set_env.c		\
@@ -49,14 +50,14 @@ SRC             =       sources/main.c			\
 			sources/echo_func_bis.c		\
 			sources/pre_parsing.c		\
 			sources/alias.c			\
-			sources/alias2.c			\
+			sources/alias2.c		\
+			sources/alias_func.c		\
 			sources/background.c		\
 			sources/my_putchar.c		\
 			sources/fct.c			\
 			sources/pipe.c			\
 			sources/history.c		\
-			sources/func_history.c		\
-			sources/alias_func.c		
+			sources/func_history.c
 
 OBJ             =       $(SRC:.c=.o)
 
@@ -85,3 +86,4 @@ re              :        fclean all
 			@$(CC) $(CFLAGS) -c $< -o $@  && \
 			$(ECHO) $(GREEN) "[OK]" $(TEAL) $< $(DEFAULT) || \
 			$(ECHO) $(RED) "[XX]" $(TEAL) $< $(DEFAULT)
+

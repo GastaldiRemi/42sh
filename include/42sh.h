@@ -202,16 +202,17 @@ void			my_putnbr(int nbr);
 int                     background(t_plist *plist, char **cmd, char **env);
 int			add_alias_cmd(char **tab, t_plist *list);
 void			add_alias_cmd_list(t_plist *list, char *alias, char *cmd);
-int	pop_list_alias(t_plist *list, int pos);
-void	pop_alias_cmd(char **tab, t_plist *list);
-int             my_pipe(t_plist *plist, char **cmd1, char **cmd2, char **env);
+int			pop_list_alias(t_plist *list, int pos);
+void			pop_alias_cmd(char **tab, t_plist *list);
+int			my_pipe(t_plist *plist, char **cmd1, char **cmd2, char **env);
 int                     system_fonc_pipe(t_plist *plist, char **cmd, char **env);
 int                     exec_fonc_pipe(char **cmd, char **env);
 char			*check_cmd_history(t_plist *plist, char *st, int i, int j);
-int	check_exist(t_plist *list, char *alias, char *cmd);
+int			check_exist(t_plist *list, char *alias, char *cmd);
 void			alias(t_plist *list);
 char			*open_history(t_plist *list, int fd);
 char			*add_to_history(t_plist *list);
 void			launch_history(t_plist *list, char *st);
+void                    free_alias_cmd(t_plist *list);
 
 #endif			/* _42_SH_H_ */
