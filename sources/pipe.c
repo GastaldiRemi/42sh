@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sun Apr 10 03:35:07 2016 Antoine Roig
-** Last update Fri Jun  3 14:43:30 2016 
+** Last update Fri Jun  3 15:02:51 2016 
 */
 
 #include		"42sh.h"
@@ -13,7 +13,7 @@
 int			check_action_pipe(t_plist *envlist, char **tab, char **env)
 {
   if (test_alias(envlist, tab[0]) != NULL)
-    envlist->exit_value = system_fonc(envlist, test_alias(envlist, tab[0]), env);
+    envlist->exit_value = system_fonc_pipe(envlist, test_alias(envlist, tab[0]), env);
   else if (my_strcmp(tab[0], "history") == 0)
     show_history(envlist);
   else if (my_strcmp(tab[0], "env") == 0)
@@ -38,6 +38,7 @@ int			check_action_pipe(t_plist *envlist, char **tab, char **env)
     add_alias_cmd(tab, envlist);
   else if ((envlist->exit_value = exec_fonc_pipe(tab, env)) == 1)
     envlist->exit_value = system_fonc_pipe(envlist, tab, env);
+  /* kill(getpid(), SIGINT); */
   return (envlist->exit_value);
 }
 

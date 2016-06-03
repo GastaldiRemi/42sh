@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 18:46:02 2016 
-** Last update Fri Jun  3 14:45:42 2016 
+** Last update Fri Jun  3 15:00:32 2016 
 */
 
 #include		"42sh.h"
@@ -67,14 +67,14 @@ int			exec_fonc(char **cmd, char **env)
 	  signal(SIGINT, SIG_IGN);
 	  waitpid(pid, &status, 0);
 	  signal(SIGINT, SIG_DFL);
-	  /* kill(pid, SIGINT); */
+	  kill(pid, SIGINT);
 	}
       else
 	execve(cmd[0], cmd, env);
       if (status == 11)
 	write(2, "segmentation fault\n", my_strlen("segmentation fault\n"));
       signal(SIGINT, SIG_DFL);
-      /* kill(pid, SIGINT); */
+      kill(pid, SIGINT);
     }
   else
     return (1);
