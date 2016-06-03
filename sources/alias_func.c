@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Fri Jun  3 17:35:27 2016 Jabbari Yassir
-** Last update Fri Jun  3 18:19:44 2016 Jabbari Yassir
+** Last update Fri Jun  3 18:27:07 2016 Jabbari Yassir
 */
 
 #include "42sh.h"
@@ -17,7 +17,7 @@ void		parser_alias_bis(t_plist *list, char *str, t_data data_alias)
   data_alias.j = data_alias.i;
   while (str[data_alias.i] != 39)
     data_alias.i++;
-  if ((data_alias.cmd2 = malloc(sizeof(char) * data_alias.i)) == NULL)
+  if ((data_alias.cmd2 = malloc(sizeof(char) * data_alias.i + 1)) == NULL)
     return;
   data_alias.i = ++data_alias.j;
   data_alias.j = 0;
@@ -25,6 +25,7 @@ void		parser_alias_bis(t_plist *list, char *str, t_data data_alias)
     data_alias.cmd2[data_alias.j++] = str[data_alias.i++];
   data_alias.cmd2[data_alias.j] = '\0';
   add_alias(list, data_alias.cmd1, data_alias.cmd2);
+  free(data_alias.cmd2);
 }
 
 void		parser_alias(t_plist *list, char *str)
@@ -37,7 +38,7 @@ void		parser_alias(t_plist *list, char *str)
     return;
   while (str[data_alias.i] != '=')
     data_alias.i++;
-  if ((data_alias.cmd1 = malloc(sizeof(char) * data_alias.i)) == NULL)
+  if ((data_alias.cmd1 = malloc(sizeof(char) * data_alias.i + 1)) == NULL)
     return;
   data_alias.i = 0;
   while (str[data_alias.i] != '=')
@@ -48,7 +49,6 @@ void		parser_alias(t_plist *list, char *str)
   data_alias.cmd1[data_alias.i] = '\0';
   parser_alias_bis(list, str, data_alias);
   free(data_alias.cmd1);
-  free(data_alias.cmd2);
 }
 
 void		alias(t_plist *list)
