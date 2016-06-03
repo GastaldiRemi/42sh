@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 18:46:02 2016 
-** Last update Thu Jun  2 20:13:33 2016 
+** Last update Fri Jun  3 14:42:21 2016 
 */
 
 #include		"42sh.h"
@@ -75,6 +75,49 @@ int			exec_fonc(char **cmd, char **env)
 	write(2, "segmentation fault\n", my_strlen("segmentation fault\n"));
       signal(SIGINT, SIG_DFL);
       /* kill(pid, SIGINT); */
+    }
+  else
+    return (1);
+  return (0);
+}
+
+int			system_fonc_pipe(t_plist *plist, char **cmd, char **env)
+{
+  char			*path;
+  int			pid;
+  pid_t			status;
+
+  status = 0;
+  if (cmd == NULL || my_strlen(cmd[0]) == 0)
+    return (0);
+  if ((path = test_access(plist, cmd[0])) != NULL)
+    {
+      execve(path, cmd, env);
+      free(path);
+    }
+  else
+    {
+      write(2, cmd[0], my_strlen(cmd[0]));
+      write(2, ": Command not found.", 20);
+      write(2, "\n", 1);
+      return (1);
+    }
+  return (0);
+}
+
+int			exec_fonc_pipe(char **cmd, char **env)
+{
+  int			fd;
+  int			status;
+
+  status = 0;
+  if (cmd[0] && my_strcmp(cmd[0], "..") == 0)
+    return (0);
+  if ((fd = open(cmd[0], O_RDONLY)) != -1)
+    {
+      execve(cmd[0], cmd, env);
+      if (status == 11)
+	write(2, "segmentation fault\n", my_strlen("segmentation fault\n"));
     }
   else
     return (1);

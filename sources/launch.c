@@ -97,7 +97,7 @@ int		launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
 	}
       else if (tmp_sep != NULL && tmp->next != NULL && my_strcmp(tmp_sep->sep, "|") == 0)
       	{
-      	  check_pipe(envlist, tmp->cmd, tmp->next->cmd, env->env);
+      	  my_pipe(envlist, tmp->cmd, tmp->next->cmd, env->env);
 	  tmp = tmp->next;
       	}
       else if (tmp_sep != NULL && my_strcmp(tmp_sep->sep, "&") == 0)
