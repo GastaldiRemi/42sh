@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 11:38:43 2016 
-** Last update Fri Jun  3 15:23:39 2016 
+** Last update Fri Jun  3 17:23:23 2016 Juliani Renaud
 */
 
 #include		"42sh.h"
@@ -53,7 +53,10 @@ char			*aff_prompt(t_env *env, t_plist *plist)
 	return (NULL);
     }
   else if (st[0] != '\0' && st[0] != '!')
-    cmd_to_history(plist, st);
+    {
+      cmd_to_history(plist, st);
+      add_to_history(plist);
+    }
   return (st);
 }
 

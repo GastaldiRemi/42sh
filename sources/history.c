@@ -5,10 +5,56 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Thu Jun  2 13:34:44 2016 Juliani Renaud
-** Last update Fri Jun  3 15:21:07 2016 
+** Last update Fri Jun  3 17:29:37 2016 Juliani Renaud
 */
 
 #include "42sh.h"
+
+char		*add_to_history(t_plist *list)
+{
+  int		fd;
+  t_history	*tmp;
+
+  tmp = list->begin_h;
+  if ((fd = open(".history", O_CREAT | O_RDWR, S_IRWXU)) == -1)
+    {
+      dprintf(2, "Error with open\n");
+      return (NULL);
+    }
+  while (tmp)
+    {
+      if ((write(fd, tmp->cmd, my_strlen(tmp->cmd))) == -1)
+	{
+	  dprintf(2, "Error with write\n");
+	  return (NULL);
+	}
+      if ((write(fd, "\n", my_strlen("\n"))) == -1)
+	{
+	  dprintf(2, "Error with write\n");
+	  return (NULL);
+	}
+      tmp = tmp->next;
+    }
+  close (fd);
+  return ("OK");
+}
+
+char		*open_history(t_plist *list, int fd)
+{
+  char		*buff;
+
+  if ((fd = open(".history", O_CREAT | O_RDWR, S_IRWXU)) == -1)
+    {
+      dprintf(2, "Error with open\n");
+      return (NULL);
+    }
+  while ((buff = get_next_line(fd)))
+    {
+      cmd_to_history(list, buff);
+      free(buff);
+    }
+  return ("OK");
+}
 
 char		*check_cmd_history(t_plist *list, char *str, int i, int j)
 {
@@ -28,9 +74,12 @@ char		*check_cmd_history(t_plist *list, char *str, int i, int j)
   else
     {
       while (str[i])
-	str2[j++] = str[i++];
+	{
+	  str2[j++] = str[i++];
+	}
       str2[j] = '\0';
       cmd_to_history(list, str2);
+      add_to_history(list);
     }
   free(str2);
   return (str);
@@ -63,45 +112,4 @@ void                    cmd_to_history(t_plist *list, char *cmd)
       list->end_h = new;
     }
   i++;
-}
-
-void			show_history(t_plist *list)
-{
-  t_history		*tmp;
-  int			space;
-
-  tmp = list->begin_h;
-  while (tmp)
-    {
-      space = 0;
-      if (tmp->ligne < 10)
-	while (space++ < 5)
-	  my_putstr(" ");
-      else if (tmp->ligne < 100)
-	while (space++ < 4)
-	  my_putstr(" ");
-      else if (tmp->ligne < 1000)
-	while (space++ < 3)
-	  my_putstr(" ");
-      else
-	while (space++ < 2)
-	  my_putstr(" ");
-      my_putnbr(tmp->ligne);
-      my_putstr("\t");
-      my_putstr(tmp->cmd);
-      my_putstr("\n");
-      tmp = tmp->next;
-    }
-}
-
-void			clear_history(t_plist *list)
-{
-  t_history		*tmp;
-
-  while ((tmp = list->begin_h) != NULL)
-    {
-      list->begin_h = list->begin_h->next;
-      free(tmp->cmd);
-      free(tmp);
-    }
 }

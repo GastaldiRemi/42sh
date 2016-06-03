@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:45:20 2016
-** Last update Fri Jun  3 17:57:51 2016 Jabbari Yassir
+** Last update Fri Jun  3 17:05:43 2016 Juliani Renaud
 */
 
 #include		"42sh.h"
@@ -52,6 +52,7 @@ int			main(int ac, char **av, char **env)
   plist.begin_a = NULL;
   plist.end_a = NULL;
   alias(&plist);
+  open_history(&plist, 0);
   prompt(&my_env, &plist);
   free_list(&plist);
   return (plist.exit_value);

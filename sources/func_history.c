@@ -1,0 +1,52 @@
+/*
+** func_history.c for 42 in 
+** 
+** Made by Juliani Renaud
+** Login   <julian_r@epitech.net>
+** 
+** Started on  Fri Jun  3 16:42:21 2016 Juliani Renaud
+** Last update Fri Jun  3 16:55:04 2016 Juliani Renaud
+*/
+
+#include "42sh.h"
+
+void			clear_history(t_plist *list)
+{
+  t_history		*tmp;
+
+  while ((tmp = list->begin_h) != NULL)
+    {
+      list->begin_h = list->begin_h->next;
+      free(tmp->cmd);
+      free(tmp);
+    }
+}
+
+void			show_history(t_plist *list)
+{
+  t_history		*tmp;
+  int			space;
+
+  tmp = list->begin_h;
+  while (tmp)
+    {
+      space = 0;
+      if (tmp->ligne < 10)
+	while (space++ < 5)
+	  my_putstr(" ");
+      else if (tmp->ligne < 100)
+	while (space++ < 4)
+	  my_putstr(" ");
+      else if (tmp->ligne < 1000)
+	while (space++ < 3)
+	  my_putstr(" ");
+      else
+	while (space++ < 2)
+	  my_putstr(" ");
+      my_putnbr(tmp->ligne);
+      my_putstr("\t");
+      my_putstr(tmp->cmd);
+      my_putstr("\n");
+      tmp = tmp->next;
+    }
+}
