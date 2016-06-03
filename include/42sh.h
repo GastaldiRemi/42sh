@@ -19,6 +19,7 @@
 #include		<dirent.h>
 #include		<fcntl.h>
 #include		<signal.h>
+#include		<stdio.h>
 
 # define SEPARATOR	"&|;"
 
@@ -209,5 +210,7 @@ int                     exec_fonc_pipe(char **cmd, char **env);
 char			*check_cmd_history(t_plist *plist, char *st, int i, int j);
 int	check_exist(t_plist *list, char *alias, char *cmd);
 void			alias(t_plist *list);
+char			*open_history(t_plist *list, int fd);
+char			*add_to_history(t_plist *list);
 
 #endif			/* _42_SH_H_ */
