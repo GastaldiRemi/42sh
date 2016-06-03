@@ -195,5 +195,6 @@ void			add_alias_cmd_list(t_plist *list, char *alias, char *cmd);
 int             my_pipe(t_plist *plist, char **cmd1, char **cmd2, char **env);
 int                     system_fonc_pipe(t_plist *plist, char **cmd, char **env);
 int                     exec_fonc_pipe(char **cmd, char **env);
+char			*check_cmd_history(t_plist *plist, char *st, int i, int j);
 
 #endif			/* _42_SH_H_ */
