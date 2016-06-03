@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Fri Jun  3 17:35:27 2016 Jabbari Yassir
-** Last update Fri Jun  3 19:47:26 2016 Jabbari Yassir
+** Last update Fri Jun  3 23:23:38 2016 Jabbari Yassir
 */
 
 #include "42sh.h"
@@ -51,6 +51,21 @@ void		parser_alias(t_plist *list, char *str)
   free(data_alias.cmd1);
 }
 
+char		*xread(int fd)
+{
+  int		rd;
+  char		*buffer;
+
+  rd = 0;
+  if ((buffer = malloc(sizeof(char) * 4096)) == NULL)
+    return (NULL);
+  rd = read(fd, buffer, 4095);
+  if (rd == -1)
+    return (NULL);
+  buffer[rd] = '\0';
+  return (buffer);
+}
+
 void		alias(t_plist *list)
 {
   int		fd;
@@ -66,8 +81,7 @@ void		alias(t_plist *list)
     }
   else
     {
-      buffer = get_next_line(fd);
-      if (buffer == NULL)
+      if ((buffer = xread(fd)) == NULL)
 	return;
       if ((tab = my_str_to_wordtab(buffer)) == NULL)
 	return;
