@@ -5,103 +5,78 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sun Apr 10 03:35:07 2016 Antoine Roig
-** Last update Fri Jun  3 15:10:37 2016 Jabbari Yassir
+** Last update Fri Jun  3 14:43:30 2016 
 */
 
 #include		"42sh.h"
 
-void			dad(t_plist *plist, int *ppid, char **cmd, int pid, char **env)
+int			check_action_pipe(t_plist *envlist, char **tab, char **env)
 {
-  char			*path;
-  int			status;
-
-  close(ppid[1]);
-  dup2(ppid[0], 0);
-  close(ppid[0]);
-  waitpid(pid, &status, 0);
-  if ((path = test_access(plist, cmd[0])) == NULL)
-    return;
-  system_fonc(plist, cmd, env);
-  free(path);
-  kill(pid, SIGINT);
+  if (test_alias(envlist, tab[0]) != NULL)
+    envlist->exit_value = system_fonc(envlist, test_alias(envlist, tab[0]), env);
+  else if (my_strcmp(tab[0], "history") == 0)
+    show_history(envlist);
+  else if (my_strcmp(tab[0], "env") == 0)
+    envlist->exit_value = show_list(envlist);
+  else if (my_strcmp(tab[0], "setenv") == 0)
+    envlist->exit_value = set_env(envlist, tab);
+  else if (my_strcmp(tab[0], "unsetenv") == 0)
+    envlist->exit_value = unset_env(envlist, tab);
+  else if (my_strcmp(tab[0], "cd") == 0)
+    envlist->exit_value = cd_main(envlist, tab);
+  else if (my_strcmp(tab[0], "echo") == 0)
+    envlist->exit_value = echo(tab, envlist->begin);
+  else if (my_strcmp(tab[0], ">") == 0)
+    envlist->exit_value = red_right(envlist, tab, env);
+  else if (my_strcmp(tab[0], ">>") == 0)
+    envlist->exit_value = double_red_right(envlist, tab, env);
+  else if (my_strcmp(tab[0], "<") == 0)
+    envlist->exit_value = red_left(tab);
+  else if (my_strcmp(tab[0], "<<") == 0)
+    envlist->exit_value = double_red_left(envlist, tab, env);
+  else if (my_strcmp(tab[0], "alias") == 0)
+    add_alias_cmd(tab, envlist);
+  else if ((envlist->exit_value = exec_fonc_pipe(tab, env)) == 1)
+    envlist->exit_value = system_fonc_pipe(envlist, tab, env);
+  return (envlist->exit_value);
 }
 
-void			child(t_plist *plist, int *ppid, char **cmd, char **env)
-{
-  char			*path;
-
-  close(ppid[0]);
-  dup2(ppid[1], 1);
-  close(ppid[1]);
-  if ((path = test_access(plist, cmd[0])) == NULL)
-    return;
-  system_fonc(plist, cmd, env);
-  free(path);
-}
-
-/* int			check_pipe(t_plist *plist, char **cmd1, char **cmd2,  char **env) */
-/* { */
-/*   int			pid; */
-/*   int			ppid[2]; */
-
-/*   /\* if (fork() == 0) *\/ */
-/*   /\*   { *\/ */
-/*       pipe(ppid); */
-/*       pid = fork(); */
-/*       if (pid > 0) */
-/*       	dad(plist, ppid, cmd1, pid, env); */
-/*       else */
-/*       	child(plist, ppid, cmd2, env); */
-/*   /\*   } *\/ */
-/*   /\* else *\/ */
-/*   /\*   wait(NULL); *\/ */
-/*   return (0); */
-/* } */
-
-int          my_pipe_bis(t_plist *plist, int pid1, int pipefd[2], char **cmd1, char **cmd2, char **env)
+int          my_pipe_bis(t_plist *plist, char **cmd1, char **cmd2, char **env)
 {
   int		pid2;
-
-  if ((pid2 = fork()) == -1)
-    return (-1);
-  if (pid2 == 0)
-    {
-      close(pipefd[0]);
-      if ((dup2(pipefd[1], 1)) == -1)
-	return (-1);
-      if ((execve(test_access(plist, cmd1[0]), cmd1, env)) == -1)
-	exit(-1);
-    }
-  else
-    {
-      close(pipefd[1]);
-      if ((dup2(pipefd[0], 0)) == -1)
-	return (-1);
-      if ((execve(test_access(plist, cmd2[0]), cmd2, env)) == -1)
-	exit(-1);
-    }
-  return (0);
-}
-
-int             check_pipe(t_plist *plist, char **cmd1, char **cmd2, char **env)
-{
-  int		pid1;
   int		pipefd[2];
 
   if (pipe(pipefd) == -1)
     return (-1);
-  if ((pid1 = fork()) == -1)
-    return (-1);
-  if (pid1 == 0)
-    {
-      if (my_pipe_bis(plist, pid1, pipefd, cmd1, cmd2, env) == -1)
-	return (-1);
-    }
-  else
+  if ((pid2 = fork()) == 0)
     {
       close(pipefd[0]);
+      if ((dup2(pipefd[1], 1)) == -1)
+	return (-1);
+      check_action_pipe(plist, cmd1, env);
       close(pipefd[1]);
-      waitpid(pid1, NULL, 0);
     }
+  else if (pid2 > 0)
+    {
+      close(pipefd[1]);
+      if ((dup2(pipefd[0], 0)) == -1)
+	return (-1);
+      check_action_pipe(plist, cmd2, env);
+      close(pipefd[0]);
+    }
+  return (0);
+}
+
+int             my_pipe(t_plist *plist, char **cmd1, char **cmd2, char **env)
+{
+  int		pid1;
+
+  if ((pid1 = fork()) == 0)
+    {
+      if (my_pipe_bis(plist, cmd1, cmd2, env) == -1)
+	return (1);
+    }
+  else if (pid1 > 0)
+    waitpid(pid1, NULL, 0);
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu Jun  2 01:35:59 2016
-** Last update	Fri Jun 03 14:56:55 2016 Full Name
+** Last update	Fri Jun 03 15:04:17 2016 Full Name
 */
 
 #include		"42sh.h"
@@ -13,7 +13,7 @@
 char			**test_alias(t_plist *plist, char *cmd)
 {
   t_alias		*alias;
-  t_alias_cmd *alias_cmd;
+  t_alias_cmd		*alias_cmd;
 
   alias_cmd = plist->begin_acmd;
   while (alias_cmd)
@@ -87,14 +87,26 @@ void			add_alias_cmd_list(t_plist *list, char *alias, char *cmd)
     list->size++;
 }
 
-void	add_alias_cmd(char **tab, t_plist *list)
+int	show_alias(t_plist *list)
+{
+  t_alias_cmd *tmp;
+  tmp = list->begin_acmd;
+  while (tmp)
+  {
+    my_putstr(tmp->alias);
+    write(1, "\n", 1);
+    tmp = tmp->next;
+  }
+  return (0);
+}
+int	add_alias_cmd(char **tab, t_plist *list)
 {
   char	*alias;
   char	*cmd;
   int	i;
 
   if (tab[1] == NULL)
-    return;
+    return (show_alias(list));
   alias = my_strdup(tab[1]);
   i = 2;
   while (tab[i])
@@ -113,6 +125,7 @@ void	add_alias_cmd(char **tab, t_plist *list)
     i++;
   cmd[i - 1] = '\0';
   add_alias_cmd_list(list, alias, cmd);
+  return (1);
 }
 
 void	pop_list_alias(t_plist *list, int pos)

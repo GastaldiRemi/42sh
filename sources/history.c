@@ -5,10 +5,37 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Thu Jun  2 13:34:44 2016 Juliani Renaud
-** Last update Thu Jun  2 14:35:49 2016 Juliani Renaud
+** Last update Fri Jun  3 14:55:02 2016 Juliani Renaud
 */
 
 #include "42sh.h"
+
+char		*check_cmd_history(t_plist *list, char *str, int i, int j)
+{
+  char		*str2;
+
+  if ((str2 = malloc(sizeof(char) * (my_strlen(str) + 1))) == NULL)
+    {
+      dprintf(2, "Error with malloc\n");
+      return (NULL);
+    }
+  while (str[i] == '!')
+    i++;
+  while (str[i] != '\0' && ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')))
+    i++;
+  if (str[i] == '\0')
+    return (str);
+  else
+    {
+      while (str[i])
+	str2[j++] = str[i++];
+      str2[j] = '\0';
+      cmd_to_history(list, str2);
+    }
+  str = str2;
+  free(str2);
+  return (str);
+}
 
 void                    cmd_to_history(t_plist *list, char *cmd)
 {
