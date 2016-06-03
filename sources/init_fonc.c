@@ -21,6 +21,7 @@ int                     init_prompt_list(t_pcmd *pcmd, t_psep *psep)
 
 int                     init_list(t_plist *plist)
 {
+  plist->pipe = 0;
   plist->end = NULL;
   plist->begin = NULL;
   plist->begin_h = NULL;

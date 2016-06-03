@@ -38,8 +38,9 @@ int		check_action(char **tab, char **env, t_plist *envlist)
     add_alias_cmd(tab, envlist);
   else if (my_strcmp(tab[0], "unalias") == 0)
     pop_alias_cmd(tab, envlist);
-  else if ((envlist->exit_value = exec_fonc(tab, env)) == 1)
+  else if ((envlist->exit_value = exec_fonc(envlist, tab, env)) == 1)
     envlist->exit_value = system_fonc(envlist, tab, env);
+  envlist->pipe == 1 ? kill(getpid(), SIGINT) : 0;
   return (envlist->exit_value);
 }
 
@@ -99,6 +100,7 @@ int		launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
 	}
       else if (tmp_sep != NULL && tmp->next != NULL && my_strcmp(tmp_sep->sep, "|") == 0)
       	{
+	  envlist->pipe = 1;
       	  my_pipe(envlist, tmp->cmd, tmp->next->cmd, env->env);
 	  tmp = tmp->next;
       	}
