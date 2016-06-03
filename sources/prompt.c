@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 11:38:43 2016 
-** Last update Fri Jun  3 17:23:23 2016 Juliani Renaud
+** Last update Fri Jun  3 17:42:52 2016 Juliani Renaud
 */
 
 #include		"42sh.h"
@@ -27,6 +27,12 @@ void			get_user(t_plist *plist)
   (list->data != NULL ? my_putstr(list->data) : (void)0);
   write(1, " ", 1);
   my_putstr(NORMAL);
+}
+
+void			launch_history(t_plist *list, char *st)
+{
+  cmd_to_history(list, st);
+  add_to_history(list);
 }
 
 char			*aff_prompt(t_env *env, t_plist *plist)
@@ -53,10 +59,7 @@ char			*aff_prompt(t_env *env, t_plist *plist)
 	return (NULL);
     }
   else if (st[0] != '\0' && st[0] != '!')
-    {
-      cmd_to_history(plist, st);
-      add_to_history(plist);
-    }
+    launch_history(plist, st);
   return (st);
 }
 

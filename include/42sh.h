@@ -212,5 +212,6 @@ int	check_exist(t_plist *list, char *alias, char *cmd);
 void			alias(t_plist *list);
 char			*open_history(t_plist *list, int fd);
 char			*add_to_history(t_plist *list);
+void			launch_history(t_plist *list, char *st);
 
 #endif			/* _42_SH_H_ */
