@@ -216,5 +216,6 @@ char			*open_history(t_plist *list, int fd);
 char			*add_to_history(t_plist *list);
 void			launch_history(t_plist *list, char *st);
 void                    free_alias_cmd(t_plist *list);
+int		        check_action(char **tab, char **env, t_plist *envlist);
 
 #endif			/* _42_SH_H_ */
