@@ -1,11 +1,11 @@
 ##
 ## Makefile for Makefile in /home/roig_a/PSU_2015_minishell2
-## 
+##
 ## Made by Antoine Roig
 ## Login   <roig_a@epitech.net>
-## 
+##
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Thu Jun  2 16:18:29 2016 
+## Last update Fri Jun  3 15:10:23 2016 John Doe
 ##
 
 ECHO            =       /bin/echo -e
@@ -49,6 +49,7 @@ SRC             =       sources/main.c			\
 			sources/echo_func_bis.c		\
 			sources/pre_parsing.c		\
 			sources/alias.c			\
+			sources/alias2.c			\
 			sources/background.c		\
 			sources/my_putchar.c		\
 			sources/fct.c			\
@@ -82,4 +83,3 @@ re              :        fclean all
 			@$(CC) $(CFLAGS) -c $< -o $@  && \
 			$(ECHO) $(GREEN) "[OK]" $(TEAL) $< $(DEFAULT) || \
 			$(ECHO) $(RED) "[XX]" $(TEAL) $< $(DEFAULT)
-

@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:26:35 2016
-** Last update	Fri Jun 03 15:03:51 2016 Full Name
+** Last update	Fri Jun 03 15:19:57 2016 Full Name
 */
 
 # ifndef		_42_SH_H_
@@ -193,11 +193,12 @@ void			my_putnbr(int nbr);
 int                     background(t_plist *plist, char **cmd, char **env);
 int			add_alias_cmd(char **tab, t_plist *list);
 void			add_alias_cmd_list(t_plist *list, char *alias, char *cmd);
-void	pop_list_alias(t_plist *list, int pos);
+int	pop_list_alias(t_plist *list, int pos);
 void	pop_alias_cmd(char **tab, t_plist *list);
 int             my_pipe(t_plist *plist, char **cmd1, char **cmd2, char **env);
 int                     system_fonc_pipe(t_plist *plist, char **cmd, char **env);
 int                     exec_fonc_pipe(char **cmd, char **env);
 char			*check_cmd_history(t_plist *plist, char *st, int i, int j);
+int	check_exist(t_plist *list, char *alias, char *cmd);
 
 #endif			/* _42_SH_H_ */

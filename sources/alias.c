@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu Jun  2 01:35:59 2016
-** Last update	Fri Jun 03 15:04:17 2016 Full Name
+** Last update	Fri Jun 03 15:19:59 2016 Full Name
 */
 
 #include		"42sh.h"
@@ -64,6 +64,8 @@ void			add_alias_cmd_list(t_plist *list, char *alias, char *cmd)
 {
   t_alias_cmd               *new;
 
+  if (check_exist(list, alias, cmd) == 1)
+    return;
   new = list->begin_acmd;
   if (!list)
     return;
@@ -99,6 +101,7 @@ int	show_alias(t_plist *list)
   }
   return (0);
 }
+
 int	add_alias_cmd(char **tab, t_plist *list)
 {
   char	*alias;
@@ -126,64 +129,4 @@ int	add_alias_cmd(char **tab, t_plist *list)
   cmd[i - 1] = '\0';
   add_alias_cmd_list(list, alias, cmd);
   return (1);
-}
-
-void	pop_list_alias(t_plist *list, int pos)
-{
-  t_alias_cmd	*tmp;
-
-  tmp = list->begin_acmd;
-  if (list->size == 1)
-  {
-    list->begin_acmd = NULL;
-    list->end_acmd = NULL;
-    list->size = 0;
-    return;
-  }
-  if (pos == 0)
-  {
-    list->begin_acmd = tmp->next;
-    tmp->next->prev = NULL;
-    tmp->next = NULL;
-    list->size = list-> size - 1;
-    return;
-  }
-  if (pos + 1 == list->size)
-  {
-    tmp = list->end_acmd;
-    list->end_acmd = tmp->prev;
-    tmp->prev->next = NULL;
-    tmp->prev = NULL;
-    list->size = list-> size - 1;
-    return;
-  }
-  while (pos != 0)
-  {
-    tmp = tmp->next;
-    pos--;
-  }
-  tmp->prev->next = tmp->next;
-  tmp->next->prev = tmp->prev;
-  tmp->next = NULL;
-  tmp->prev = NULL;
-  list->size = list->size - 1;
-}
-
-void	pop_alias_cmd(char **tab, t_plist *list)
-{
-  t_alias_cmd *tmp;
-  int i;
-
-  i = 0;
-  tmp = list->begin_acmd;
-  while (tmp)
-  {
-      if (my_strcmp(tmp->alias, tab[1]) == 0)
-      {
-        pop_list_alias(list, i);
-        return;
-      }
-      i++;
-      tmp = tmp->next;
-  }
 }
