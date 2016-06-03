@@ -5,7 +5,7 @@
 ** Login   <roig_a@epitech.net>
 **
 ** Started on  Sun Apr 10 03:35:07 2016 Antoine Roig
-** Last update Fri Jun  3 00:57:03 2016 
+** Last update Fri Jun  3 15:10:37 2016 Jabbari Yassir
 */
 
 #include		"42sh.h"
@@ -69,22 +69,20 @@ int          my_pipe_bis(t_plist *plist, int pid1, int pipefd[2], char **cmd1, c
       close(pipefd[0]);
       if ((dup2(pipefd[1], 1)) == -1)
 	return (-1);
-      if (check_action(cmd1, env, plist) != 0)
-	if (execve(test_access(plist, cmd1[0]), cmd1, env) == -1)
-	  exit(-1);
+      if ((execve(test_access(plist, cmd1[0]), cmd1, env)) == -1)
+	exit(-1);
     }
   else
     {
       close(pipefd[1]);
       if ((dup2(pipefd[0], 0)) == -1)
 	return (-1);
-      if (check_action(cmd2, env, plist) != 0)
-	if (execve(test_access(plist, cmd2[0]), cmd2, env) == -1)
-	  exit(-1);
+      if ((execve(test_access(plist, cmd2[0]), cmd2, env)) == -1)
+	exit(-1);
     }
   return (0);
 }
- 
+
 int             check_pipe(t_plist *plist, char **cmd1, char **cmd2, char **env)
 {
   int		pid1;
