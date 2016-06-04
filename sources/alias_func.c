@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Fri Jun  3 17:35:27 2016 Jabbari Yassir
-** Last update Sat Jun  4 15:08:17 2016 Jabbari Yassir
+** Last update Sat Jun  4 16:35:17 2016 Jabbari Yassir
 */
 
 #include "42sh.h"
@@ -41,7 +41,9 @@ void		parser_alias(t_plist *list, char *str)
   data_alias.j = 0;
   if (str[data_alias.i] == 'a' && str[data_alias.i + 1] == 'l' &&
       str[data_alias.i + 2] == 'i' && str[data_alias.i + 3] == 'a' &&
-      str[data_alias.i + 4] == 's')
+      str[data_alias.i + 4] == 's' && str[data_alias.i + 5] &&
+      str[data_alias.i + 6] && str[data_alias.i + 7] && str[data_alias.i + 8] &&
+      str[data_alias.i + 9] && str[data_alias.i + 10])
     {
       data_alias.i = data_alias.i + 5;
       data_alias.tmp = data_alias.i + 1;
@@ -71,6 +73,8 @@ void		alias(t_plist *list)
     {
       while ((buffer = get_next_line(fd)))
 	{
+	  if (buffer == NULL)
+	    return;
 	  parser_alias(list, buffer);
 	  free(buffer);
 	}
