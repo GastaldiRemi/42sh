@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Fri Jun  3 17:35:27 2016 Jabbari Yassir
-** Last update Sat Jun  4 15:06:58 2016 Jabbari Yassir
+** Last update Sat Jun  4 15:08:17 2016 Jabbari Yassir
 */
 
 #include "42sh.h"
@@ -28,8 +28,6 @@ void		parser_alias_bis(t_plist *list, char *str, t_data data_alias)
   while (data_alias.tmp != data_alias.i)
     data_alias.cmd2[data_alias.j++] = str[data_alias.tmp++];
   data_alias.cmd2[data_alias.j] = '\0';
-  my_puts(data_alias.cmd1);
-  my_puts(data_alias.cmd2);
   add_alias(list, data_alias.cmd1, data_alias.cmd2);
   free(data_alias.cmd2);
 }
