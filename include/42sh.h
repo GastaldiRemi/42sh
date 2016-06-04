@@ -201,6 +201,7 @@ char                    **test_alias(t_plist *plist, char *cmd);
 void			cmd_to_history(t_plist *list, char *cmd);
 void			show_history(t_plist *list);
 void			clear_history(t_plist *list);
+char			*clear_history_c(t_plist *list);
 void			my_putnbr(int nbr);
 int                     background(t_plist *plist, char **cmd, char **env);
 int			add_alias_cmd(char **tab, t_plist *list);
@@ -215,7 +216,6 @@ int			check_exist(t_plist *list, char *alias, char *cmd);
 void			alias(t_plist *list);
 char			*open_history(t_plist *list, int fd);
 char			*add_to_history(t_plist *list);
-void			launch_history(t_plist *list, char *st);
 void                    free_alias_cmd(t_plist *list);
 int		        check_action(char **tab, char **env, t_plist *envlist);
 

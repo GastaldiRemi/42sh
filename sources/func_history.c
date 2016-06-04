@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Fri Jun  3 16:42:21 2016 Juliani Renaud
-** Last update Fri Jun  3 16:55:04 2016 Juliani Renaud
+** Last update Sat Jun  4 17:49:37 2016 Juliani Renaud
 */
 
 #include "42sh.h"
@@ -20,6 +20,26 @@ void			clear_history(t_plist *list)
       free(tmp->cmd);
       free(tmp);
     }
+}
+
+char			*clear_history_c(t_plist *list)
+{
+  t_history		*tmp;
+  int			fd;
+
+  while ((tmp = list->begin_h) != NULL)
+    {
+      list->begin_h = list->begin_h->next;
+      free(tmp->cmd);
+      free(tmp);
+    }
+  if ((fd = open(".history", O_TRUNC | O_RDWR | O_CREAT, 0666)) == - 1)
+    {
+      dprintf(2, "Error with open\n");
+      return (NULL);
+    }
+  close (fd);
+  return ("OK");
 }
 
 void			show_history(t_plist *list)

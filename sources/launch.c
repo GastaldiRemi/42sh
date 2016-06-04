@@ -14,6 +14,9 @@ int		check_action(char **tab, char **env, t_plist *envlist)
 {
   if (test_alias(envlist, tab[0]) != NULL)
     envlist->exit_value = system_fonc(envlist, test_alias(envlist, tab[0]), env);
+  else if (tab[1] != NULL && my_strcmp(tab[0], "history") == 0
+	   && my_strcmp(tab[1], "-c") == 0)
+    clear_history_c(envlist);
   else if (my_strcmp(tab[0], "history") == 0)
     show_history(envlist);
   else if (my_strcmp(tab[0], "env") == 0)
