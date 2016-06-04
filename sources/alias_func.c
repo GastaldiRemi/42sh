@@ -5,24 +5,28 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Fri Jun  3 17:35:27 2016 Jabbari Yassir
-** Last update Sat Jun  4 00:40:36 2016 
+** Last update Sat Jun  4 14:58:10 2016 Jabbari Yassir
 */
 
 #include "42sh.h"
 
 void		parser_alias_bis(t_plist *list, char *str, t_data data_alias)
 {
-  if (str[data_alias.i] && str[data_alias.i + 1] == 39)
-    data_alias.i++;
-  data_alias.j = data_alias.i;
-  while (str[data_alias.i] != 39 && str[data_alias.i])
-    data_alias.i++;
-  if ((data_alias.cmd2 = malloc(sizeof(char) * data_alias.i + 1)) == NULL)
+  if (str[data_alias.i] != 39)
     return;
-  data_alias.i = data_alias.j;
+  data_alias.i++;
+  data_alias.tmp = data_alias.i;
   data_alias.j = 0;
-  while (str[++data_alias.i])
-    data_alias.cmd2[data_alias.j++] = str[data_alias.i];
+  while (str[data_alias.i] != 39)
+    {
+      data_alias.j++;
+      data_alias.i++;
+    }
+  if ((data_alias.cmd2 = malloc(sizeof(char) * data_alias.j + 1)) == NULL)
+    return;
+  data_alias.j = 0;
+  while (data_alias.tmp != data_alias.i)
+    data_alias.cmd2[data_alias.j++] = str[data_alias.tmp++];
   data_alias.cmd2[data_alias.j] = '\0';
   add_alias(list, data_alias.cmd1, data_alias.cmd2);
   free(data_alias.cmd2);
@@ -32,41 +36,32 @@ void		parser_alias(t_plist *list, char *str)
 {
   t_data	data_alias;
 
+  data_alias.tmp = 0;
   data_alias.i = 0;
   data_alias.j = 0;
-  if (my_strcmp(str, "alias") == 0)
-    return;
-  while (str[data_alias.i] && str[data_alias.i] != '=')
-    data_alias.i++;
-  if ((data_alias.cmd1 = malloc(sizeof(char) * data_alias.i + 1)) == NULL)
-    return;
-  data_alias.i = 0;
-  while (str[data_alias.i] != '=' && str[data_alias.i])
+  if (str[data_alias.i] == 'a' && str[data_alias.i + 1] == 'l' &&
+      str[data_alias.i + 2] == 'i' && str[data_alias.i + 3] == 'a' &&
+      str[data_alias.i + 4] == 's')
     {
-      data_alias.cmd1[data_alias.i] = str[data_alias.i];
-      data_alias.i++;
+      data_alias.i = data_alias.i + 5;
+      data_alias.tmp = data_alias.i + 1;
+      while (str[data_alias.i++] != '=')
+	data_alias.j++;
+      if ((data_alias.cmd1 = malloc(sizeof(char) * data_alias.j + 1)) == NULL)
+	return;
+      data_alias.j = 0;
+      while (data_alias.i != data_alias.tmp)
+	data_alias.cmd1[data_alias.j++] = str[data_alias.tmp++];
+      data_alias.cmd1[data_alias.j] = '\0';
+      parser_alias_bis(list, str, data_alias);
+      free(data_alias.cmd1);
     }
-  data_alias.cmd1[data_alias.i] = '\0';
-  parser_alias_bis(list, str, data_alias);
-  free(data_alias.cmd1);
-}
-
-char		*xread(int fd)
-{
-  char		*buffer;
-
-  buffer = get_next_line(fd);
-  return (buffer);
 }
 
 void		alias(t_plist *list)
 {
   int		fd;
   char		*buffer;
-  char		**tab;
-  int		i;
-
-  i = 0;
   if ((fd = open(".42shrc", O_RDONLY)) == -1)
     {
       if ((fd = open(".42shrc", O_RDWR | O_CREAT, 0666)) == -1)
@@ -74,13 +69,10 @@ void		alias(t_plist *list)
     }
   else
     {
-      if ((buffer = xread(fd)) == NULL)
-	return;
-      if ((tab = my_str_to_wordtab(buffer)) == NULL)
-	return;
-      while (tab[i])
-	parser_alias(list, tab[i++]);
-      free(buffer);
-      free_tab(tab);
+      while ((buffer = get_next_line(fd)))
+	{
+	  parser_alias(list, buffer);
+	  free(buffer);
+	}
     }
 }

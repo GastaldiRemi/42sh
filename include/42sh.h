@@ -86,7 +86,7 @@ typedef struct		s_plist
   t_history		*end_h;
   int			size;
   int			pipe;
-  
+
 }			t_plist;
 
 typedef struct		s_cmd
@@ -124,6 +124,7 @@ typedef struct		s_data
 {
   int			i;
   int			j;
+  int			tmp;
   char			*cmd1;
   char			*cmd2;
 }			t_data;
