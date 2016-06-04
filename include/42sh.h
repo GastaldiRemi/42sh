@@ -41,6 +41,11 @@
 # define CYANFONCE	"\033[0;36m"
 # define CYANCLAIR	"\033[1;36m"
 
+struct command
+{
+  const char **argv;
+};
+
 typedef struct		 s_list
 {
   char			*name;
