@@ -133,13 +133,21 @@ int		launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
 	  else
 	    return (exit_end(envlist, 1));
 	}
+      else if (tmp_sep != NULL && my_strcmp(tmp_sep->sep, "|") == 0)
+	{
+	  if (tmp->next == NULL)
+	    {
+	      dprintf(2, "Invalid null command.\n");
+	      return (0);
+	    }
+	}
       else if (tmp_sep != NULL && tmp->next != NULL && my_strcmp(tmp_sep->sep, "|") == 0)
       	{
 	  envlist->pipe = 1;
 	  nb_pipe = count_pipe(&tmp_sep);
 	  if ((check_nb_arg(nb_pipe, tmp)) == 1)
 	    {
-	      dprintf(2, "Wrong number of args\n");
+	      dprintf(2, "Invalid null command.\n");
 	      return (0);
 	    }
 	  pipe_inf(envlist, &tmp, nb_pipe + 1, env->env);
