@@ -82,11 +82,43 @@ int		exit_end(t_plist *list, int i)
   return (-1);
 }
 
+int		count_pipe(t_sep **sep)
+{
+  int		i;
+
+  i = 0;
+  while ((*sep) && my_strcmp((*sep)->sep, "|") == 0)
+    {
+      i++;
+      (*sep) = (*sep)->next;
+    }
+  return (i);
+}
+
+int		check_nb_arg(int nb_pipe, t_cmd *cmd)
+{
+  int		i;
+  t_cmd		*tmp;
+
+  i = 0;
+  tmp = cmd;
+  while ((i < (nb_pipe + 1)) && tmp)
+    {
+      tmp = tmp->next;
+      i++;
+    }
+  if (i == (nb_pipe + 1))
+    return (0);
+  else
+    return (1);
+}
+
 int		launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
 {
   t_sep		*tmp_sep;
   t_cmd		*tmp;
   int		i;
+  int		nb_pipe;
 
   tmp = cmd->begin;
   tmp_sep = sep->begin;
@@ -104,7 +136,14 @@ int		launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
       else if (tmp_sep != NULL && tmp->next != NULL && my_strcmp(tmp_sep->sep, "|") == 0)
       	{
 	  envlist->pipe = 1;
-      	  my_pipe(envlist, tmp->cmd, tmp->next->cmd, env->env);
+	  nb_pipe = count_pipe(&tmp_sep);
+	  if ((check_nb_arg(nb_pipe, tmp)) == 1)
+	    {
+	      dprintf(2, "Wrong number of args\n");
+	      return (0);
+	    }
+	  pipe_inf(envlist, &tmp, nb_pipe + 1, env->env);
+      	  /* my_pipe(envlist, tmp->cmd, tmp->next->cmd, env->env); */
 	  tmp = tmp->next;
       	}
       else if (tmp_sep != NULL && my_strcmp(tmp_sep->sep, "&") == 0)
