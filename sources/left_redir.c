@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 18:08:25 2016 
-** Last update Sat Jun  4 23:45:38 2016 
+** Last update Sun Jun  5 11:34:13 2016 
 */
 
 #include		"42sh.h"
@@ -46,8 +46,8 @@ int			double_red_left(t_plist *plist, char **cmd, char **env)
   char			*buff3;
   int			pid;
 
-  if ((pid = fork()) == 0)
-    {
+  /* if ((pid = fork()) == 0) */
+  /*   { */
       buff3 = cmd[1];
       buff = NULL;
       while (1)
@@ -63,8 +63,8 @@ int			double_red_left(t_plist *plist, char **cmd, char **env)
 	  buff = my_strcat(buff, "\n", -1, -1);
 	  free(buff2);
 	}
-    }
-  else
-    wait(NULL);
+  /*   } */
+  /* else */
+  /*   wait(NULL); */
   return (0);
 }

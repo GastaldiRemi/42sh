@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Mon May 30 10:16:07 2016 
-** Last update Wed Jun  1 16:25:46 2016 
+** Last update Sun Jun  5 11:38:29 2016 
 */
 
 #include		"42sh.h"
@@ -24,7 +24,8 @@ char			**order_args(char **prompt, int i, int j)
 {
   char			**buff;
 
-  if ((my_strcmp(">", prompt[0]) == 0 || my_strcmp(">>", prompt[0]) == 0)
+  if (get_prompt_length(prompt) <= 2
+      || (my_strcmp(">", prompt[0]) == 0 || my_strcmp(">>", prompt[0]) == 0)
       || (my_strcmp("<", prompt[0]) == 0 || my_strcmp("<<", prompt[0]) == 0))
     return (prompt);
   while (prompt[++i] != NULL)
