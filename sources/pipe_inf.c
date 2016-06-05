@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat Jun  4 22:09:08 2016 
-** Last update Sun Jun  5 21:00:24 2016 
+** Last update Sun Jun  5 21:39:04 2016 
 */
 
 #include		"42sh.h"
@@ -59,5 +59,6 @@ int			pipe_inf(t_plist *plist, t_cmd **cmd, int n, char **env)
     }
   else
     waitpid(pid, NULL, 0);
+  plist->pipe = 0;
   return (0);
 }
