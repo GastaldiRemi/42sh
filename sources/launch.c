@@ -143,7 +143,6 @@ int		launch(t_env *env, t_plist *envlist, t_pcmd *cmd, t_psep *sep)
 	      return (0);
 	    }
 	  pipe_inf(envlist, &tmp, nb_pipe + 1, env->env);
-      	  /* my_pipe(envlist, tmp->cmd, tmp->next->cmd, env->env); */
 	  tmp = tmp->next;
       	}
       else if (tmp_sep != NULL && my_strcmp(tmp_sep->sep, "&") == 0)
