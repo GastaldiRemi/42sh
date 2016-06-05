@@ -192,7 +192,7 @@ char                    **order_args(char **prompt, int i, int j);
 int                     system_fonc(t_plist *plist, char **cmd, char **env);
 int                     unset_env(t_plist *plist, char **cmd);
 int                     red_right(t_plist *plist, char **cmd, char **env);
-int                     red_left(char **cmd);
+int                     red_left(t_plist *plist, char **cmd, char **env);
 int                     double_red_left(t_plist *plist, char **cmd,
 					char **env);
 int			launch(t_env *env, t_plist *envlist,

@@ -1,28 +1,38 @@
-/*
+/*x
 ** left_redir.c for left_redir in /home/gastal_r/rendu/42sh/NE_PAS_TOUCHER/sources
 ** 
 ** Made by 
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 18:08:25 2016 
-** Last update Sun Jun  5 12:19:00 2016 
+** Last update Sun Jun  5 14:18:27 2016 
 */
 
 #include		"42sh.h"
 
-int			red_left(char **cmd)
+int			red_left(t_plist *plist, char **cmd, char **env)
 {
- int		fd;
+  int			fd;
+  int			pid;
 
- fd = open(cmd[1], O_RDONLY);
- if (fd == -1)
-   {
-     my_putstr(cmd[1]);
-     my_putstr(": No such file or directory\n");
-     return (1);
-   }
- dup2(fd, 0);
- return (0);
+  if ((pid = fork()) == 0)
+    {
+      fd = open(cmd[1], O_RDONLY);
+      if (fd == -1)
+	{
+	  my_putstr(cmd[1]);
+	  my_putstr(": No such file or directory\n");
+	  return (1);
+	}
+      dup2(fd, 0);
+      cmd += 2;
+      plist->pipe = 1;
+      system_fonc(plist, cmd, env);
+      plist->pipe = 0;
+    }
+  else
+    waitpid(pid, NULL, 0);
+  return (0);
 }
 
 int			looping(t_plist *plist, char **cmd, char *buff, char **env)
@@ -36,7 +46,7 @@ int			looping(t_plist *plist, char **cmd, char *buff, char **env)
   cmd += 2;
   plist->pipe = 1;
   system_fonc(plist, cmd, env);
-  plist->pipe = 0;  
+  plist->pipe = 0;
   free(buff);
   return (0);
 }
