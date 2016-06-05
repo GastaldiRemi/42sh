@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat Jun  4 22:09:08 2016 
-** Last update Sun Jun  5 21:39:04 2016 
+** Last update Sun Jun  5 22:03:11 2016 
 */
 
 #include		"42sh.h"
@@ -38,6 +38,7 @@ int			pipe_inf(t_plist *plist, t_cmd **cmd, int n, char **env)
   int			fd[2];
   int			in_out[2];
   int			pid;
+  int			exit_value;
 
   if ((pid = fork()) == 0)
     {
@@ -55,7 +56,9 @@ int			pipe_inf(t_plist *plist, t_cmd **cmd, int n, char **env)
       if (in_out[0] != 0)
 	dup2(in_out[0], 0);
       plist->pipe = 1;
-      return (check_action((*cmd)->cmd, env, plist));
+      exit_value = check_action((*cmd)->cmd, env, plist);
+      if (
+      /* return (check_action((*cmd)->cmd, env, plist)); */
     }
   else
     waitpid(pid, NULL, 0);
