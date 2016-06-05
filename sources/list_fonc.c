@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Thu May 26 22:05:49 2016 
-** Last update Fri Jun  3 23:02:47 2016 
+** Last update Sun Jun  5 19:32:10 2016 
 */
 
 #include		"42sh.h"
@@ -33,7 +33,6 @@ void                    add_cmd(t_pcmd *list, char *buff)
       list->end = new;
     }
 }
-
 void                    add_sep(t_psep *list, char *buff)
 {
   t_sep			*new;

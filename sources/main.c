@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:45:20 2016
-** Last update Sat Jun  4 23:41:11 2016 
+** Last update Sun Jun  5 20:19:25 2016 
 */
 
 #include		"42sh.h"
@@ -37,18 +37,6 @@ int			main(int ac, char **av, char **env)
 
   (void)ac;
   (void)av;
-
-  /* const char *ls[] = { "ls", "/dev", 0 }; */
-  /* const char *cat[] = { "cat",  0 }; */
-  /* const char *sort[] = { "tr", "y", "Y", 0 }; */
-  /* const char *uniq[] = { "grep ttY", 0 }; */
-  /* const char *cat1[] = { "cat",  0 }; */
-  
-  /* struct command cmd[] = { {ls}, {cat}, {sort}, {uniq}, {cat1} }; */
-
-  /* return (fork_pipes(5, cmd)); */
-
-  
   my_env.env = NULL;
   if (env[0] == NULL)
     return (0);
