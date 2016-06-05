@@ -12,37 +12,44 @@
 
 int		check_action(char **tab, char **env, t_plist *envlist)
 {
-  if (test_alias(envlist, tab[0]) != NULL)
-    envlist->exit_value = system_fonc(envlist, test_alias(envlist, tab[0]), env);
-  else if (tab[1] != NULL && my_strcmp(tab[0], "history") == 0
-	   && my_strcmp(tab[1], "-c") == 0)
-    clear_history_c(envlist);
-  else if (my_strcmp(tab[0], "history") == 0)
-    show_history(envlist);
-  else if (my_strcmp(tab[0], "env") == 0)
-    envlist->exit_value = show_list(envlist);
-  else if (my_strcmp(tab[0], "setenv") == 0)
-    envlist->exit_value = set_env(envlist, tab);
-  else if (my_strcmp(tab[0], "unsetenv") == 0)
-    envlist->exit_value = unset_env(envlist, tab);
-  else if (my_strcmp(tab[0], "cd") == 0)
-    envlist->exit_value = cd_main(envlist, tab);
-  else if (my_strcmp(tab[0], "echo") == 0)
-    envlist->exit_value = echo(tab, envlist->begin);
-  else if (my_strcmp(tab[0], ">") == 0)
-    envlist->exit_value = red_right(envlist, tab, env);
-  else if (my_strcmp(tab[0], ">>") == 0)
-    envlist->exit_value = double_red_right(envlist, tab, env);
-  else if (my_strcmp(tab[0], "<") == 0)
-    envlist->exit_value = red_left(tab);
-  else if (my_strcmp(tab[0], "<<") == 0)
-    envlist->exit_value = double_red_left(envlist, tab, env);
-  else if (my_strcmp(tab[0], "alias") == 0)
-    add_alias_cmd(tab, envlist);
-  else if (my_strcmp(tab[0], "unalias") == 0)
-    pop_alias_cmd(tab, envlist);
-  else if ((envlist->exit_value = exec_fonc(envlist, tab, env)) == 1)
-    envlist->exit_value = system_fonc(envlist, tab, env);
+  int		pid;
+
+  /* if (envlist->pipe == 1 || (pid = fork()) ==0) */
+  /*   { */
+      if (test_alias(envlist, tab[0]) != NULL)
+	envlist->exit_value = system_fonc(envlist, test_alias(envlist, tab[0]), env);
+      else if (tab[1] != NULL && my_strcmp(tab[0], "history") == 0
+	       && my_strcmp(tab[1], "-c") == 0)
+	clear_history_c(envlist);
+      else if (my_strcmp(tab[0], "history") == 0)
+	show_history(envlist);
+      else if (my_strcmp(tab[0], "env") == 0)
+	envlist->exit_value = show_list(envlist);
+      else if (my_strcmp(tab[0], "setenv") == 0)
+	envlist->exit_value = set_env(envlist, tab);
+      else if (my_strcmp(tab[0], "unsetenv") == 0)
+	envlist->exit_value = unset_env(envlist, tab);
+      else if (my_strcmp(tab[0], "cd") == 0)
+	envlist->exit_value = cd_main(envlist, tab);
+      else if (my_strcmp(tab[0], "echo") == 0)
+	envlist->exit_value = echo(tab, envlist->begin);
+      else if (my_strcmp(tab[0], ">") == 0)
+	envlist->exit_value = red_right(envlist, tab, env);
+      else if (my_strcmp(tab[0], ">>") == 0)
+	envlist->exit_value = double_red_right(envlist, tab, env);
+      else if (my_strcmp(tab[0], "<") == 0)
+	envlist->exit_value = red_left(tab);
+      else if (my_strcmp(tab[0], "<<") == 0)
+	envlist->exit_value = double_red_left(envlist, tab, env);
+      else if (my_strcmp(tab[0], "alias") == 0)
+	add_alias_cmd(tab, envlist);
+      else if (my_strcmp(tab[0], "unalias") == 0)
+	pop_alias_cmd(tab, envlist);
+      else if ((envlist->exit_value = exec_fonc(envlist, tab, env)) == 1)
+	envlist->exit_value = system_fonc(envlist, tab, env);
+    /* } */
+  /* else */
+  /*   wait(NULL); */
   envlist->pipe == 1 ? kill(getpid(), SIGINT) : 0;
   return (envlist->exit_value);
 }
