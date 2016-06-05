@@ -5,15 +5,16 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat May 28 23:54:07 2016 
-** Last update Thu Jun  2 00:46:28 2016 
+** Last update Mon Jun  6 01:21:36 2016 
 */
 
 #include		"42sh.h"
 
-int			cd_main(t_plist *plist, char **cmd)
+int			cd_main(t_plist *plist, char **cmd, char **env)
 {
   t_list		*list;
 
+  (void)env;
   list = plist->begin;
   if (cmd[1] != NULL)
     {

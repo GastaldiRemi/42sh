@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:45:20 2016
-** Last update Sun Jun  5 20:19:25 2016 
+** Last update Mon Jun  6 01:45:13 2016 
 */
 
 #include		"42sh.h"
@@ -49,8 +49,6 @@ int			main(int ac, char **av, char **env)
   plist.exit_value = 0;
   if ((my_env.env = init_env(my_env.env, &plist)) == NULL)
     return (0);
-  plist.begin_a = NULL;
-  plist.end_a = NULL;
   alias(&plist);
   open_history(&plist, 0);
   prompt(&my_env, &plist);

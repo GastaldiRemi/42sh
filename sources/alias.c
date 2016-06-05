@@ -62,7 +62,7 @@ void			add_alias(t_plist *list, char *alias, char *cmd)
 
 void			add_alias_cmd_list(t_plist *list, char *alias, char *cmd)
 {
-  t_alias_cmd               *new;
+  t_alias_cmd           *new;
 
   if (check_exist(list, alias, cmd) == 1)
     return;
@@ -89,23 +89,10 @@ void			add_alias_cmd_list(t_plist *list, char *alias, char *cmd)
     list->size++;
 }
 
-int	show_alias(t_plist *list)
+int			check_alias(char *alias)
 {
-  t_alias_cmd *tmp;
-  tmp = list->begin_acmd;
-  while (tmp)
-  {
-    my_putstr(tmp->alias);
-    write(1, "\n", 1);
-    tmp = tmp->next;
-  }
-  return (0);
-}
-
-int	check_alias(char *alias)
-{
-  int	i;
-  int e;
+  int			i;
+  int			e;
 
   e = 0;
   i = -1;
@@ -125,12 +112,13 @@ int	check_alias(char *alias)
   return (0);
 }
 
-int	add_alias_cmd(char **tab, t_plist *list)
+int			add_alias_cmd(t_plist *list, char **tab, char **env)
 {
-  char	*alias;
-  char	*cmd;
-  int	i;
+  char			*alias;
+  char			*cmd;
+  int			i;
 
+  (void)env;
   if (tab[1] == NULL)
     return (show_alias(list));
   alias = my_strdup(tab[1]);

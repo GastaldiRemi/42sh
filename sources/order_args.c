@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Mon May 30 10:16:07 2016 
-** Last update Sun Jun  5 11:48:41 2016 
+** Last update Mon Jun  6 01:48:51 2016 
 */
 
 #include		"42sh.h"
@@ -20,31 +20,31 @@ int			get_prompt_length(char **prompt)
   return (i);
 }
 
-char			**order_args(char **prompt, int i, int j)
+char			**order_args(char **promp, int i, int j)
 {
   char			**buff;
 
-  if (get_prompt_length(prompt) <= 2
-      || (my_strcmp(">", prompt[0]) == 0 || my_strcmp(">>", prompt[0]) == 0)
-      || (my_strcmp("<", prompt[0]) == 0 || my_strcmp("<<", prompt[0]) == 0))
-    return (prompt);
-  while (prompt[++i] != NULL)
+  if (get_prompt_length(promp) <= 2
+      || (my_strcmp(">", promp[0]) == 0 || my_strcmp(">>", promp[0]) == 0)
+      || (my_strcmp("<", promp[0]) == 0 || my_strcmp("<<", promp[0]) == 0))
+    return (promp);
+  while (promp[++i] != NULL)
     {
-      if ((my_strcmp(">", prompt[i]) == 0 || my_strcmp(">>", prompt[i]) == 0)
-      	  || (my_strcmp("<", prompt[i]) == 0 || my_strcmp("<<", prompt[i]) == 0))
+      if ((my_strcmp(">", promp[i]) == 0 || my_strcmp(">>", promp[i]) == 0)
+	  || (my_strcmp("<", promp[i]) == 0 || my_strcmp("<<", promp[i]) == 0))
 	{
-	  buff = malloc(sizeof(char *) * (get_prompt_length(prompt) + 1));
-	  buff[0] = my_strdup(prompt[i]);
-	  buff[1] = my_strdup(prompt[i + 1]);
+	  buff = malloc(sizeof(char *) * (get_prompt_length(promp) + 1));
+	  buff[0] = my_strdup(promp[i]);
+	  buff[1] = my_strdup(promp[i + 1]);
 	  while (j - 2 < i)
 	    {
-	      buff[j] = my_strdup(prompt[j - 2]);
+	      buff[j] = my_strdup(promp[j - 2]);
 	      j++;
 	    }
 	  buff[j] = NULL;
-	  free_tab(prompt);
+	  free_tab(promp);
 	  return (buff);
 	}
     }
-  return (prompt);
+  return (promp);
 }

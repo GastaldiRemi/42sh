@@ -5,7 +5,7 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Sun Jun  5 21:23:16 2016 
+## Last update Sun Jun  5 23:52:51 2016 
 ##
 
 ECHO            =       /bin/echo -e
@@ -57,7 +57,8 @@ SRC             =       sources/main.c			\
 			sources/fct.c			\
 			sources/history.c		\
 			sources/func_history.c		\
-			sources/pipe_inf.c
+			sources/pipe_inf.c		\
+			sources/check_action.c
 
 OBJ             =       $(SRC:.c=.o)
 

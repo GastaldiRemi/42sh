@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat May 28 19:38:28 2016 
-** Last update Wed Jun  1 17:16:29 2016 
+** Last update Mon Jun  6 01:20:19 2016 
 */
 
 #include		"42sh.h"
@@ -57,14 +57,15 @@ int			set_env_nothing(t_plist *plist, char **cmd)
   return (0);
 }
 
-int			set_env(t_plist *plist, char **cmd)
+int			set_env(t_plist *plist, char **cmd, char **env)
 {
   char			*new_env;
 
+  (void)env;
   new_env = NULL;
   if (cmd[1] == NULL)
     {
-      show_list(plist);
+      show_list(plist, NULL, NULL);
       return (0);
     }
   if (cmd[2] == NULL)

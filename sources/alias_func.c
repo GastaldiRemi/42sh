@@ -5,12 +5,26 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Fri Jun  3 17:35:27 2016 Jabbari Yassir
-** Last update Sat Jun  4 16:35:17 2016 Jabbari Yassir
+** Last update Mon Jun  6 01:55:19 2016 
 */
 
 #include "42sh.h"
 
-void		parser_alias_bis(t_plist *list, char *str, t_data data_alias)
+int                     show_alias(t_plist *list)
+{
+  t_alias_cmd           *tmp;
+
+  tmp = list->begin_acmd;
+  while (tmp)
+    {
+      my_putstr(tmp->alias);
+      write(1, "\n", 1);
+      tmp = tmp->next;
+    }
+  return (0);
+}
+
+void			parser_alias_bis(t_plist *list, char *str, t_data data_alias)
 {
   if (str[data_alias.i] != 39)
     return;
@@ -32,9 +46,9 @@ void		parser_alias_bis(t_plist *list, char *str, t_data data_alias)
   free(data_alias.cmd2);
 }
 
-void		parser_alias(t_plist *list, char *str)
+void			parser_alias(t_plist *list, char *str)
 {
-  t_data	data_alias;
+  t_data		data_alias;
 
   data_alias.tmp = 0;
   data_alias.i = 0;
@@ -42,8 +56,8 @@ void		parser_alias(t_plist *list, char *str)
   if (str[data_alias.i] == 'a' && str[data_alias.i + 1] == 'l' &&
       str[data_alias.i + 2] == 'i' && str[data_alias.i + 3] == 'a' &&
       str[data_alias.i + 4] == 's' && str[data_alias.i + 5] &&
-      str[data_alias.i + 6] && str[data_alias.i + 7] && str[data_alias.i + 8] &&
-      str[data_alias.i + 9] && str[data_alias.i + 10])
+      str[data_alias.i + 6] && str[data_alias.i + 7] && str[data_alias.i + 8]
+      && str[data_alias.i + 9] && str[data_alias.i + 10])
     {
       data_alias.i = data_alias.i + 5;
       data_alias.tmp = data_alias.i + 1;
@@ -60,10 +74,10 @@ void		parser_alias(t_plist *list, char *str)
     }
 }
 
-void		alias(t_plist *list)
+void			alias(t_plist *list)
 {
-  int		fd;
-  char		*buffer;
+  int			fd;
+  char			*buffer;
   if ((fd = open(".42shrc", O_RDONLY)) == -1)
     {
       if ((fd = open(".42shrc", O_RDWR | O_CREAT, 0666)) == -1)

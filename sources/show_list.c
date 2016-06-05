@@ -5,15 +5,17 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat May 28 21:25:01 2016 
-** Last update Fri Jun  3 23:02:54 2016 
+** Last update Mon Jun  6 01:18:54 2016 
 */
 
 #include			"42sh.h"
 
-int			show_list(t_plist *plist)
+int			show_list(t_plist *plist, char **cmd, char **env)
 {
   t_list		*tmp;
 
+  (void)cmd;
+  (void)env;
   tmp = plist->begin;
   while (tmp)
     {

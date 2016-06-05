@@ -5,7 +5,7 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Fri Jun  3 16:42:21 2016 Juliani Renaud
-** Last update Sat Jun  4 17:49:37 2016 Juliani Renaud
+** Last update Mon Jun  6 01:18:21 2016 
 */
 
 #include "42sh.h"
@@ -69,4 +69,14 @@ void			show_history(t_plist *list)
       my_putstr("\n");
       tmp = tmp->next;
     }
+}
+
+int		       history_main(t_plist *plist, char **cmd, char **env)
+{
+  (void)env;
+  if (cmd[1] != NULL && my_strcmp(cmd[1], "-c") == 0)
+    clear_history(plist);
+  else
+    show_history(plist);
+  return (0);
 }

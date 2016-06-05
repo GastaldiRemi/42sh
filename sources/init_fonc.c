@@ -28,6 +28,8 @@ int                     init_list(t_plist *plist)
   plist->end_h = NULL;
   plist->begin_acmd = NULL;
   plist->end_acmd = NULL;
+  plist->begin_a = NULL;
+  plist->end_a = NULL;
   plist->size = 0;
   return (0);
 }
