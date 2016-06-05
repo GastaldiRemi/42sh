@@ -1,29 +1,0 @@
-exit
-ls | wc | ls | toto
-ls
-l
-ls -a
-exit
-ls | wc | ls | toto; ls -l; ls | wc | toto
-exit
-ls | wc | ls -l | toto; ls -l
-exit
-ls -l | wc | ls | wc
-history
-history
-ls |wc | ls -l | toto
-ls | wc | ls -l | toto |
-ls | wc | ls -l | toto
-ls | wc | ls -l | toto | cat .history | wc
-history
-exit
-exit
-ls; ls -l; ls | wc | toto
-ls | wc | toto; ls -l
-ls | wc | zert
-ls; ls -l; | ls | wc
-ls -l; ls; | ls | wc
-exit
-ls | wc | ls -l | toto; ls
-ls | wc | ls -l | toto; cat .history
-exit
