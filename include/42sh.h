@@ -213,6 +213,6 @@ int			pipe_inf(t_plist *plist, t_cmd **cmd, int n, char **env);
 int			history_main(t_plist *plist, char **cmd, char **env);
 int                     exit_end(t_plist *list, int i);
 int                     show_alias(t_plist *list);
-void			check_exit_pipe(char **cmd, char **env, t_plist *plist);
+int			check_exit_pipe(char **cmd, char **env, t_plist *plist);
 
 #endif			/* _42_SH_H_ */

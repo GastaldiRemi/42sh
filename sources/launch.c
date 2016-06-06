@@ -12,12 +12,12 @@
 
 void		move_tmp(t_cmd **tmp, int i, t_sep **sep)
 {
-  if (!(*sep))
+  if (!(*sep) && *tmp)
     {
       (*tmp) = (*tmp)->next;
       return;
     }
-  if (my_strcmp((*sep)->sep, "&&") == 0)
+  if (*sep && my_strcmp((*sep)->sep, "&&") == 0)
     {
       (*tmp) = (*tmp)->next;
       if (i == 0)
@@ -25,7 +25,7 @@ void		move_tmp(t_cmd **tmp, int i, t_sep **sep)
       else if ((*tmp) && i != 0)
 	(*tmp) = (*tmp)->next;
     }
-  else if (my_strcmp((*sep)->sep, "||") == 0)
+  else if (*sep && my_strcmp((*sep)->sep, "||") == 0)
     {
       (*tmp) = (*tmp)->next;
       if ((*tmp) && i == 0)
@@ -35,7 +35,7 @@ void		move_tmp(t_cmd **tmp, int i, t_sep **sep)
     }
   else if (*tmp)
     (*tmp) = (*tmp)->next;
-  (*sep) = (*sep)->next;
+  *sep ? (*sep) = (*sep)->next : 0;
   return;
 }
 
