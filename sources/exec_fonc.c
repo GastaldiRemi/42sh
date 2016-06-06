@@ -5,16 +5,17 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Sun May 29 18:46:02 2016
-** Last update Mon Jun  6 14:40:57 2016 
+** Last update Mon Jun  6 14:49:59 2016 
 */
 
 #include		"42sh.h"
 
-void			check_signal(int pid, int status)
+int			check_signal(int pid, int status)
 {
   signal(SIGINT, SIG_IGN);
   waitpid(pid, &status, 0);
   signal(SIGINT, SIG_DFL);
+  return (status);
 }
 
 int			print_command_not_found(char *cmd)
@@ -39,11 +40,11 @@ int			system_fonc(t_plist *plist, char **cmd, char **env)
       if (plist->pipe == 1 || (pid = fork()) == 0)
       	execve(path, cmd, env);
       else
-	check_signal(pid, status);
+	status = check_signal(pid, status);
       free(path);
       if (WIFEXITED(status) == 1)
 	if (WEXITSTATUS(status))
-	  return (1);
+	    return (1);
     }
   else
     if (print_command_not_found(cmd[0]) == 1)
