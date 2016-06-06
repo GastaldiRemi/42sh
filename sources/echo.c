@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Tue May 31 15:15:24 2016 Jabbari Yassir
-** Last update Mon Jun  6 17:53:59 2016 Juliani Renaud
+** Last update Mon Jun  6 19:08:10 2016 Juliani Renaud
 */
 
 #include	"42sh.h"
@@ -39,13 +39,43 @@ void		custom_putstr(char **tab, int i, int j)
     }
 }
 
-int		echo(t_plist *plist, char **tab, char **env)
+int		check_quote(char **tab, char **env)
 {
   int		i;
   int		j;
+  int		h;
+
+  i = 0;
+  (void)env;
+  while (tab[i])
+    {
+      j = 0;
+      h = 0;
+      while (tab[i][j])
+	{
+	  if (tab[i][j] == '\"')
+	    h++;
+	  j++;
+	}
+      if ((h % 2) != 0)
+	return (-1);
+      i++;
+    }
+  return (0);
+}
+
+int		error_quote()
+{
+  dprintf(2, "Unmatched \".\n");
+  return (0);
+}
+
+int		echo(t_plist *plist, char **tab, char **env)
+{
+  int		j;
+  int		i;
   t_list	*list;
 
-  (void)env;
   list = plist->begin;
   i = 1;
   j = 0;
@@ -57,6 +87,8 @@ int		echo(t_plist *plist, char **tab, char **env)
     {
       while (tab[i])
 	{
+	  if (check_quote(tab, env) == -1)
+	    return (error_quote());
 	  custom_putstr(tab, i, j);
 	  if (tab[i + 1])
 	    my_putstr(" ");
