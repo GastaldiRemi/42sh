@@ -216,5 +216,6 @@ int                     show_alias(t_plist *list);
 int			check_invalid_cmd();
 int			sig_func_dad(int pid, int status);
 void			print_sig(int status);
+int                     print_command_not_found(char *cmd);
 
 #endif			/* _42_SH_H_ */
