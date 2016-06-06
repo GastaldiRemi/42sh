@@ -1,0 +1,115 @@
+alias
+alias
+alias l='ls -l'
+alias
+exit
+alias l='ls -l -a'
+alias
+exit
+echo 
+echo ""
+echo ''
+echo ""
+echo ""
+echo "j"
+echo ""
+echo " "
+exit
+ls -la /bin .
+ls -la /bin .
+ls -la /bin .
+ls -la /bin .
+ls -la /bin .
+ls -la /bin .
+ls -la /bin .
+ls -la /bin .
+ls -la /bin .
+ls -la /bin .
+pwd
+setenv | /bin/grep PATH
+pwd ; cd bin ; ls -l
+cd ..
+bin/cat
+pwd
+exit 25
+coucou
+unsetenv HOSTTYPE VENDOR OSTYPE MACHTYPE SHLVL PWD LOGNAME USER GROUP HOST REMOTEHOST
+unsetenv _
+unsetenv LS_COLORS
+unsetenv NOTE
+setenv toto
+setenv tata coucou
+env
+/bin/env
+setenv titi abcd
+unsetenv tata
+env
+cd testdircd
+ls
+ls -l
+ls     -l
+     ls     -l
+ls -l     
+    ls     -l     -a    
+ls	
+	ls
+	ls	-l
+		    ls	     	-l    		  	 -a    		
+    	  ls  -l;echo toto  ;  ls	;	echo plop
+ls /dev | grep tty
+ls | grep plop
+	 ls   -l	/dev|	grep tty
+ls /dev | cat  | tr y Y | grep ttY | cat
+ls -lR /dev | cat  | tr y Y | grep ttY | cat | cat | cat | cat | cat | cat |cat
+ls -lR /dev | cat  | tr y Y | grep ttY | cat | cati | cat
+ls /dev > fic
+echo toto
+cat fic
+ls /dev > fic
+echo toto
+echo plop >> fic
+ls / >> fic
+echo titi
+cat fic
+cat /bin/ls > myls
+chmod 755 myls
+./myls
+grep tty < fic
+grep tty < fic | tr y Y > ficout ; cat ficout | sed s/tt/uu/g > ficout2 ; cat ficout2 | tr u I
+ls
+echo ls | /bin/tcsh > result
+echo ls | ./42sh > result2
+cat result
+cat result2
+cat fic >> fic
+cat fic
+echo ""
+exit
+echo ""
+ecit
+exit
+echo ""
+exit
+echo éé
+echo ""
+exit
+echo ""
+ecit
+exit
+echo ""
+exit
+echo ""
+echo bonsoir
+echo "oui" "bon"
+echo "sdfsd fsdfs fpOIR ZR"
+echo "sfsd sdf sdf"
+exit
+exit
+echo "bonsoir famille"
+make
+va[A
+exit
+echo "bonsoir gamille"
+echo "oui" "oui"
+echo -n "dsf "
+exit

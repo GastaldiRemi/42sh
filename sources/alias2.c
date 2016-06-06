@@ -1,11 +1,11 @@
 /*
-** alias2.c for alias2
-**
-** Made by	Full Name
-** Login	Full Name
-**
-** Started on	Fri Jun 03 15:05:44 2016 Full Name
-** Last update	Fri Jun 03 15:19:57 2016 Full Name
+** alias2.c for alias2 in /home/gastal_r/rendu/42sh/sources
+** 
+** Made by 
+** Login   <gastal_r@epitech.net>
+** 
+** Started on  Mon Jun  6 19:22:29 2016 
+** Last update Mon Jun  6 19:22:30 2016 
 */
 
 #include		"42sh.h"

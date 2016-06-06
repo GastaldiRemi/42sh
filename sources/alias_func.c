@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Fri Jun  3 17:35:27 2016 Jabbari Yassir
-** Last update Mon Jun  6 01:55:19 2016 
+** Last update Mon Jun  6 19:25:32 2016 
 */
 
 #include "42sh.h"
@@ -13,11 +13,19 @@
 int                     show_alias(t_plist *list)
 {
   t_alias_cmd           *tmp;
+  int			i;
 
+  i = -1;
   tmp = list->begin_acmd;
   while (tmp)
     {
       my_putstr(tmp->alias);
+      my_putstr("     ");
+      while (tmp->cmd[++i])
+	{
+	  my_putstr(tmp->cmd[i]);
+	  write(1, " ", 1);
+	}
       write(1, "\n", 1);
       tmp = tmp->next;
     }

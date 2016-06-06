@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Tue May 31 15:15:24 2016 Jabbari Yassir
-** Last update Mon Jun  6 19:35:15 2016 Jabbari Yassir
+** Last update Mon Jun  6 19:39:00 2016 
 */
 
 #include	"42sh.h"
@@ -30,6 +30,8 @@ int		echo_n(char **tab)
 
 void		custom_putstr(char **tab, int i, int j)
 {
+  if (tab[i][1] && tab[i][0] == '\"' && tab[i][1] == '\"')
+    return;
   if (tab[i])
     {
       while (tab[i][j])
@@ -51,22 +53,20 @@ int		check_quote(char **tab, char **env)
 
   i = 1;
   (void)env;
+  h = 0;
   while (tab[i])
     {
       j = 0;
-      h = 0;
       while (tab[i][j])
 	{
 	  if (tab[i][j] == '\"')
 	    h++;
-	  else if (tab[i][j] == '\"' && tab[i][j + 1] == '\"')
-	    return (-1);
 	  j++;
 	}
-      if ((h % 2) != 0)
-	return (-1);
       i++;
     }
+  if ((h % 2) != 0)
+    return (-1);
   return (0);
 }
 
