@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 18:08:25 2016 
-** Last update Mon Jun  6 03:10:51 2016 
+** Last update Mon Jun  6 10:50:31 2016 
 */
 
 #include		"42sh.h"
@@ -69,7 +69,6 @@ int			double_red_left(t_plist *plist, char **cmd, char **env)
 	  if (my_strcmp(buff2, buff3) == 0)
 	    {
 	      free(buff2);
-	      printf("%s\n", buff);
 	      return (looping(plist, cmd, buff, env));
 	    }
 	  buff = my_strcat(buff, buff2, -1, -1);

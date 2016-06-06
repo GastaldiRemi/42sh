@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat Jun  4 22:09:08 2016 
-** Last update Mon Jun  6 03:27:14 2016 
+** Last update Mon Jun  6 10:49:43 2016 
 */
 
 #include		"42sh.h"
@@ -44,6 +44,7 @@ int			pipe_inf(t_plist *plist, t_cmd **cmd, int n, char **env)
   int			fd[2];
   int			in_out[2];
   int			pid;
+  int			status;
 
   if ((pid = fork()) == 0)
     {
@@ -63,7 +64,10 @@ int			pipe_inf(t_plist *plist, t_cmd **cmd, int n, char **env)
       check_exit_pipe((*cmd)->cmd, env, plist);
     }
   else
-    waitpid(pid, NULL, 0);
+    waitpid(pid, &status, 0);
   plist->pipe = 0;
+  if (WIFEXITED(status) == 1)
+    if (WEXITSTATUS(status))
+      return (1);
   return (0);
 }

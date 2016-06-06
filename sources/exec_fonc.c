@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 18:46:02 2016 
-** Last update Mon Jun  6 09:55:18 2016 
+** Last update Mon Jun  6 10:46:05 2016 
 */
 
 #include		"42sh.h"
@@ -14,7 +14,9 @@ int			system_fonc(t_plist *plist, char **cmd, char **env)
 {
   char			*path;
   int			pid;
+  int			status;
 
+  status = 0;
   if (cmd == NULL || my_strlen(cmd[0]) == 0)
     return (0);
   if ((path = test_access(plist, cmd[0])) != NULL)
@@ -24,10 +26,13 @@ int			system_fonc(t_plist *plist, char **cmd, char **env)
       else
       	{
       	  signal(SIGINT, SIG_IGN);
-      	  waitpid(pid, NULL, 0);
+      	  waitpid(pid, &status, 0);
       	  signal(SIGINT, SIG_DFL);
       	}
       free(path);
+      if (WIFEXITED(status) == 1)
+	if (WEXITSTATUS(status))
+	  return (1);
     }
   else
     {
@@ -73,8 +78,11 @@ int			exec_fonc(t_plist *plist, char **cmd, char **env)
       if (WIFSIGNALED(status))
 	{
 	  if (WTERMSIG(status) == SIGSEGV)
-	    write(2, "segmentation fault\n", my_strlen("segmentation fault\n"));
+	    dprintf(2, "segmentation fault\n");
 	}
+      if (WIFEXITED(status) == 1)
+	if (WEXITSTATUS(status))
+	  return (1);
       signal(SIGINT, SIG_DFL);
       kill(pid, SIGINT);
     }
