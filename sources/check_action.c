@@ -1,11 +1,11 @@
 /*
 ** check_action.c for check_action in /home/gastal_r/rendu/42sh/sources
-** 
-** Made by 
+**
+** Made by
 ** Login   <gastal_r@epitech.net>
-** 
-** Started on  Mon Jun  6 00:15:02 2016 
-** Last update Mon Jun  6 13:20:24 2016 
+**
+** Started on  Mon Jun  6 00:15:02 2016
+** Last update Mon Jun  6 13:29:29 2016 Jabbari Yassir
 */
 
 #include		"42sh.h"
@@ -53,16 +53,18 @@ int			check_action(char **cmd, char **env, t_plist *plist)
 {
   int			i;
   char			*flag[13];
+  int			status;
 
   i = 0;
   init_flag(flag);
+  status = 0;
   if (test_alias(plist, cmd[0]) != NULL)
     return (plist->exit_value = system_fonc(plist,
 					    test_alias(plist, cmd[0]), env));
   while (flag[i] != NULL && my_strcmp(cmd[0], flag[i]) != 0)
     if (flag[++i] == NULL)
       {
-	if ((plist->exit_value = exec_fonc(plist, cmd, env)) == 1)
+	if ((plist->exit_value = exec_fonc(plist, cmd, env, status)) == 1)
 	  plist->exit_value = system_fonc(plist, cmd, env);
 	(plist->pipe == 1 ? exit(plist->exit_value) : (void)0);
 	return (plist->exit_value);

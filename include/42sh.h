@@ -184,7 +184,7 @@ int                     double_red_left(t_plist *plist, char **cmd,
 					char **env);
 int			launch(t_env *env, t_plist *envlist,
 			       t_cmd *tmp, t_sep *tmp_sep);
-int                     exec_fonc(t_plist *plist, char **cmd, char **env);
+int                     exec_fonc(t_plist *plist, char **cmd, char **env, int status);
 char                    *pre_parsing(char *prompt, int i, int j);
 int                     return_chdir(char *dir, char *newpath);
 int                     check_dir(t_plist *plist, char *newpath, char *dir);
@@ -214,5 +214,7 @@ int			history_main(t_plist *plist, char **cmd, char **env);
 int                     exit_end(t_plist *list, int i);
 int                     show_alias(t_plist *list);
 int			check_invalid_cmd();
+int			sig_func_dad(int pid, int status);
+void			print_sig(int status);
 
 #endif			/* _42_SH_H_ */
