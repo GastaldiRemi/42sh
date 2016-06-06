@@ -76,25 +76,18 @@ int		check_pipe(t_env *env, t_plist *envlist,
   int		nb_pipe;
 
   if (*tmp_sep != NULL && my_strcmp((*tmp_sep)->sep, "|") == 0)
-    {
-      if ((*tmp)->next == NULL)
-	{
-	  dprintf(2, "Invalid null command.\n");
-	  return (-1);
-	}
-    }
+    if ((*tmp)->next == NULL)
+      return (check_invalid_cmd());
   if (*tmp_sep != NULL && (*tmp)->next != NULL
       && my_strcmp((*tmp_sep)->sep, "|") == 0)
     {
       envlist->pipe = 1;
       nb_pipe = count_pipe(tmp_sep);
       if ((check_nb_arg(nb_pipe, *tmp)) == 1)
-	{
-	  dprintf(2, "Invalid null command.\n");
-	  return (-1);
-	}
+	return (check_invalid_cmd());
       envlist->exit_value = pipe_inf(envlist, tmp, nb_pipe + 1, env->env);
-      *tmp = (*tmp)->next;
+      while (nb_pipe-- >= 0)
+	*tmp = (*tmp)->next;
       return (1);
     }
   return (0);
@@ -118,9 +111,9 @@ int		launch(t_env *env, t_plist *envlist, t_cmd *tmp, t_sep *tmp_sep)
 	}
       if ((check = check_pipe(env, envlist, &tmp, &tmp_sep)) == -1)
 	return (0);
-      if (check == 0 && tmp_sep != NULL && my_strcmp(tmp_sep->sep, "&") == 0)
+      if (check != 1 && tmp_sep != NULL && my_strcmp(tmp_sep->sep, "&") == 0)
 	background(envlist, tmp->cmd, env->env);
-      else if (check == 0)
+      else if (check != 1)
 	check_action(tmp->cmd, env->env, envlist);
       move_tmp(&tmp, envlist->exit_value, &tmp_sep);
       env->env = init_env(env->env, envlist);

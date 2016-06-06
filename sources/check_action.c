@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Mon Jun  6 00:15:02 2016 
-** Last update Mon Jun  6 10:52:37 2016 
+** Last update Mon Jun  6 12:18:44 2016 Juliani Renaud
 */
 
 #include		"42sh.h"
@@ -72,5 +72,11 @@ int			check_action(char **cmd, char **env, t_plist *plist)
 int			exit_end(t_plist *list, int i)
 {
   list->exit_value = i;
+  return (-1);
+}
+
+int			check_invalid_cmd()
+{
+  dprintf(2, "Invalid null command. \n");
   return (-1);
 }

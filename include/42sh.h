@@ -214,5 +214,6 @@ int			history_main(t_plist *plist, char **cmd, char **env);
 int                     exit_end(t_plist *list, int i);
 int                     show_alias(t_plist *list);
 int			check_exit_pipe(char **cmd, char **env, t_plist *plist);
+int			check_invalid_cmd();
 
 #endif			/* _42_SH_H_ */
