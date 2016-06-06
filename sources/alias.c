@@ -139,5 +139,6 @@ int			add_alias_cmd(t_plist *list, char **tab, char **env)
   while (cmd[++i]);
   cmd[i - 1] = '\0';
   add_alias_cmd_list(list, alias, cmd);
+  free(alias);
   return (1);
 }

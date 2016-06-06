@@ -20,8 +20,6 @@ void		move_tmp(t_cmd **tmp, int i, t_sep **sep)
   if (*sep && my_strcmp((*sep)->sep, "&&") == 0)
     {
       (*tmp) = (*tmp)->next;
-      /* if (i == 0) */
-      /* 	return((*sep ? (*sep) = (*sep)->next : 0)); */
        if ((*tmp) && i != 0)
       	(*tmp) = (*tmp)->next;
     }
@@ -30,8 +28,6 @@ void		move_tmp(t_cmd **tmp, int i, t_sep **sep)
       (*tmp) = (*tmp)->next;
       if ((*tmp) && i == 0)
 	(*tmp) = (*tmp)->next;
-      /* else */
-      /* 	return ((*sep ? (*sep) = (*sep)->next : 0)); */
     }
   else if (*tmp)
     (*tmp) = (*tmp)->next;
