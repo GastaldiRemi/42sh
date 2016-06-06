@@ -89,11 +89,12 @@ void			add_alias_cmd_list(t_plist *list, char *alias, char *cmd)
     list->size++;
 }
 
-int			check_alias(char *alias)
+int			check_alias(char *alias, char **env)
 {
   int			i;
   int			e;
 
+  (void)env;
   e = 0;
   i = -1;
   if (alias[my_strlen(alias) - 1] != '\'')
@@ -118,18 +119,16 @@ int			add_alias_cmd(t_plist *list, char **tab, char **env)
   char			*cmd;
   int			i;
 
-  (void)env;
   if (tab[1] == NULL)
     return (show_alias(list));
   alias = my_strdup(tab[1]);
-  i = 2;
-  while (tab[i])
+  i = 1;
+  while (tab[++i])
   {
     alias = my_strcat(alias, " ", -1, -1);
     alias = my_strcat(alias, tab[i], -1, -1);
-    i++;
   }
-  if (check_alias(alias) == 1)
+  if (check_alias(alias, env) == 1)
     return (1);
   i = -1;
   while (alias[++i] != '\'');
