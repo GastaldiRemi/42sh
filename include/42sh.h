@@ -218,5 +218,6 @@ int			sig_func_dad(int pid, int status);
 void			print_sig(int status);
 int                     print_command_not_found(char *cmd);
 char                    **alias_arg(char **alias, char **cmd);
+int                     launch_alias(t_plist *plist, char **buff, char **env);
 
 #endif			/* _42_SH_H_ */

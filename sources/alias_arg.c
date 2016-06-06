@@ -5,10 +5,22 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Mon Jun  6 17:33:42 2016 
-** Last update Mon Jun  6 18:35:40 2016 
+** Last update Mon Jun  6 18:49:34 2016 
 */
 
 #include		"42sh.h"
+
+int			launch_alias(t_plist *plist, char **buff, char **env)
+{
+  int			i;
+
+  i = -1;
+  plist->exit_value = system_fonc(plist, buff, env);
+  while (buff[++i])
+    free(buff[i]);
+  free(buff);
+  return (plist->exit_value);
+}
 
 int			count_cmd(char **cmd)
 {
