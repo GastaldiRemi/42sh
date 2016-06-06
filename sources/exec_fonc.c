@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sun May 29 18:46:02 2016 
-** Last update Mon Jun  6 01:54:05 2016 
+** Last update Mon Jun  6 09:55:18 2016 
 */
 
 #include		"42sh.h"
@@ -70,8 +70,11 @@ int			exec_fonc(t_plist *plist, char **cmd, char **env)
       	}
       else
 	execve(cmd[0], cmd, env);
-      if (status == 11)
-	write(2, "segmentation fault\n", my_strlen("segmentation fault\n"));
+      if (WIFSIGNALED(status))
+	{
+	  if (WTERMSIG(status) == SIGSEGV)
+	    write(2, "segmentation fault\n", my_strlen("segmentation fault\n"));
+	}
       signal(SIGINT, SIG_DFL);
       kill(pid, SIGINT);
     }
