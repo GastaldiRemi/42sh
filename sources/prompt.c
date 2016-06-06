@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Fri May 27 11:38:43 2016 
-** Last update Sun Jun  5 23:09:36 2016 
+** Last update Mon Jun  6 02:46:58 2016 
 */
 
 #include		"42sh.h"
@@ -45,6 +45,7 @@ char			*aff_prompt(t_env *env, t_plist *plist)
   if (st == NULL)
     {
       free_tab(env->env);
+      printf("\nexit\n");
       return (NULL);
     }
   if (st[0] != '\0' && st[0] == '!')

@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:43:04 2016
-** Last update Thu Jun  2 13:16:56 2016 
+** Last update Mon Jun  6 03:14:57 2016 
 */
 
 #include	     	"42sh.h"
@@ -16,8 +16,7 @@ char			*my_strcat(char *dest, char *src, int i, int j)
   int			len_src;
   int			len_dest;
 
-  if ((len_src = my_strlen(src)) <= 0)
-    return (NULL);
+  len_src = my_strlen(src);
   if (dest == NULL)
     {
       if ((dest = malloc((len_src + 1))) == NULL)

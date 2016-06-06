@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Mon Jun  6 00:15:02 2016 
-** Last update Mon Jun  6 01:54:34 2016 
+** Last update Mon Jun  6 02:49:41 2016 
 */
 
 #include		"42sh.h"
@@ -57,15 +57,15 @@ int			check_action(char **cmd, char **env, t_plist *plist)
   i = 0;
   init_flag(flag);
   if (test_alias(plist, cmd[0]) != NULL)
-    plist->exit_value = system_fonc(plist, test_alias(plist, cmd[0]), env);
-  else
-    while (flag[i] != NULL && my_strcmp(cmd[0], flag[i]) != 0)
-      if (flag[++i] == NULL)
-	{
-	  if ((plist->exit_value = exec_fonc(plist, cmd, env)) == 1)
-	    plist->exit_value = system_fonc(plist, cmd, env);
-	  return (plist->exit_value);
-	}
+    return (plist->exit_value = system_fonc(plist,
+					    test_alias(plist, cmd[0]), env));
+  while (flag[i] != NULL && my_strcmp(cmd[0], flag[i]) != 0)
+    if (flag[++i] == NULL)
+      {
+	if ((plist->exit_value = exec_fonc(plist, cmd, env)) == 1)
+	  plist->exit_value = system_fonc(plist, cmd, env);
+	return (plist->exit_value);
+      }
   return (ptr_check_action(i, cmd, env, plist));
 }
 

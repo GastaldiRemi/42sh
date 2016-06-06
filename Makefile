@@ -5,7 +5,7 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Sun Jun  5 23:52:51 2016 
+## Last update Mon Jun  6 02:52:33 2016 
 ##
 
 ECHO            =       /bin/echo -e
@@ -53,7 +53,6 @@ SRC             =       sources/main.c			\
 			sources/alias2.c		\
 			sources/alias_func.c		\
 			sources/background.c		\
-			sources/my_putchar.c		\
 			sources/fct.c			\
 			sources/history.c		\
 			sources/func_history.c		\
