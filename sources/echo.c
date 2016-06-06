@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Tue May 31 15:15:24 2016 Jabbari Yassir
-** Last update Mon Jun  6 17:44:54 2016 Jabbari Yassir
+** Last update Mon Jun  6 17:53:59 2016 Juliani Renaud
 */
 
 #include	"42sh.h"
@@ -34,7 +34,8 @@ void		custom_putstr(char **tab, int i, int j)
     {
       if (tab[i][j] == 34)
 	j++;
-      my_putchar(tab[i][j++]);
+      if (tab[i][j] != '\0')
+	my_putchar(tab[i][j++]);
     }
 }
 
