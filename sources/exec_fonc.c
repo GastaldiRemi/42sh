@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Sun May 29 18:46:02 2016
-** Last update Mon Jun  6 14:49:59 2016 
+** Last update Mon Jun  6 17:28:12 2016 
 */
 
 #include		"42sh.h"
@@ -16,14 +16,6 @@ int			check_signal(int pid, int status)
   waitpid(pid, &status, 0);
   signal(SIGINT, SIG_DFL);
   return (status);
-}
-
-int			print_command_not_found(char *cmd)
-{
-  write(2, cmd, my_strlen(cmd));
-  write(2, ": Command not found.", 20);
-  write(2, "\n", 1);
-  return (1);
 }
 
 int			system_fonc(t_plist *plist, char **cmd, char **env)
@@ -47,8 +39,7 @@ int			system_fonc(t_plist *plist, char **cmd, char **env)
 	    return (1);
     }
   else
-    if (print_command_not_found(cmd[0]) == 1)
-      return (1);
+    return (print_command_not_found(cmd[0]));
   return (0);
 }
 
@@ -62,6 +53,18 @@ int			init_pid(t_plist *plist, int fd)
   return (pid);
 }
 
+int			check_dir_open(char **cmd)
+{
+  DIR			*dir;
+
+  if ((dir = opendir(cmd[0])) != NULL)
+    {
+      free(dir);
+      return (1);
+    }
+  return (0);
+}
+
 int			exec_fonc(t_plist *plist, char **cmd, char **env, int status)
 {
   int			fd;
@@ -70,6 +73,8 @@ int			exec_fonc(t_plist *plist, char **cmd, char **env, int status)
   if (cmd[0] && (my_strcmp(cmd[0], "..") == 0 || my_strcmp(cmd[0], ".") == 0
 		 || my_strcmp(cmd[0], "./") == 0))
     return (0);
+  if (check_dir_open(cmd) == 1)
+    return (1);
   if ((fd = open(cmd[0], O_RDONLY)) != -1)
     {
       pid = init_pid(plist, fd);
@@ -79,13 +84,9 @@ int			exec_fonc(t_plist *plist, char **cmd, char **env, int status)
 	execve(cmd[0], cmd, env);
       if (WIFSIGNALED(status))
       	print_sig(status);
-      if (WIFEXITED(status) == 1)
-	if (WEXITSTATUS(status))
-	  return (1);
       signal(SIGINT, SIG_DFL);
       kill(pid, SIGINT);
+      return (0);
     }
-  else
-    return (1);
-  return (0);
+  return (1);
 }
