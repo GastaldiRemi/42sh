@@ -10,7 +10,7 @@
 
 #include		"42sh.h"
 
-char			**test_alias(t_plist *plist, char *cmd)
+char			**test_alias(t_plist *plist, char **cmd)
 {
   t_alias		*alias;
   t_alias_cmd		*alias_cmd;
@@ -18,20 +18,20 @@ char			**test_alias(t_plist *plist, char *cmd)
   alias_cmd = plist->begin_acmd;
   while (alias_cmd)
   {
-    if (my_strcmp(alias_cmd->alias, cmd) == 0)
-      return (alias_cmd->cmd);
+    if (my_strcmp(alias_cmd->alias, cmd[0]) == 0)
+      return (alias_arg(alias_cmd->cmd, cmd));
     alias_cmd = alias_cmd->next;
   }
   alias = plist->begin_a;
   if (alias == NULL)
     return (NULL);
-  while (my_strcmp(alias->alias, cmd) != 0)
+  while (my_strcmp(alias->alias, cmd[0]) != 0)
     {
       alias = alias->next;
       if (alias == NULL)
       	return (NULL);
     }
-  return (alias->cmd);
+  return (alias_arg(alias->cmd, cmd));
 }
 
 void			add_alias(t_plist *list, char *alias, char *cmd)

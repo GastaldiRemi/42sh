@@ -189,7 +189,7 @@ char                    *pre_parsing(char *prompt, int i, int j);
 int                     return_chdir(char *dir, char *newpath);
 int                     check_dir(t_plist *plist, char *newpath, char *dir);
 void                    add_alias(t_plist *list, char *alias, char *cmd);
-char                    **test_alias(t_plist *plist, char *cmd);
+char                    **test_alias(t_plist *plist, char **cmd);
 void			cmd_to_history(t_plist *list, char *cmd);
 void			show_history(t_plist *list);
 void			clear_history(t_plist *list);
@@ -217,5 +217,6 @@ int			check_invalid_cmd();
 int			sig_func_dad(int pid, int status);
 void			print_sig(int status);
 int                     print_command_not_found(char *cmd);
+char                    **alias_arg(char **alias, char **cmd);
 
 #endif			/* _42_SH_H_ */
