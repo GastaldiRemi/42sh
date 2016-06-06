@@ -33,8 +33,8 @@ void		move_tmp(t_cmd **tmp, int i, t_sep **sep)
       else
 	return;
     }
-  else if (*tmp)
-    (*tmp) = (*tmp)->next;
+  /* else if (*tmp) */
+  /*   (*tmp) = (*tmp)->next; */
   *sep ? (*sep) = (*sep)->next : 0;
   return;
 }
@@ -85,9 +85,9 @@ int		check_pipe(t_env *env, t_plist *envlist,
       nb_pipe = count_pipe(tmp_sep);
       if ((check_nb_arg(nb_pipe, *tmp)) == 1)
 	return (check_invalid_cmd());
-      envlist->exit_value = pipe_inf(envlist, tmp, nb_pipe + 1, env->env);
+      envlist->exit_value = pipe_inf(envlist, *tmp, nb_pipe + 1, env->env);
       while (nb_pipe-- >= 0)
-	*tmp = (*tmp)->next;
+      	*tmp = (*tmp)->next;
       return (1);
     }
   return (0);

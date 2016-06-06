@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Mon Jun  6 00:15:02 2016 
-** Last update Mon Jun  6 13:20:24 2016 
+** Last update Mon Jun  6 12:22:04 2016 
 */
 
 #include		"42sh.h"
@@ -64,7 +64,6 @@ int			check_action(char **cmd, char **env, t_plist *plist)
       {
 	if ((plist->exit_value = exec_fonc(plist, cmd, env)) == 1)
 	  plist->exit_value = system_fonc(plist, cmd, env);
-	(plist->pipe == 1 ? exit(plist->exit_value) : (void)0);
 	return (plist->exit_value);
       }
   return (ptr_check_action(i, cmd, env, plist));
@@ -73,11 +72,5 @@ int			check_action(char **cmd, char **env, t_plist *plist)
 int			exit_end(t_plist *list, int i)
 {
   list->exit_value = i;
-  return (-1);
-}
-
-int			check_invalid_cmd()
-{
-  dprintf(2, "Invalid null command. \n");
   return (-1);
 }
