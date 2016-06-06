@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Mon Jun  6 13:31:59 2016 Jabbari Yassir
-** Last update Mon Jun  6 13:34:01 2016 Jabbari Yassir
+** Last update Mon Jun  6 13:40:03 2016 Jabbari Yassir
 */
 
 #include "42sh.h"
@@ -16,4 +16,10 @@ int		sig_func_dad(int pid, int status)
   waitpid(pid, &status, 0);
   signal(SIGINT, SIG_DFL);
   return (status);
+}
+
+void		print_sig(int status)
+{
+  if (WTERMSIG(status) == SIGSEGV)
+    dprintf(2, "segmentation fault\n");
 }

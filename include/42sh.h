@@ -163,7 +163,7 @@ int			set_env(t_plist *plist, char **cmd, char **env);
 int			show_list(t_plist *plist, char **cmd, char **env);
 void                    act_pwd(t_plist *plist, char *path);
 char                    *get_oldpwd(t_plist *plist);
-char                    *get_pwd(t_plist *plist);
+ char                    *get_pwd(t_plist *plist);
 void                    act_oldpwd(t_plist *plist, char *path);
 int                     cd_tile(t_plist *plist, char *dir);
 void                    cd_prec(t_plist *plist, char *path);

@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Sun May 29 18:46:02 2016
-** Last update Mon Jun  6 13:33:46 2016 Jabbari Yassir
+** Last update Mon Jun  6 13:40:10 2016 Jabbari Yassir
 */
 
 #include		"42sh.h"
@@ -76,8 +76,8 @@ int			exec_fonc(t_plist *plist, char **cmd, char **env, int status)
       	status = sig_func_dad(pid, status);
       else
 	execve(cmd[0], cmd, env);
-      /* if (WIFSIGNALED(status)) */
-      /* 	print_sig(status); */
+      if (WIFSIGNALED(status))
+      	print_sig(status);
       if (WIFEXITED(status) == 1)
 	if (WEXITSTATUS(status))
 	  return (1);
