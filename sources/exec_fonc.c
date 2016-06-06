@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Sun May 29 18:46:02 2016
-** Last update Mon Jun  6 13:58:22 2016 
+** Last update Mon Jun  6 14:31:15 2016 
 */
 
 #include		"42sh.h"
@@ -60,7 +60,6 @@ int			init_pid(t_plist *plist, int fd)
   (plist->pipe == 0 ? pid = fork() :0);
   return (pid);
 }
-
 
 int			exec_fonc(t_plist *plist, char **cmd, char **env, int status)
 {

@@ -184,7 +184,7 @@ int                     double_red_left(t_plist *plist, char **cmd,
 					char **env);
 int			launch(t_env *env, t_plist *envlist,
 			       t_cmd *tmp, t_sep *tmp_sep);
-int                     exec_fonc(t_plist *plist, char **cmd, char **env, int status);
+int			exec_fonc(t_plist *plist, char **cmd, char **env, int status);
 char                    *pre_parsing(char *prompt, int i, int j);
 int                     return_chdir(char *dir, char *newpath);
 int                     check_dir(t_plist *plist, char *newpath, char *dir);
