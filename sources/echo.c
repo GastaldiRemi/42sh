@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Tue May 31 15:15:24 2016 Jabbari Yassir
-** Last update Mon Jun  6 01:34:48 2016 
+** Last update Mon Jun  6 17:44:54 2016 Jabbari Yassir
 */
 
 #include	"42sh.h"
@@ -28,14 +28,26 @@ int		echo_n(char **tab)
   return (0);
 }
 
+void		custom_putstr(char **tab, int i, int j)
+{
+  while (tab[i][j])
+    {
+      if (tab[i][j] == 34)
+	j++;
+      my_putchar(tab[i][j++]);
+    }
+}
+
 int		echo(t_plist *plist, char **tab, char **env)
 {
   int		i;
+  int		j;
   t_list	*list;
 
   (void)env;
   list = plist->begin;
   i = 1;
+  j = 0;
   if (tab[i] && ((my_strcmp("-n", tab[i])) == 0))
     echo_n(tab);
   else if (tab[i] && (tab[i][0] == '$'))
@@ -44,10 +56,11 @@ int		echo(t_plist *plist, char **tab, char **env)
     {
       while (tab[i])
 	{
-	  my_putstr(tab[i]);
+	  custom_putstr(tab, i, j);
 	  if (tab[i + 1])
 	    my_putstr(" ");
 	  i++;
+	  j = 0;
 	}
       my_putstr("\n");
     }
