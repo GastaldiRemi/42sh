@@ -12,6 +12,7 @@
 
 void		move_tmp(t_cmd **tmp, int i, t_sep **sep)
 {
+  /* printf("==%d\n", i); */
   if (!(*sep) && *tmp)
     {
       (*tmp) = (*tmp)->next;
