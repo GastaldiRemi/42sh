@@ -5,7 +5,7 @@
 ** Login   <jabbar_y@epitech.net>
 **
 ** Started on  Tue May 31 15:15:24 2016 Jabbari Yassir
-** Last update Mon Jun  6 19:18:18 2016 Jabbari Yassir
+** Last update Mon Jun  6 19:35:15 2016 Jabbari Yassir
 */
 
 #include	"42sh.h"
@@ -39,7 +39,7 @@ void		custom_putstr(char **tab, int i, int j)
 	  if (tab[i][j] != '\0')
 	    my_putchar(tab[i][j++]);
 	}
-      my_putchar('\n');
+      my_putchar(' ');
     }
 }
 
@@ -49,7 +49,7 @@ int		check_quote(char **tab, char **env)
   int		j;
   int		h;
 
-  i = 0;
+  i = 1;
   (void)env;
   while (tab[i])
     {
@@ -59,6 +59,8 @@ int		check_quote(char **tab, char **env)
 	{
 	  if (tab[i][j] == '\"')
 	    h++;
+	  else if (tab[i][j] == '\"' && tab[i][j + 1] == '\"')
+	    return (-1);
 	  j++;
 	}
       if ((h % 2) != 0)
@@ -97,6 +99,7 @@ int		echo(t_plist *plist, char **tab, char **env)
 	  i++;
 	  j = 0;
 	}
+      my_putchar('\n');
     }
   return (0);
 }
