@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 ** 
 ** Started on  Sat Jun  4 22:09:08 2016 
-** Last update Mon Jun  6 14:30:33 2016 
+** Last update Mon Jun  6 14:43:18 2016 
 */
 
 #include		"42sh.h"
@@ -67,5 +67,5 @@ int			pipe_inf(t_plist *plist, t_cmd *cmd, int n, char **env)
   if (WIFEXITED(status) == 1)
     if (WEXITSTATUS(status))
       return (plist->exit_value = 1);
-  return (0);
+  return (plist->exit_value);
 }

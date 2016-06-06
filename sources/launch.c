@@ -114,7 +114,7 @@ int		launch(t_env *env, t_plist *envlist, t_cmd *tmp, t_sep *tmp_sep)
       if (check != 1 && tmp_sep != NULL && my_strcmp(tmp_sep->sep, "&") == 0)
 	background(envlist, tmp->cmd, env->env);
       else if (check != 1)
-	check_action(tmp->cmd, env->env, envlist);
+	envlist->exit_value = check_action(tmp->cmd, env->env, envlist);
       move_tmp(&tmp, envlist->exit_value, &tmp_sep);
       env->env = init_env(env->env, envlist);
     }
