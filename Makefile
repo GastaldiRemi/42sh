@@ -5,7 +5,7 @@
 ## Login   <roig_a@epitech.net>
 ## 
 ## Started on  Sun Apr 10 05:14:49 2016 Antoine Roig
-## Last update Tue Jun  7 13:02:28 2016 
+## Last update Tue Jun  7 18:08:07 2016 
 ##
 
 ECHO            =       /bin/echo -e
@@ -14,7 +14,7 @@ GREEN           =       "\033[0;32m"
 TEAL            =       "\033[1;36m"
 RED             =       "\033[0;31m"
 
-CC              =       gcc
+CC              =       gcc -g
 
 NAME            =       42sh
 
