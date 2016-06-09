@@ -41,3 +41,10 @@ char                    **init_env(char **env, t_plist *plist)
     return (NULL);
   return (env);
 }
+
+void			init_history_path(t_plist *plist)
+{
+  plist->pwd_42 = NULL;
+  plist->pwd_42 = my_strdup(get_pwd(plist));
+  plist->pwd_42 = my_strcat(plist->pwd_42, "/.history", -1, -1);
+}

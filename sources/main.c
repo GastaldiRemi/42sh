@@ -5,7 +5,7 @@
 ** Login   <gastal_r@epitech.net>
 **
 ** Started on  Thu May 26 21:45:20 2016
-** Last update Tue Jun  7 11:28:38 2016 
+** Last update Wed Jun  8 13:08:28 2016 
 */
 
 #include		"42sh.h"
@@ -50,6 +50,7 @@ int			main(int ac, char **av, char **env)
   if ((my_env.env = init_env(my_env.env, &plist)) == NULL)
     return (0);
   alias(&plist);
+  init_history_path(&plist);
   open_history(&plist, 0);
   prompt(&my_env, &plist);
   add_to_history(&plist);

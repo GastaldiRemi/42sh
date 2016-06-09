@@ -86,7 +86,7 @@ typedef struct		s_plist
   t_history		*end_h;
   int			size;
   int			pipe;
-
+  char			*pwd_42;
 }			t_plist;
 
 typedef struct		s_cmd
@@ -219,5 +219,5 @@ void			print_sig(int status);
 int                     print_command_not_found(char *cmd);
 char                    **alias_arg(char **alias, char **cmd);
 int                     launch_alias(t_plist *plist, char **buff, char **env);
-
+void			init_history_path(t_plist *plist);
 #endif			/* _42_SH_H_ */

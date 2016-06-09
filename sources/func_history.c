@@ -5,10 +5,10 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Fri Jun  3 16:42:21 2016 Juliani Renaud
-** Last update Mon Jun  6 01:18:21 2016 
+** Last update Thu Jun  9 16:49:37 2016 
 */
 
-#include "42sh.h"
+#include		"42sh.h"
 
 void			clear_history(t_plist *list)
 {
@@ -33,7 +33,7 @@ char			*clear_history_c(t_plist *list)
       free(tmp->cmd);
       free(tmp);
     }
-  if ((fd = open(".history", O_TRUNC | O_RDWR | O_CREAT, 0666)) == - 1)
+  if ((fd = open(list->pwd_42, O_TRUNC | O_RDWR | O_CREAT, 0666)) == - 1)
     {
       dprintf(2, "Error with open\n");
       return (NULL);
@@ -75,7 +75,7 @@ int		       history_main(t_plist *plist, char **cmd, char **env)
 {
   (void)env;
   if (cmd[1] != NULL && my_strcmp(cmd[1], "-c") == 0)
-    clear_history(plist);
+    clear_history_c(plist);
   else
     show_history(plist);
   return (0);

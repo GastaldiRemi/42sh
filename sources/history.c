@@ -5,10 +5,10 @@
 ** Login   <julian_r@epitech.net>
 ** 
 ** Started on  Thu Jun  2 13:34:44 2016 Juliani Renaud
-** Last update Mon Jun  6 00:35:07 2016 
+** Last update Wed Jun  8 13:12:43 2016 
 */
 
-#include "42sh.h"
+#include	"42sh.h"
 
 char		*add_to_history(t_plist *list)
 {
@@ -16,7 +16,7 @@ char		*add_to_history(t_plist *list)
   t_history	*tmp;
 
   tmp = list->begin_h;
-  if ((fd = open(".history", O_RDWR | O_CREAT, 0666)) == -1)
+  if ((fd = open(list->pwd_42, O_RDWR | O_CREAT, 0666)) == -1)
     {
       dprintf(2, "Error with open\n");
       return (NULL);
@@ -43,7 +43,7 @@ char		*open_history(t_plist *list, int fd)
 {
   char		*buff;
 
-  if ((fd = open(".history", O_RDWR | O_CREAT, 0666)) == -1)
+  if ((fd = open(list->pwd_42, O_RDWR | O_CREAT, 0666)) == -1)
     {
       dprintf(2, "Error with open\n");
       return (NULL);
